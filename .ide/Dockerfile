@@ -19,6 +19,7 @@ RUN curl -fsSL https://code-server.dev/install.sh | sh \
   && code-server --install-extension mhutchie.git-graph \
   && code-server --install-extension waderyan.gitblame \
   && code-server --install-extension donjayamanne.githistory \
+  && code-server --install-extension yandeu.five-server \
   && echo done
 
 # 安装 ssh 服务，用于支持 VSCode 客户端通过 Remote-SSH 访问开发环境
