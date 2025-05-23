@@ -1,5 +1,5 @@
 #帮助文档地址: https://docs.cnb.cool/zh/vscode/quick-start.html
-FROM python:latest
+FROM cnbcool/default-dev-env:latest
 
 # 腾讯云软件源使用示例: https://cnb.cool/examples/mirrors/mirrors.cloud.tencent.com
 
