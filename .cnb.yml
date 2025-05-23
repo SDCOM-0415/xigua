@@ -23,6 +23,8 @@ $:
       cpus: 1
     docker:
       build: .ide/Dockerfile
+    env:
+      CNB_WELCOME_CMD: fastfetch
     stages:
       - name: update dependencies
         script: fastfetch
