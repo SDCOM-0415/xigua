@@ -1,8 +1,8 @@
 # 欢迎使用来到 Xigua_Web
 
 ## 快速开始
-这是在西瓜创客上课时所编写的程序的仓库，为了方便打开和查找各个阶段的内容，所以做了这个定制页面</p>
-本定制页面仓库地址为：<img src="https://cnb.cool/images/favicon.png" style="height: 1em; vertical-align: middle;" alt="CNB图标"> [CNB](https://cnb.cool/SDCOM_code/xigua/web "https://cnb.cool/SDCOM_code/xigua/web")
+这是在西瓜创客上课时所编写的程序的仓库，为了方便打开和查找各个阶段的内容，所以做了这个定制页面
+本定制页面仓库地址为：[![favicon.png](https://cnb.cool/images/favicon.png "favicon.png")](https://cnb.cool/images/favicon.png "favicon.png")[CNB](https://cnb.cool/SDCOM_code/xigua/web "https://cnb.cool/SDCOM_code/xigua/web")
 
 ### 引导页主要特点
 
