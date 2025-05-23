@@ -1,8 +1,8 @@
-# 欢迎使用引导页
+# 欢迎使用来到 Xigua_Web
 
 ## 快速开始
 
-这是一个简单而优雅的引导页面，您可以通过编辑 `content.md` 文件来自定义内容。
+这是在西瓜创客上课时所编写的程序的仓库，所以做一个定制页面，您可以进入[https://cnb.cool/SDCOM_code/xigua/2025.5.23/-/blob/main/content.md](https://cnb.cool/SDCOM_code/xigua/2025.5.23/-/blob/main/content.md "https://cnb.cool/SDCOM_code/xigua/2025.5.23/-/blob/main/content.md")通过编辑 `content.md` 文件来自定义内容。
 
 ### 主要特点
 
@@ -13,7 +13,7 @@
 
 ### 如何使用
 
-1. 找到 `guide/content.md` 文件
+1. 找到 `content.md` 文件
 2. 使用任何文本编辑器打开它
 3. 使用Markdown语法编辑内容
 4. 保存文件，刷新页面即可看到更新
