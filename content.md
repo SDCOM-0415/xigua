@@ -1,65 +1,33 @@
-# 欢迎使用来到 Xigua_Web
+# 欢迎使用来到 [SDCOM](https://www.sdcom.asia/ "https://www.sdcom.asia/") 的 Xigua_Web
 
-## 快速开始
+## 关于
 这是在西瓜创客上课时所编写的程序的仓库，为了方便打开和查找各个阶段的内容，所以做了这个定制页面</p>
-本定制页面仓库地址为：<img src="https://cnb.cool/images/favicon.png" style="height: 1em; vertical-align: middle;" alt="CNB图标"> [CNB](https://cnb.cool/SDCOM_code/xigua/web "https://cnb.cool/SDCOM_code/xigua/web")
+本定制页面仓库地址为：</p>
+<img src="https://cnb.cool/images/favicon.png" style="height: 1em; vertical-align: middle;" alt="CNB图标"> [CNB](https://cnb.cool/SDCOM_code/xigua/web "https://cnb.cool/SDCOM_code/xigua/web") 
+<img src="pic/github-favicon.png" style="height: 1em; vertical-align: middle;" alt="GitHub图标"> [GitHub](https://github.com/SDCOM-0415/xigua "https://github.com/SDCOM-0415/xigua") 
 
 ### 引导页主要特点
-
 - 🎨 优雅的设计风格
 - 📝 支持Markdown语法
 - 🚀 快速加载
 - 📱 响应式布局
 
-### 如何使用
-s
-1. 找到 `content.md` 文件
+### 如何编辑内容
+1. 进入仓库找到 `content.md` 文件
 2. 使用任何文本编辑器打开它
 3. 使用Markdown语法编辑内容
 4. 保存文件，刷新页面即可看到更新
 
-## Markdown示例
+## 内容
+## 2025.5.23
+### 挑战1-添加标题
+[buckup/2025.5.23/1](buckup/2025.5.23/1/ "buckup/2025.5.23/1")
 
-### 文本格式化
+### 挑战2-添加内容
+[buckup/2025.5.23/2](buckup/2025.5.23/2/ "buckup/2025.5.23/2")
 
-你可以使用 **粗体** 或者 *斜体* 来强调文本。
+### 挑战 3-添加图片
+[buckup/2025.5.23/3](buckup/2025.5.23/3/ "buckup/2025.5.23/3")
 
-### 列表
-
-无序列表：
-- 项目1
-- 项目2
-- 项目3
-
-有序列表：
-1. 第一步
-2. 第二步
-3. 第三步
-
-### 代码
-
-行内代码 `console.log('Hello World')`
-
-代码块：
-```javascript
-function greeting(name) {
-    return `Hello, ${name}!`;
-}
-```
-
-### 引用
-
-> 这是一个引用示例。
-> 可以包含多行内容。
-
-### 表格
-
-| 功能 | 描述 |
-|------|------|
-| Markdown支持 | 使用marked.js解析 |
-| 响应式设计 | 适配各种屏幕尺寸 |
-| 主题定制 | 可自定义样式 |
-
----
-
-需要更多帮助？请查看 [Markdown指南](https://www.markdownguide.org/)。
+### 初识 HTML-完成
+[over/2025.5.23/index.html](over/2025.5.23/index.html "over/2025.5.23")
