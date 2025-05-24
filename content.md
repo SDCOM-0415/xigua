@@ -6,7 +6,7 @@
 <img src="https://cnb.cool/images/favicon.png" style="height: 1em; vertical-align: middle;" alt="CNB图标"> [CNB](https://cnb.cool/SDCOM_code/xigua/web "https://cnb.cool/SDCOM_code/xigua/web") 
 <img src="pic/github-favicon.png" style="height: 1em; vertical-align: middle;" alt="GitHub图标"> [GitHub](https://github.com/SDCOM-0415/xigua "https://github.com/SDCOM-0415/xigua") </p>
 本页面访问地址：
-[https://xigua.sdcom.asia/](https://xigua.sdcom.asia/ "https://xigua.sdcom.asia/")
+[https://xigua.sdcom.asia/](https://xigua.sdcom.asia/ "https://xigua.sdcom.asia/")</p>
 [https://xg9.cn/my/MPn0g/](https://xg9.cn/my/MPn0g/ "https://xg9.cn/my/MPn0g/")
 
 ### 引导页主要特点
