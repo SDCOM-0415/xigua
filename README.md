@@ -1,6 +1,6 @@
 # 欢迎使用来到 [SDCOM](https://www.sdcom.asia/ "https://www.sdcom.asia/") 的 Xigua_Web
 
-# 运行状态：# Xigua_Web [![Netlify Status](https://api.netlify.com/api/v1/badges/a0c117f8-b6b8-42b6-828a-f75095546cad/deploy-status)](https://app.netlify.com/projects/famous-brioche-cac20b/deploys)
+# 运行状态： [![Netlify Status](https://api.netlify.com/api/v1/badges/a0c117f8-b6b8-42b6-828a-f75095546cad/deploy-status)](https://app.netlify.com/projects/famous-brioche-cac20b/deploys)
 
 ## 关于
 这是在西瓜创客上课时所编写的程序的仓库，为了方便打开和查找各个阶段的内容，所以做了这个定制页面</p>
