@@ -19,8 +19,6 @@ $:
   - services:
     - docker
     - vscode
-    runner:
-      cpus: 1
     docker:
       build: .ide/Dockerfile
     env:
