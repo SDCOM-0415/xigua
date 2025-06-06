@@ -9,7 +9,7 @@
 <img src="public/pic/github-favicon.png" style="height: 1em; vertical-align: middle;" alt="GitHub图标"> [GitHub](https://github.com/SDCOM-0415/xigua "https://github.com/SDCOM-0415/xigua") </p>
 本页面访问地址：</p>
 [https://xigua.sdcom.asia/](https://xigua.sdcom.asia/ "https://xigua.sdcom.asia/")</p>
-[https://xg9.cn/my/OQJ9W](https://xg9.cn/my/OQJ9W "https://xg9.cn/my/OQJ9W")</p>
+[https://xg9.cn/my/LY8BR](https://xg9.cn/my/LY8BR "https://xg9.cn/my/LY8BR")</p>
 [https://famous-brioche-cac20b.netlify.app/](https://famous-brioche-cac20b.netlify.app/ "https://famous-brioche-cac20b.netlify.app/")
 
 ### 引导页主要特点
@@ -59,3 +59,10 @@ Guide
 
 让网页变漂亮CSS
 [over/2025.5.30/index.html](over/2025.5.30/index.html "over/2025.5.30/index.html")
+
+## 2025.6.6
+挑战 1-添加音乐
+[buckup/2025.6.6/1](buckup/2025.6.6/1/ "buckup/2025.6.6/1")
+
+挑战 2-添加背景
+[buckup/2025.6.6/2](buckup/2025.6.6/2/ "buckup/2025.6.6/2")
