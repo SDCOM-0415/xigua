@@ -61,8 +61,20 @@ Guide
 [over/2025.5.30/index.html](over/2025.5.30/index.html "over/2025.5.30/index.html")
 
 ## 2025.6.6
+Guide
+[buckup/2025.6.6/guide](buckup/2025.6.6/guide/ "buckup/2025.6.6/guide") 
+
 挑战 1-添加音乐
 [buckup/2025.6.6/1](buckup/2025.6.6/1/ "buckup/2025.6.6/1")
 
 挑战 2-添加背景
 [buckup/2025.6.6/2](buckup/2025.6.6/2/ "buckup/2025.6.6/2")
+
+挑战3-设置div
+[buckup/2025.6.6/3](buckup/2025.6.6/3/ "buckup/2025.6.6/3")
+
+挑战4-调整边距
+[buckup/2025.6.6/4](buckup/2025.6.6/4/ "buckup/2025.6.6/4")
+
+初识 div
+[over/2025.6.6/index.html](over/2025.6.6/index.html "over/2025.6.6/index.html")
