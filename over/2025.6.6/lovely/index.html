@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>音乐播放器</title>
+  <style>
+    body {
+      background: url('../../../public/pic/lovely.jpg');
+      background-size: cover;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      min-height: 100vh;
+    }
+
+    .player-container {
+      background: rgba(100, 100, 100, 0.5);
+      width: 600px;
+      margin-top: 50px;
+      padding: 20px;
+      border-radius: 10px;
+      height: fit-content;
+    }
+
+    .lyrics-container {
+      height: 400px;
+      overflow-y: hidden;
+      position: relative;
+      margin: 20px 0;
+    }
+
+    .lyrics-wrapper {
+      transition: transform 0.3s ease;
+    }
+
+    .lyrics-line {
+      color: rgba(255, 255, 255, 0.7);
+      text-align: center;
+      line-height: 1.6;
+      transition: color 0.3s ease;
+      font-size: 16px;
+      margin-bottom: 5px;
+    }
+
+    .lyrics-line.active {
+      color: #ffffff;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .lyrics-translation {
+      color: rgba(255, 255, 255, 0.6);
+      text-align: center;
+      font-size: 14px;
+      margin-bottom: 15px;
+      font-style: italic;
+    }
+
+    .lyrics-translation.active {
+      color: rgba(255, 255, 255, 0.9);
+      font-weight: bold;
+    }
+
+    audio {
+      width: 100%;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="player-container">
+    <div class="lyrics-container">
+      <div class="lyrics-wrapper" id="lyricsWrapper">
+        <!-- 歌词将通过 JavaScript 动态添加 -->
+      </div>
+    </div>
+    <audio src="../../../public/music/lovely.m4a" controls id="audioPlayer"></audio>
+  </div>
+
+  <script>
+    class LrcParser {
+      constructor(lrcContent) {
+        this.lyrics = [];
+        this.parse(lrcContent);
+      }
+
+      parse(lrcContent) {
+        const lines = lrcContent.split('\n');
+        const timeRegex = /\[(\d{2}):(\d{2})\.(\d{2,3})\]/g;
+        let lastEnglishLine = null;
+
+        lines.forEach(line => {
+          // 跳过空行或只有时间戳的行
+          if (!line.trim() || line.trim().replace(/\[\d{2}:\d{2}\.\d{2,3}\]/g, '').trim() === '') {
+            return;
+          }
+
+          let match;
+          let time = null;
+          
+          // 获取行中的第一个时间戳
+          match = /\[(\d{2}):(\d{2})\.(\d{2,3})\]/.exec(line);
+          
+          if (match) {
+            const minutes = parseInt(match[1]);
+            const seconds = parseInt(match[2]);
+            // 处理两位或三位毫秒
+            const milliseconds = match[3].length === 2 ? parseInt(match[3]) * 10 : parseInt(match[3]);
+            time = minutes * 60 + seconds + milliseconds / 1000;
+            
+            const text = line.replace(/\[\d{2}:\d{2}\.\d{2,3}\]/g, '').trim();
+            
+            // 检查是否为空行
+            if (text) {
+              // 检测是否为中文翻译行（通过时间戳判断，中文行通常比英文行晚0.1秒）
+              const isChineseLine = this.lyrics.length > 0 && 
+                                   Math.abs(time - this.lyrics[this.lyrics.length - 1].time) < 0.15;
+              
+              if (isChineseLine && this.lyrics.length > 0) {
+                // 将中文翻译添加到前一行
+                this.lyrics[this.lyrics.length - 1].translation = text;
+              } else {
+                // 添加新的英文行
+                this.lyrics.push({
+                  time,
+                  text,
+                  translation: null
+                });
+              }
+            }
+          }
+        });
+
+        // 按时间排序
+        this.lyrics.sort((a, b) => a.time - b.time);
+      }
+
+      findLyricIndex(currentTime) {
+        for (let i = this.lyrics.length - 1; i >= 0; i--) {
+          if (this.lyrics[i].time <= currentTime) {
+            return i;
+          }
+        }
+        return -1;
+      }
+    }
+
+    class LyricsPlayer {
+      constructor() {
+        this.audioPlayer = document.getElementById('audioPlayer');
+        this.lyricsWrapper = document.getElementById('lyricsWrapper');
+        this.parser = null;
+        this.currentLineIndex = -1;
+
+        this.init();
+      }
+
+      async init() {
+        try {
+          const response = await fetch('Billie Eilish Khalid - lovely.lrc');
+          const lrcContent = await response.text();
+          this.parser = new LrcParser(lrcContent);
+          this.renderLyrics();
+          this.setupEventListeners();
+        } catch (error) {
+          console.error('Failed to load lyrics:', error);
+        }
+      }
+
+      renderLyrics() {
+        let html = '';
+        
+        this.parser.lyrics.forEach((lyric, index) => {
+          html += `<div class="lyrics-line" data-index="${index}">${lyric.text}</div>`;
+          
+          if (lyric.translation) {
+            html += `<div class="lyrics-translation" data-index="${index}">${lyric.translation}</div>`;
+          }
+        });
+        
+        this.lyricsWrapper.innerHTML = html;
+      }
+
+      setupEventListeners() {
+        this.audioPlayer.addEventListener('timeupdate', () => {
+          const currentTime = this.audioPlayer.currentTime;
+          const index = this.parser.findLyricIndex(currentTime);
+          
+          if (index !== this.currentLineIndex) {
+            this.updateActiveLine(index);
+          }
+        });
+      }
+
+      updateActiveLine(index) {
+        if (index === -1) return;
+
+        // 移除之前的活动行
+        const previousLine = document.querySelector('.lyrics-line.active');
+        const previousTranslation = document.querySelector('.lyrics-translation.active');
+        if (previousLine) {
+          previousLine.classList.remove('active');
+        }
+        if (previousTranslation) {
+          previousTranslation.classList.remove('active');
+        }
+
+        // 添加新的活动行
+        const currentLine = document.querySelector(`.lyrics-line[data-index="${index}"]`);
+        const currentTranslation = document.querySelector(`.lyrics-translation[data-index="${index}"]`);
+        
+        if (currentLine) {
+          currentLine.classList.add('active');
+          if (currentTranslation) {
+            currentTranslation.classList.add('active');
+          }
+          
+          // 计算滚动位置
+          const containerHeight = document.querySelector('.lyrics-container').offsetHeight;
+          const lineHeight = currentLine.offsetHeight + 
+            (currentTranslation ? currentTranslation.offsetHeight : 0);
+          
+          // 调整目标位置，考虑翻译行的高度
+          const targetY = currentLine.offsetTop - (containerHeight / 2) + (lineHeight / 2);
+          
+          // 平滑滚动到当前行
+          this.lyricsWrapper.style.transform = `translateY(-${targetY}px)`;
+        }
+
+        this.currentLineIndex = index;
+      }
+    }
+
+    // 初始化歌词播放器
+    new LyricsPlayer();
+  </script>
+</body>
+</html>
