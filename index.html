@@ -10,7 +10,7 @@
     <title>Xigua_Web引导页</title>
     <link rel="stylesheet" href="public/css/style.css">
     <!-- 引入marked.js用于解析Markdown -->
-    <script src="https://cdn.jsdmirror.cn/npm/marked/marked.min.js"></script>
+    <script src="//cdn.jsdmirror.cn/npm/marked/marked.min.js"></script>
 </head>
 <body>
     <div class="container">
@@ -71,7 +71,7 @@
                         <div class="error">
                             <h2>加载失败</h2>
                             <p>${error.message}</p>
-                            <p>请确保 content.md 文件存在于正确的位置。</p>
+                            <p>请确保 README.md 文件存在于正确的位置。</p>
                         </div>
                     `;
                 });
@@ -123,11 +123,11 @@
                 // 如果有代码块，动态加载highlight.js
                 const link = document.createElement('link');
                 link.rel = 'stylesheet';
-                link.href = 'https://cdn.jsdmirror.cn/npm/highlight.js/styles/github.min.css';
+                link.href = '//cdn.jsdmirror.cn/npm/highlight.js/styles/github.min.css';
                 document.head.appendChild(link);
                 
                 const script = document.createElement('script');
-                script.src = 'https://cdn.jsdmirror.cn/npm/highlight.js/highlight.min.js';
+                script.src = '//cdn.jsdmirror.cn/npm/highlight.js/highlight.min.js';
                 script.onload = function() {
                     hljs.highlightAll();
                 };

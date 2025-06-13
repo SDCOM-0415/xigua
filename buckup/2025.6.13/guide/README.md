@@ -6,7 +6,7 @@
 这是在西瓜创客上课时所编写的程序的仓库，为了方便打开和查找各个阶段的内容，所以做了这个定制页面</p>
 本定制页面仓库地址为：</p>
 <img src="https://cnb.cool/images/favicon.png" style="height: 1em; vertical-align: middle;" alt="CNB图标"> [CNB](https://cnb.cool/SDCOM_code/xigua/web "https://cnb.cool/SDCOM_code/xigua/web") 
-<img src="public/pic/github-favicon.png" style="height: 1em; vertical-align: middle;" alt="GitHub图标"> [GitHub](https://github.com/SDCOM-0415/xigua "https://github.com/SDCOM-0415/xigua") </p>
+<img src="../../../public/pic/github-favicon.png" style="height: 1em; vertical-align: middle;" alt="GitHub图标"> [GitHub](https://github.com/SDCOM-0415/xigua "https://github.com/SDCOM-0415/xigua") </p>
 本页面访问地址：</p>
 [https://xigua.sdcom.asia/](https://xigua.sdcom.asia/ "https://xigua.sdcom.asia/")</p>
 [https://xg9.cn/my/DqxgM](https://xg9.cn/my/DqxgM "https://xg9.cn/my/DqxgM")</p>
@@ -27,67 +27,67 @@
 ## 内容
 ## 2025.5.23
 Guide
-[buckup/2025.5.23/guide](buckup/2025.5.23/guide/ "buckup/2025.5.23/guide") 
+[buckup/2025.5.23/guide](../../../buckup/2025.5.23/guide/ "buckup/2025.5.23/guide") 
 
 挑战1-添加标题
-[buckup/2025.5.23/1](buckup/2025.5.23/1/ "buckup/2025.5.23/1")
+[buckup/2025.5.23/1](../../../buckup/2025.5.23/1/ "buckup/2025.5.23/1")
 
 挑战2-添加内容
-[buckup/2025.5.23/2](buckup/2025.5.23/2/ "buckup/2025.5.23/2")
+[buckup/2025.5.23/2](../../../buckup/2025.5.23/2/ "buckup/2025.5.23/2")
 
 挑战 3-添加图片
-[buckup/2025.5.23/3](buckup/2025.5.23/3/ "buckup/2025.5.23/3")
+[buckup/2025.5.23/3](../../../buckup/2025.5.23/3/ "buckup/2025.5.23/3")
 
 初识 HTML-完成
-[over/2025.5.23/index.html](over/2025.5.23/index.html "over/2025.5.23")
+[over/2025.5.23/index.html](../../../over/2025.5.23/index.html "over/2025.5.23")
 
 ## 2025.5.30
 Guide
-[buckup/2025.5.30/guide](buckup/2025.5.30/guide/ "buckup/2025.5.30/guide")
+[buckup/2025.5.30/guide](../../../buckup/2025.5.30/guide/ "buckup/2025.5.30/guide")
 
 挑战1-显示古诗
-[buckup/2025.5.30/1](buckup/2025.5.30/1/ "buckup/2025.5.30/1")
+[buckup/2025.5.30/1](../../../buckup/2025.5.30/1/ "buckup/2025.5.30/1")
 
 挑战 2-字体颜色
-[buckup/2025.5.30/2](buckup/2025.5.30/2/ "buckup/2025.5.30/2")
+[buckup/2025.5.30/2](../../../buckup/2025.5.30/2/ "buckup/2025.5.30/2")
 
 挑战 3-标签属性
-[buckup/2025.5.30/3](buckup/2025.5.30/3/ "buckup/2025.5.30/3")
+[buckup/2025.5.30/3](../../../buckup/2025.5.30/3/ "buckup/2025.5.30/3")
 
 挑战 4-文本居中
-[buckup/2025.5.30/4](buckup/2025.5.30/4/ "buckup/2025.5.30/4")
+[buckup/2025.5.30/4](../../../buckup/2025.5.30/4/ "buckup/2025.5.30/4")
 
 让网页变漂亮CSS
-[over/2025.5.30/index.html](over/2025.5.30/index.html "over/2025.5.30/index.html")
+[over/2025.5.30/index.html](../../../over/2025.5.30/index.html "over/2025.5.30/index.html")
 
 ## 2025.6.6
 Guide
-[buckup/2025.6.6/guide](buckup/2025.6.6/guide/ "buckup/2025.6.6/guide") 
+[buckup/2025.6.6/guide](../../../buckup/2025.6.6/guide/ "buckup/2025.6.6/guide") 
 
 挑战 1-添加音乐
-[buckup/2025.6.6/1](buckup/2025.6.6/1/ "buckup/2025.6.6/1")
+[buckup/2025.6.6/1](../../../buckup/2025.6.6/1/ "buckup/2025.6.6/1")
 
 挑战 2-添加背景
-[buckup/2025.6.6/2](buckup/2025.6.6/2/ "buckup/2025.6.6/2")
+[buckup/2025.6.6/2](../../../buckup/2025.6.6/2/ "buckup/2025.6.6/2")
 
 挑战3-设置div
-[buckup/2025.6.6/3](buckup/2025.6.6/3/ "buckup/2025.6.6/3")
+[buckup/2025.6.6/3](../../../buckup/2025.6.6/3/ "buckup/2025.6.6/3")
 
 挑战4-调整边距
-[buckup/2025.6.6/4](buckup/2025.6.6/4/ "buckup/2025.6.6/4")
+[buckup/2025.6.6/4](../../../buckup/2025.6.6/4/ "buckup/2025.6.6/4")
 
 初识 div
-[over/2025.6.6/index.html](over/2025.6.6/index.html "over/2025.6.6/index.html")
+[over/2025.6.6/index.html](../../../over/2025.6.6/index.html "over/2025.6.6/index.html")
 
 ## 2025.6.13
 挑战1-添加区域
-[buckup/2025.6.13/1](buckup/2025.6.13/1/ "buckup/2025.6.13/1")
+[buckup/2025.6.13/1](../../../buckup/2025.6.13/1/ "buckup/2025.6.13/1")
 
 挑战2-图片居中
-[buckup/2025.6.13/2](buckup/2025.6.13/2/ "buckup/2025.6.13/2")
+[buckup/2025.6.13/2](../../../buckup/2025.6.13/2/ "buckup/2025.6.13/2")
 
 挑战3-添加图片
-[buckup/2025.6.13/3](buckup/2025.6.13/3/ "buckup/2025.6.13/3")
+[buckup/2025.6.13/3](../../../buckup/2025.6.13/3/ "buckup/2025.6.13/3")
 
 类选择器
-[over/2025.6.13/index.html](over/2025.6.13/index.html "over/2025.6.13/index.html")
+[over/2025.6.13/index.html](../../../over/2025.6.13/index.html "over/2025.6.13/index.html")
