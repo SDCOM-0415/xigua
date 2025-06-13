@@ -1,228 +1,250 @@
-<!-- HTML5文档类型声明 -->
+<!-- HTML5文档类型声明 - 告诉浏览器这是一个HTML5文档 -->
 <!DOCTYPE html>
-<!-- 指定网页语言为中文 -->
+<!-- 指定网页语言为中文 - 有助于搜索引擎和屏幕阅读器 -->
 <html lang="zh">
 
 <head>
-	<!-- 设置字符编码为UTF-8，支持中文字符 -->
+	<!-- 设置字符编码为UTF-8，支持中文字符和特殊符号 -->
 	<meta charset="UTF-8">
-	<!-- 设置视口，使网页在移动设备上正确显示 -->
+	<!-- 设置视口，使网页在移动设备上正确显示，实现响应式设计 -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<!-- 网页标题 -->
+	<!-- 网页标题 - 显示在浏览器标签页上 -->
 	<title>西瓜创客</title>
-	<!-- 内部CSS样式表开始 -->
+	<!-- 内部CSS样式表开始 - 定义页面的所有样式 -->
 	<style>
-		/* 页面背景设置 */
+		/* 页面背景设置 - 创建沉浸式体验 */
 		body {
+			/* 设置星空背景图片并优化显示效果 */
 			background-image: url("../../../public/pic/星空.jpg"); /* 设置星空背景图片 */
-			background-size: cover;      /* 背景图片覆盖整个视窗 */
-			background-attachment: fixed; /* 背景图片固定，不随页面滚动 */
-			background-position: center;  /* 背景图片居中显示 */
-			min-height: 100vh;           /* 最小高度为视窗高度 */
-			padding: 20px;               /* 页面内边距 */
+			background-size: cover;      /* 背景图片智能缩放以覆盖整个视窗 */
+			background-attachment: fixed; /* 背景图片固定，实现视差滚动效果 */
+			background-position: center;  /* 背景图片居中显示，确保重要部分可见 */
+			min-height: 100vh;           /* 最小高度为视窗高度，确保内容充满屏幕 */
+			padding: 20px;               /* 页面内边距，防止内容贴边 */
 		}
 		
-		/* 图片放大模态框样式 */
-		/* 图片放大模态框容器 */
+		/* 图片放大模态框相关样式 - 实现图片点击放大功能 */
+		/* 模态框容器 - 创建全屏遮罩层 */
 		.image-modal {
-			display: none;                /* 默认隐藏 */
-			position: fixed;              /* 固定定位 */
-			z-index: 1000;               /* 确保显示在最上层 */
+			display: none;                /* 默认隐藏模态框 */
+			position: fixed;              /* 固定定位，覆盖整个视窗 */
+			z-index: 1000;               /* 确保模态框显示在最上层 */
 			left: 0;
 			top: 0;
 			width: 100%;
 			height: 100%;
-			background-color: rgba(0, 0, 0, 0.9); /* 半透明黑色背景 */
-			overflow: auto;               /* 允许滚动 */
-			text-align: center;           /* 内容居中 */
+			background-color: rgba(0, 0, 0, 0.9); /* 半透明黑色背景，突出显示图片 */
+			overflow: auto;               /* 允许滚动，适应大图 */
+			text-align: center;           /* 内容居中显示 */
 		}
 		
-		/* 模态框中的图片样式 */
+		/* 模态框中的图片样式 - 控制放大后的图片显示 */
 		.modal-content {
-			margin: auto;
-			display: block;
-			max-width: 90%;              /* 最大宽度为窗口的90% */
-			max-height: 90%;             /* 最大高度为窗口的90% */
-			margin-top: 2%;
-			animation: zoom 0.3s ease-in-out; /* 添加放大动画效果 */
+			margin: auto;                /* 水平居中 */
+			display: block;              /* 块级显示 */
+			max-width: 90%;              /* 最大宽度为窗口的90%，确保在屏幕内完整显示 */
+			max-height: 90%;             /* 最大高度为窗口的90%，确保在屏幕内完整显示 */
+			margin-top: 2%;              /* 顶部边距，避免贴顶 */
+			animation: zoom 0.3s ease-in-out; /* 添加平滑的放大动画效果，增强用户体验 */
 		}
 		
-		/* 定义放大动画效果 */
+		/* 定义放大动画效果 - 创建图片从小到大的视觉效果 */
 		@keyframes zoom {
-			from {transform: scale(0.1)} /* 从0.1倍大小开始 */
-			to {transform: scale(1)}     /* 放大到原始大小 */
+			from {transform: scale(0.1)} /* 动画起始：图片为原始大小的10% */
+			to {transform: scale(1)}     /* 动画结束：图片恢复到原始大小100% */
 		}
 
-		/* 页面标题样式 */
-		/* 页面标题样式 */
+		/* 页面标题样式 - 设置醒目的页面主标题 */
 		.page-header {
-			text-align: center;          /* 文字居中 */
-			color: white;                /* 白色文字 */
-			font-size: 2.5em;            /* 字体大小 */
-			margin: 20px 0;
-			text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* 文字阴影效果 */
-			animation: fadeIn 1.5s ease-out; /* 淡入动画效果 */
+			text-align: center;          /* 文字居中，增强视觉平衡 */
+			color: white;                /* 白色文字，在深色背景上清晰可见 */
+			font-size: 2.5em;            /* 较大字体大小，强调重要性 */
+			margin: 20px 0;              /* 上下边距，与其他元素分隔 */
+			text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* 文字阴影效果，增强在背景上的可读性 */
+			animation: fadeIn 1.5s ease-out; /* 页面加载时的淡入动画效果，增强用户体验 */
 		}
 
-		/* 副标题样式 */
+		/* 副标题样式 - 为主标题提供补充信息 */
 		.subtitle {
-			font-size: 0.5em;            /* 字体大小为标题的一半 */
-			color: rgba(255, 255, 255, 0.9); /* 略微透明的白色 */
-			margin-top: 10px;
+			font-size: 0.5em;            /* 字体大小为标题的一半，形成层次感 */
+			color: rgba(255, 255, 255, 0.9); /* 略微透明的白色，区别于主标题 */
+			margin-top: 10px;            /* 与主标题保持适当距离 */
 		}
 
-		/* 内容块样式 */
+		/* 内容块样式 - 页面主要内容的容器 */
 		.content-block {
-			background-color: rgba(255, 255, 255, 0.3); /* 半透明白色背景 */
-			width: 90%;                  /* 宽度占父元素的90% */
-			height: auto;
-			min-height: 300px;           /* 最小高度 */
-			margin-left: 5%;             /* 左右居中 */
-			margin-top: 3%;
-			text-align: center;          /* 内容居中 */
-			border-radius: 15px;         /* 圆角效果 */
-			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 阴影效果 */
-			padding: 30px;
-			box-sizing: border-box;      /* 包含padding在内的盒模型 */
-			opacity: 0;                  /* 初始透明 */
-			transform: translateY(20px);  /* 初始向下偏移 */
-			animation: fadeIn 1s ease-out forwards; /* 淡入动画 */
-			animation-delay: calc(var(--animation-order, 0) * 0.2s); /* 依次延迟动画 */
+			background-color: rgba(255, 255, 255, 0.3); /* 半透明白色背景，保持与星空背景的融合 */
+			width: 90%;                  /* 宽度占父元素的90%，两侧留有空间 */
+			height: auto;                /* 高度自适应内容 */
+			min-height: 300px;           /* 最小高度，确保视觉一致性 */
+			margin-left: 5%;             /* 左右居中（左边距5%，加上宽度90%，右边距自动为5%） */
+			margin-top: 3%;              /* 顶部边距，各内容块之间保持间隔 */
+			text-align: center;          /* 内容居中，美观整齐 */
+			border-radius: 15px;         /* 圆角效果，增加现代感 */
+			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 阴影效果，增强立体感 */
+			padding: 30px;               /* 内边距，内容不会贴近边缘 */
+			box-sizing: border-box;      /* 包含padding在内的盒模型，便于计算实际宽度 */
+			opacity: 0;                  /* 初始透明，为动画做准备 */
+			transform: translateY(20px);  /* 初始向下偏移，为动画做准备 */
+			animation: fadeIn 1s ease-out forwards; /* 淡入动画，forwards保持动画结束状态 */
+			animation-delay: calc(var(--animation-order, 0) * 0.2s); /* 依次延迟动画，创建瀑布效果 */
 		}
 
-		/* 设置不同内容块的动画顺序 */
+		/* 设置内容块的动画序列 - 创建瀑布式加载效果 */
+		/* 每个内容块的动画延迟时间递增，形成连续的视觉效果 */
 		.content-block:nth-child(2) {
-			--animation-order: 1;        /* 第二个块延迟0.2秒 */
+			--animation-order: 1;        /* 第二个块延迟0.2秒 (1 * 0.2s) */
 		}
 
 		.content-block:nth-child(3) {
-			--animation-order: 2;        /* 第三个块延迟0.4秒 */
+			--animation-order: 2;        /* 第三个块延迟0.4秒 (2 * 0.2s) */
 		}
 
 		.content-block:nth-child(4) {
-			--animation-order: 3;        /* 第四个块延迟0.6秒 */
+			--animation-order: 3;        /* 第四个块延迟0.6秒 (3 * 0.2s) */
 		}
 
-		/* 页脚样式 */
+		/* 为新添加的内容块设置动画序列 - 延续瀑布效果 */
+		.content-block:nth-child(5) {
+			--animation-order: 4;        /* 第五个块延迟0.8秒 (4 * 0.2s) */
+		}
+
+		.content-block:nth-child(6) {
+			--animation-order: 5;        /* 第六个块延迟1.0秒 (5 * 0.2s) */
+		}
+
+		.content-block:nth-child(7) {
+			--animation-order: 6;        /* 第七个块延迟1.2秒 (6 * 0.2s) */
+		}
+
+		/* 页脚样式 - 网页底部信息展示 */
 		.page-footer {
-			text-align: center;          /* 文字居中 */
-			color: white;                /* 白色文字 */
-			margin-top: 40px;
-			padding: 20px;
-			font-size: 0.9em;            /* 字体大小 */
-			text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* 文字阴影 */
+			text-align: center;          /* 文字居中对齐 */
+			color: white;                /* 白色文字，保持与整体风格一致 */
+			margin-top: 40px;            /* 与上方内容保持足够间距 */
+			padding: 20px;               /* 内部留白，使文字不会贴边 */
+			font-size: 0.9em;            /* 字体稍小，区分于主要内容 */
+			text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* 文字阴影，增强可读性 */
 		}
 
-		/* 定义淡入动画效果 */
+		/* 定义淡入动画效果 - 用于内容块和页面元素的平滑显示 */
 		@keyframes fadeIn {
 			from {
-				opacity: 0;              /* 开始时完全透明 */
-				transform: translateY(-20px); /* 开始时向上偏移 */
+				opacity: 0;              /* 动画开始：元素完全透明 */
+				transform: translateY(-20px); /* 动画开始：元素向上偏移20像素 */
 			}
 			to {
-				opacity: 1;              /* 结束时完全不透明 */
-				transform: translateY(0); /* 结束时回到原位 */
+				opacity: 1;              /* 动画结束：元素完全不透明 */
+				transform: translateY(0); /* 动画结束：元素回到原始位置 */
 			}
 		}
 
-		/* 响应式设计 - 针对移动设备 */
+		/* 响应式设计 - 针对移动设备的样式调整 */
 		@media (max-width: 768px) {
-			/* 在小屏幕上将步骤容器改为纵向排列 */
+			/* 在小屏幕上将步骤容器改为纵向排列，提高可读性 */
 			.steps-container {
-				flex-direction: column;
+				flex-direction: column;  /* 改为纵向排列，适应窄屏 */
 			}
 
-			/* 调整步骤项目在小屏幕上的边距 */
+			/* 调整步骤项目在小屏幕上的边距，优化间距 */
 			.step-item {
-				margin: 10px 0;
+				margin: 10px 0;          /* 上下边距增加，左右边距减少 */
 			}
 
-			/* 调整div在小屏幕上的宽度和边距 */
+			/* 调整div在小屏幕上的宽度和边距，最大化利用屏幕空间 */
 			div {
-				width: 95%;
-				margin-left: 2.5%;
-				padding: 15px;
+				width: 95%;              /* 增加宽度占比 */
+				margin-left: 2.5%;       /* 减少左边距 */
+				padding: 15px;           /* 减少内边距 */
 			}
 
-			/* 减小小屏幕上的标题字体大小 */
+			/* 减小小屏幕上的标题字体大小，避免文字过大 */
 			.page-header {
-				font-size: 2em;
+				font-size: 2em;          /* 减小字体大小 */
 			}
 		}
 
-		/* 图片通用样式 */
+		/* 图片通用样式 - 控制所有图片的基本外观 */
 		img {
-			width: 40%;                  /* 图片宽度为容器的40% */
-			margin-top: 2%;
-			transition: transform 0.3s ease, box-shadow 0.3s ease; /* 平滑过渡效果 */
-			border-radius: 10px;         /* 圆角效果 */
-			border: 3px solid rgba(255, 255, 255, 0.5); /* 半透明白色边框 */
+			width: 40%;                  /* 图片宽度为容器的40%，保持适当比例 */
+			margin-top: 2%;              /* 顶部边距，与上方元素保持间距 */
+			transition: transform 0.3s ease, box-shadow 0.3s ease; /* 平滑过渡效果，提升用户体验 */
+			border-radius: 10px;         /* 圆角效果，增加现代感 */
+			border: 3px solid rgba(255, 255, 255, 0.5); /* 半透明白色边框，增强视觉效果 */
+			cursor: pointer;             /* 鼠标指针变为手型，提示可点击 */
 		}
 
-		/* 图片悬停效果 */
+		/* 图片悬停效果 - 增强用户交互体验 */
 		img:hover {
-			transform: scale(1.05);      /* 悬停时放大5% */
-			box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* 增强阴影效果 */
+			transform: scale(1.05);      /* 悬停时放大5%，提供视觉反馈 */
+			box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* 增强阴影效果，提升立体感 */
 		}
 
-		/* 二级标题样式 */
+		/* 二级标题样式 - 内容块的标题 */
 		h2 {
-			color: white;                /* 白色文字 */
-			text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* 文字阴影 */
-			margin-bottom: 20px;
+			color: white;                /* 白色文字，与整体风格一致 */
+			text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* 文字阴影，增强可读性 */
+			margin-bottom: 20px;         /* 底部边距，与下方内容分隔 */
 		}
 
-        /* 步骤图片样式 */
+        /* 步骤图片样式 - 控制步骤演示图片的大小和位置 */
         .step {
-            width: 90%;                  /* 宽度为容器的90% */
-            margin: 0 auto;              /* 水平居中 */
+            width: 90%;                  /* 宽度为容器的90%，确保图片足够大且清晰 */
+            margin: 0 auto;              /* 水平居中，美观整齐 */
         }
 
-        /* 步骤容器样式 - 使用弹性布局 */
+        /* 步骤容器样式 - 使用弹性布局组织多个步骤 */
         .steps-container {
-            display: flex;               /* 弹性布局 */
-            justify-content: space-around; /* 项目间均匀分布 */
-            align-items: flex-start;     /* 顶部对齐 */
-            margin-top: 20px;
+            display: flex;               /* 弹性布局，实现横向排列 */
+            justify-content: space-around; /* 项目间均匀分布，空间利用最大化 */
+            align-items: flex-start;     /* 顶部对齐，保持整齐 */
+            margin-top: 20px;            /* 顶部边距，与上方标题保持间距 */
+            flex-wrap: wrap;             /* 允许在小屏幕上换行，增强响应式 */
         }
 
-        /* 单个步骤项目样式 */
+        /* 单个步骤项目样式 - 每个步骤的容器 */
         .step-item {
-            flex: 1;                     /* 平均分配空间 */
-            margin: 0 15px;
-            padding: 10px;
-            background-color: rgba(255, 255, 255, 0.2); /* 半透明背景 */
-            border-radius: 10px;         /* 圆角效果 */
-            transition: transform 0.3s ease; /* 平滑过渡效果 */
+            flex: 1;                     /* 平均分配空间，确保各步骤宽度一致 */
+            margin: 0 15px;              /* 左右边距，步骤之间保持间隔 */
+            padding: 10px;               /* 内边距，内容不会贴近边缘 */
+            background-color: rgba(255, 255, 255, 0.2); /* 半透明背景，轻微突出 */
+            border-radius: 10px;         /* 圆角效果，增加现代感 */
+            transition: transform 0.3s ease; /* 平滑过渡效果，提升用户体验 */
+            min-width: 200px;            /* 最小宽度，确保内容不会过于拥挤 */
+            margin-bottom: 15px;         /* 底部边距，在小屏幕换行时保持间距 */
         }
 
-        /* 步骤项目悬停效果 */
+        /* 步骤项目悬停效果 - 增强用户交互体验 */
         .step-item:hover {
-            transform: translateY(-5px); /* 悬停时向上移动 */
+            transform: translateY(-5px); /* 悬停时向上移动，提供视觉反馈 */
+            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2); /* 添加阴影，增强立体感 */
         }
 
-        /* 步骤描述文字样式 */
+        /* 步骤描述文字样式 - 步骤说明文本 */
         .step-desc {
-            color: white;                /* 白色文字 */
-            font-size: 1.2em;            /* 字体大小 */
-            margin-top: 10px;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* 文字阴影 */
+            color: white;                /* 白色文字，与整体风格一致 */
+            font-size: 1.2em;            /* 字体大小，确保可读性 */
+            margin-top: 10px;            /* 顶部边距，与图片保持间距 */
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* 文字阴影，增强可读性 */
+            font-weight: 500;            /* 字体粗细，增强可读性 */
         }
 
-        /* 描述文本样式 */
+        /* 描述文本样式 - 一般说明文本 */
         .description {
-            color: white;                /* 白色文字 */
-            font-size: 1.1em;            /* 字体大小 */
-            margin-top: 15px;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* 文字阴影 */
-            padding: 0 20px;
+            color: white;                /* 白色文字，与整体风格一致 */
+            font-size: 1.1em;            /* 字体大小，确保可读性 */
+            margin-top: 15px;            /* 顶部边距，与上方元素保持间距 */
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* 文字阴影，增强可读性 */
+            padding: 0 20px;             /* 左右内边距，文本不会太宽 */
+            line-height: 1.6;            /* 行高，提高长文本可读性 */
         }
 
-        /* div元素通用样式 */
+        /* div元素通用样式 - 基本容器设置 */
         div {
-            height: auto;                /* 自动高度 */
-            min-height: 300px;           /* 最小高度 */
-            padding: 30px;
+            height: auto;                /* 自动高度，根据内容调整 */
+            min-height: 300px;           /* 最小高度，保持视觉一致性 */
+            padding: 30px;               /* 内边距，内容不会贴近边缘 */
+            box-sizing: border-box;      /* 盒模型设置，包含padding在内 */
         }
 	</style>
 </head>
@@ -253,25 +275,117 @@
 		<p class="description">请准备好所需的全部材料，确保材料完整后再开始制作。</p>
 	</div>
 
-	<!-- 第三个内容块：制作步骤 -->
+	<!-- 第三个内容块：制作步骤（1-3） - 展示纸飞机制作的前三个步骤 -->
 	<div class="content-block">
-		<h2>制作步骤</h2>
-		<!-- 步骤容器：使用弹性布局横向排列步骤 -->
+		<h2>制作步骤（1-3）</h2>
+		<!-- 步骤容器：使用弹性布局横向排列步骤，便于并排展示 -->
 		<div class="steps-container">
-			<!-- 第一步 -->
+			<!-- 第一步 - 初始折叠 -->
 			<div class="step-item">
 				<img src="../../../public/pic/步骤一.png" class="step">
-				<p class="step-desc">第一步</p>
+				<p class="step-desc">步骤1：将纸张对齐折叠</p>
 			</div>
-			<!-- 第二步 -->
+			<!-- 第二步 - 形成基础结构 -->
 			<div class="step-item">
 				<img src="../../../public/pic/步骤二.png" class="step">
-				<p class="step-desc">第二步</p>
+				<p class="step-desc">步骤2：折出两个小三角形</p>
 			</div>
-			<!-- 第三步 -->
+			<!-- 第三步 - 继续构建形状 -->
 			<div class="step-item">
 				<img src="../../../public/pic/步骤三.png" class="step">
-				<p class="step-desc">第三步</p>
+				<p class="step-desc">步骤3：按图示进行翻折</p>
+			</div>
+		</div>
+	</div>
+
+	<!-- 第四个内容块：制作步骤（4-6） - 展示纸飞机制作的第4-6步 -->
+	<div class="content-block">
+		<h2>制作步骤（4-6）</h2>
+		<!-- 步骤容器：继续使用弹性布局保持一致的展示方式 -->
+		<div class="steps-container">
+			<!-- 第四步 - 形成机翼基础 -->
+			<div class="step-item">
+				<img src="../../../public/pic/步骤四.png" class="step">
+				<p class="step-desc">步骤4：将两个角往中间翻折</p>
+			</div>
+			<!-- 第五步 - 准备进一步折叠 -->
+			<div class="step-item">
+				<img src="../../../public/pic/步骤五.png" class="step">
+				<p class="step-desc">步骤5：打开翻折部分</p>
+			</div>
+			<!-- 第六步 - 沿折痕继续 -->
+			<div class="step-item">
+				<img src="../../../public/pic/步骤六.png" class="step">
+				<p class="step-desc">步骤6：按图示沿着翻折痕迹折叠</p>
+			</div>
+		</div>
+	</div>
+
+	<!-- 第五个内容块：制作步骤（7-9） - 展示纸飞机制作的第7-9步 -->
+	<div class="content-block">
+		<h2>制作步骤（7-9）</h2>
+		<!-- 步骤容器：保持一致的布局结构 -->
+		<div class="steps-container">
+			<!-- 第七步 - 继续形成机身 -->
+			<div class="step-item">
+				<img src="../../../public/pic/步骤七.png" class="step">
+				<p class="step-desc">步骤7：继续折叠</p>
+			</div>
+			<!-- 第八步 - 开始处理机头 -->
+			<div class="step-item">
+				<img src="../../../public/pic/步骤八.png" class="step">
+				<p class="step-desc">步骤8：将机头翻折一点</p>
+			</div>
+			<!-- 第九步 - 形成机头结构 -->
+			<div class="step-item">
+				<img src="../../../public/pic/步骤九.png" class="step">
+				<p class="step-desc">步骤9：沿中线对折，向侧边翻折机头</p>
+			</div>
+		</div>
+	</div>
+
+	<!-- 第六个内容块：制作步骤（10-12） - 展示纸飞机制作的第10-12步 -->
+	<div class="content-block">
+		<h2>制作步骤（10-12）</h2>
+		<!-- 步骤容器：保持一致的布局结构 -->
+		<div class="steps-container">
+			<!-- 第十步 - 调整机头位置 -->
+			<div class="step-item">
+				<img src="../../../public/pic/步骤十.png" class="step">
+				<p class="step-desc">步骤10：从中间打开，将机头往前翻折</p>
+			</div>
+			<!-- 第十一步 - 完善机头形状 -->
+			<div class="step-item">
+				<img src="../../../public/pic/步骤十一.png" class="step">
+				<p class="step-desc">步骤11：将机头往两边折</p>
+			</div>
+			<!-- 第十二步 - 形成主要机翼 -->
+			<div class="step-item">
+				<img src="../../../public/pic/步骤十二.png" class="step">
+				<p class="step-desc">步骤12：借助尺子翻折机翼</p>
+			</div>
+		</div>
+	</div>
+
+	<!-- 第七个内容块：制作步骤（13-15） - 展示纸飞机制作的最后三个步骤 -->
+	<div class="content-block">
+		<h2>制作步骤（完成）</h2>
+		<!-- 步骤容器：最后一组步骤，完成纸飞机制作 -->
+		<div class="steps-container">
+			<!-- 第十三步 - 形成垂直尾翼 -->
+			<div class="step-item">
+				<img src="../../../public/pic/步骤十三.png" class="step">
+				<p class="step-desc">步骤13：从底部往上折出垂直机翼</p>
+			</div>
+			<!-- 第十四步 - 完善机翼结构 -->
+			<div class="step-item">
+				<img src="../../../public/pic/步骤十四.png" class="step">
+				<p class="step-desc">步骤14：从机翼两边折出垂直机翼</p>
+			</div>
+			<!-- 第十五步 - 完成作品 -->
+			<div class="step-item">
+				<img src="../../../public/pic/步骤十五.png" class="step">
+				<p class="step-desc">步骤15：完成折叠</p>
 			</div>
 		</div>
 	</div>
@@ -282,31 +396,62 @@
 		<p>© Powered by <a href="https://www.sdcom.asia/" target="_blank">SDCOM</a> 2025</p>
 	</footer>
 
-	<!-- JavaScript代码：实现内容块的滚动显示动画 -->
+	<!-- 图片放大模态框 - 用于点击图片后的全屏展示 -->
+	<div id="imageModal" class="image-modal">
+		<!-- 模态框中显示的放大图片 -->
+		<img class="modal-content" id="modalImage">
+	</div>
+
+	<!-- JavaScript代码：实现页面交互功能 -->
 	<script>
-		// 当DOM完全加载后执行
+		// 当DOM完全加载后执行所有JavaScript功能
 		document.addEventListener('DOMContentLoaded', function() {
-			// 获取所有内容块元素
+			// ===== 滚动动画功能 =====
+			// 获取所有需要应用滚动动画的内容块元素
 			const contentBlocks = document.querySelectorAll('.content-block');
 			
-			// 创建交叉观察器实例
+			// 创建交叉观察器实例，用于检测元素是否进入视口
 			const observer = new IntersectionObserver((entries) => {
-				// 遍历每个观察到的元素
+				// 遍历每个被观察的元素
 				entries.forEach(entry => {
-					// 当元素进入视口时
+					// 当元素进入视口时触发动画
 					if (entry.isIntersecting) {
-						// 设置元素可见并移除位移
+						// 设置元素可见并移除位移，触发CSS动画
 						entry.target.style.opacity = '1';
 						entry.target.style.transform = 'translateY(0)';
 					}
 				});
 			}, {
-				threshold: 0.1  // 当元素10%进入视口时触发
+				threshold: 0.1  // 当元素10%进入视口时触发回调，提前开始动画
 			});
 
-			// 对每个内容块添加观察
+			// 对每个内容块添加观察，实现滚动时的渐入效果
 			contentBlocks.forEach(block => {
 				observer.observe(block);
+			});
+
+			// ===== 图片点击放大功能 =====
+			// 获取模态框和模态图片元素的DOM引用
+			const modal = document.getElementById('imageModal');
+			const modalImg = document.getElementById('modalImage');
+			
+			// 获取页面中所有图片元素
+			const images = document.querySelectorAll('img');
+			
+			// 为每个图片添加点击事件监听器
+			images.forEach(img => {
+				img.addEventListener('click', function() {
+					// 点击图片时显示模态框
+					modal.style.display = "block";
+					// 设置模态框中的图片源为被点击的图片
+					modalImg.src = this.src;
+				});
+			});
+			
+			// 为模态框添加点击事件，实现点击任意位置关闭功能
+			modal.addEventListener('click', function() {
+				// 点击模态框时隐藏它
+				this.style.display = "none";
 			});
 		});
 	</script>
