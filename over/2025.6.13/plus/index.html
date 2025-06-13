@@ -1,195 +1,227 @@
+<!-- HTML5文档类型声明 -->
 <!DOCTYPE html>
+<!-- 指定网页语言为中文 -->
 <html lang="zh">
 
 <head>
+	<!-- 设置字符编码为UTF-8，支持中文字符 -->
 	<meta charset="UTF-8">
+	<!-- 设置视口，使网页在移动设备上正确显示 -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- 网页标题 -->
 	<title>西瓜创客</title>
+	<!-- 内部CSS样式表开始 -->
 	<style>
+		/* 页面背景设置 */
 		body {
-			background-image: url("../../../public/pic/星空.jpg");
-			background-size: cover;
-			background-attachment: fixed;
-			background-position: center;
-			min-height: 100vh;
-			padding: 20px;
+			background-image: url("../../../public/pic/星空.jpg"); /* 设置星空背景图片 */
+			background-size: cover;      /* 背景图片覆盖整个视窗 */
+			background-attachment: fixed; /* 背景图片固定，不随页面滚动 */
+			background-position: center;  /* 背景图片居中显示 */
+			min-height: 100vh;           /* 最小高度为视窗高度 */
+			padding: 20px;               /* 页面内边距 */
 		}
 		
 		/* 图片放大模态框样式 */
+		/* 图片放大模态框容器 */
 		.image-modal {
-			display: none;
-			position: fixed;
-			z-index: 1000;
+			display: none;                /* 默认隐藏 */
+			position: fixed;              /* 固定定位 */
+			z-index: 1000;               /* 确保显示在最上层 */
 			left: 0;
 			top: 0;
 			width: 100%;
 			height: 100%;
-			background-color: rgba(0, 0, 0, 0.9);
-			overflow: auto;
-			text-align: center;
+			background-color: rgba(0, 0, 0, 0.9); /* 半透明黑色背景 */
+			overflow: auto;               /* 允许滚动 */
+			text-align: center;           /* 内容居中 */
 		}
 		
+		/* 模态框中的图片样式 */
 		.modal-content {
 			margin: auto;
 			display: block;
-			max-width: 90%;
-			max-height: 90%;
+			max-width: 90%;              /* 最大宽度为窗口的90% */
+			max-height: 90%;             /* 最大高度为窗口的90% */
 			margin-top: 2%;
-			animation: zoom 0.3s ease-in-out;
+			animation: zoom 0.3s ease-in-out; /* 添加放大动画效果 */
 		}
 		
+		/* 定义放大动画效果 */
 		@keyframes zoom {
-			from {transform: scale(0.1)}
-			to {transform: scale(1)}
+			from {transform: scale(0.1)} /* 从0.1倍大小开始 */
+			to {transform: scale(1)}     /* 放大到原始大小 */
 		}
 
+		/* 页面标题样式 */
+		/* 页面标题样式 */
 		.page-header {
-			text-align: center;
-			color: white;
-			font-size: 2.5em;
+			text-align: center;          /* 文字居中 */
+			color: white;                /* 白色文字 */
+			font-size: 2.5em;            /* 字体大小 */
 			margin: 20px 0;
-			text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-			animation: fadeIn 1.5s ease-out;
+			text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* 文字阴影效果 */
+			animation: fadeIn 1.5s ease-out; /* 淡入动画效果 */
 		}
 
+		/* 副标题样式 */
 		.subtitle {
-			font-size: 0.5em;
-			color: rgba(255, 255, 255, 0.9);
+			font-size: 0.5em;            /* 字体大小为标题的一半 */
+			color: rgba(255, 255, 255, 0.9); /* 略微透明的白色 */
 			margin-top: 10px;
 		}
 
+		/* 内容块样式 */
 		.content-block {
-			background-color: rgba(255, 255, 255, 0.3);
-			width: 90%;
+			background-color: rgba(255, 255, 255, 0.3); /* 半透明白色背景 */
+			width: 90%;                  /* 宽度占父元素的90% */
 			height: auto;
-			min-height: 300px;
-			margin-left: 5%;
+			min-height: 300px;           /* 最小高度 */
+			margin-left: 5%;             /* 左右居中 */
 			margin-top: 3%;
-			text-align: center;
-			border-radius: 15px;
-			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+			text-align: center;          /* 内容居中 */
+			border-radius: 15px;         /* 圆角效果 */
+			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 阴影效果 */
 			padding: 30px;
-			box-sizing: border-box;
-			opacity: 0;
-			transform: translateY(20px);
-			animation: fadeIn 1s ease-out forwards;
-			animation-delay: calc(var(--animation-order, 0) * 0.2s);
+			box-sizing: border-box;      /* 包含padding在内的盒模型 */
+			opacity: 0;                  /* 初始透明 */
+			transform: translateY(20px);  /* 初始向下偏移 */
+			animation: fadeIn 1s ease-out forwards; /* 淡入动画 */
+			animation-delay: calc(var(--animation-order, 0) * 0.2s); /* 依次延迟动画 */
 		}
 
+		/* 设置不同内容块的动画顺序 */
 		.content-block:nth-child(2) {
-			--animation-order: 1;
+			--animation-order: 1;        /* 第二个块延迟0.2秒 */
 		}
 
 		.content-block:nth-child(3) {
-			--animation-order: 2;
+			--animation-order: 2;        /* 第三个块延迟0.4秒 */
 		}
 
 		.content-block:nth-child(4) {
-			--animation-order: 3;
+			--animation-order: 3;        /* 第四个块延迟0.6秒 */
 		}
 
+		/* 页脚样式 */
 		.page-footer {
-			text-align: center;
-			color: white;
+			text-align: center;          /* 文字居中 */
+			color: white;                /* 白色文字 */
 			margin-top: 40px;
 			padding: 20px;
-			font-size: 0.9em;
-			text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+			font-size: 0.9em;            /* 字体大小 */
+			text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* 文字阴影 */
 		}
 
+		/* 定义淡入动画效果 */
 		@keyframes fadeIn {
 			from {
-				opacity: 0;
-				transform: translateY(-20px);
+				opacity: 0;              /* 开始时完全透明 */
+				transform: translateY(-20px); /* 开始时向上偏移 */
 			}
 			to {
-				opacity: 1;
-				transform: translateY(0);
+				opacity: 1;              /* 结束时完全不透明 */
+				transform: translateY(0); /* 结束时回到原位 */
 			}
 		}
 
+		/* 响应式设计 - 针对移动设备 */
 		@media (max-width: 768px) {
+			/* 在小屏幕上将步骤容器改为纵向排列 */
 			.steps-container {
 				flex-direction: column;
 			}
 
+			/* 调整步骤项目在小屏幕上的边距 */
 			.step-item {
 				margin: 10px 0;
 			}
 
+			/* 调整div在小屏幕上的宽度和边距 */
 			div {
 				width: 95%;
 				margin-left: 2.5%;
 				padding: 15px;
 			}
 
+			/* 减小小屏幕上的标题字体大小 */
 			.page-header {
 				font-size: 2em;
 			}
 		}
 
+		/* 图片通用样式 */
 		img {
-			width: 40%;
+			width: 40%;                  /* 图片宽度为容器的40% */
 			margin-top: 2%;
-			transition: transform 0.3s ease, box-shadow 0.3s ease;
-			border-radius: 10px;
-			border: 3px solid rgba(255, 255, 255, 0.5);
+			transition: transform 0.3s ease, box-shadow 0.3s ease; /* 平滑过渡效果 */
+			border-radius: 10px;         /* 圆角效果 */
+			border: 3px solid rgba(255, 255, 255, 0.5); /* 半透明白色边框 */
 		}
 
+		/* 图片悬停效果 */
 		img:hover {
-			transform: scale(1.05);
-			box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+			transform: scale(1.05);      /* 悬停时放大5% */
+			box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* 增强阴影效果 */
 		}
 
+		/* 二级标题样式 */
 		h2 {
-			color: white;
-			text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+			color: white;                /* 白色文字 */
+			text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* 文字阴影 */
 			margin-bottom: 20px;
 		}
 
+        /* 步骤图片样式 */
         .step {
-            width: 90%;
-            margin: 0 auto;
+            width: 90%;                  /* 宽度为容器的90% */
+            margin: 0 auto;              /* 水平居中 */
         }
 
+        /* 步骤容器样式 - 使用弹性布局 */
         .steps-container {
-            display: flex;
-            justify-content: space-around;
-            align-items: flex-start;
+            display: flex;               /* 弹性布局 */
+            justify-content: space-around; /* 项目间均匀分布 */
+            align-items: flex-start;     /* 顶部对齐 */
             margin-top: 20px;
         }
 
+        /* 单个步骤项目样式 */
         .step-item {
-            flex: 1;
+            flex: 1;                     /* 平均分配空间 */
             margin: 0 15px;
             padding: 10px;
-            background-color: rgba(255, 255, 255, 0.2);
-            border-radius: 10px;
-            transition: transform 0.3s ease;
+            background-color: rgba(255, 255, 255, 0.2); /* 半透明背景 */
+            border-radius: 10px;         /* 圆角效果 */
+            transition: transform 0.3s ease; /* 平滑过渡效果 */
         }
 
+        /* 步骤项目悬停效果 */
         .step-item:hover {
-            transform: translateY(-5px);
+            transform: translateY(-5px); /* 悬停时向上移动 */
         }
 
+        /* 步骤描述文字样式 */
         .step-desc {
-            color: white;
-            font-size: 1.2em;
+            color: white;                /* 白色文字 */
+            font-size: 1.2em;            /* 字体大小 */
             margin-top: 10px;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* 文字阴影 */
         }
 
+        /* 描述文本样式 */
         .description {
-            color: white;
-            font-size: 1.1em;
+            color: white;                /* 白色文字 */
+            font-size: 1.1em;            /* 字体大小 */
             margin-top: 15px;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* 文字阴影 */
             padding: 0 20px;
         }
 
+        /* div元素通用样式 */
         div {
-            height: auto;
-            min-height: 300px;
+            height: auto;                /* 自动高度 */
+            min-height: 300px;           /* 最小高度 */
             padding: 30px;
         }
 	</style>
@@ -197,33 +229,46 @@
 
 
 <body>
+	<!-- 页面头部 -->
 	<header class="page-header">
+		<!-- 主标题 -->
 		<h1>2025.6.13课程内容plus版本！</h1>
+		<!-- 副标题 -->
 		<p class="subtitle">本页面由SDCOM编写</p>
 	</header>
 
+	<!-- 第一个内容块：教程标题 -->
 	<div class="content-block">
 		<h2>空中之王 - 飞行器制作教程</h2>
+		<!-- 教程主图 -->
 		<img src="../../../public/pic/空中之王.png">
 	</div>
 
+	<!-- 第二个内容块：准备材料 -->
 	<div class="content-block">
 		<h2>准备材料</h2>
+		<!-- 材料图片 -->
 		<img src="../../../public/pic/准备材料.png">
+		<!-- 材料说明 -->
 		<p class="description">请准备好所需的全部材料，确保材料完整后再开始制作。</p>
 	</div>
 
+	<!-- 第三个内容块：制作步骤 -->
 	<div class="content-block">
 		<h2>制作步骤</h2>
+		<!-- 步骤容器：使用弹性布局横向排列步骤 -->
 		<div class="steps-container">
+			<!-- 第一步 -->
 			<div class="step-item">
 				<img src="../../../public/pic/步骤一.png" class="step">
 				<p class="step-desc">第一步</p>
 			</div>
+			<!-- 第二步 -->
 			<div class="step-item">
 				<img src="../../../public/pic/步骤二.png" class="step">
 				<p class="step-desc">第二步</p>
 			</div>
+			<!-- 第三步 -->
 			<div class="step-item">
 				<img src="../../../public/pic/步骤三.png" class="step">
 				<p class="step-desc">第三步</p>
@@ -231,25 +276,35 @@
 		</div>
 	</div>
 
+	<!-- 页面底部 -->
 	<footer class="page-footer">
+		<!-- 版权信息和链接 -->
 		<p>© Powered by <a href="https://www.sdcom.asia/" target="_blank">SDCOM</a> 2025</p>
 	</footer>
 
+	<!-- JavaScript代码：实现内容块的滚动显示动画 -->
 	<script>
+		// 当DOM完全加载后执行
 		document.addEventListener('DOMContentLoaded', function() {
+			// 获取所有内容块元素
 			const contentBlocks = document.querySelectorAll('.content-block');
 			
+			// 创建交叉观察器实例
 			const observer = new IntersectionObserver((entries) => {
+				// 遍历每个观察到的元素
 				entries.forEach(entry => {
+					// 当元素进入视口时
 					if (entry.isIntersecting) {
+						// 设置元素可见并移除位移
 						entry.target.style.opacity = '1';
 						entry.target.style.transform = 'translateY(0)';
 					}
 				});
 			}, {
-				threshold: 0.1
+				threshold: 0.1  // 当元素10%进入视口时触发
 			});
 
+			// 对每个内容块添加观察
 			contentBlocks.forEach(block => {
 				observer.observe(block);
 			});
