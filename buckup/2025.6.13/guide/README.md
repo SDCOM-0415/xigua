@@ -80,9 +80,6 @@ Guide
 [over/2025.6.6/index.html](over/2025.6.6/index.html "over/2025.6.6/index.html")
 
 ## 2025.6.13
-Guide
-[buckup/2025.6.13/guide](buckup/2025.6.13/guide/ "buckup/2025.6.13/guide")
-
 挑战1-添加区域
 [buckup/2025.6.13/1](buckup/2025.6.13/1/ "buckup/2025.6.13/1")
 
