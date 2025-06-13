@@ -9,7 +9,7 @@
 <img src="public/pic/github-favicon.png" style="height: 1em; vertical-align: middle;" alt="GitHub图标"> [GitHub](https://github.com/SDCOM-0415/xigua "https://github.com/SDCOM-0415/xigua") </p>
 本页面访问地址：</p>
 [https://xigua.sdcom.asia/](https://xigua.sdcom.asia/ "https://xigua.sdcom.asia/")</p>
-[https://xg9.cn/my/P8qpy](https://xg9.cn/my/P8qpy "https://xg9.cn/my/P8qpy")</p>
+[https://xg9.cn/my/DqxgM](https://xg9.cn/my/DqxgM "https://xg9.cn/my/DqxgM")</p>
 [https://famous-brioche-cac20b.netlify.app/](https://famous-brioche-cac20b.netlify.app/ "https://famous-brioche-cac20b.netlify.app/")
 
 ### 引导页主要特点
@@ -78,3 +78,7 @@ Guide
 
 初识 div
 [over/2025.6.6/index.html](over/2025.6.6/index.html "over/2025.6.6/index.html")
+
+## 2025.6.13
+挑战1-添加区域
+[buckup/2025.6.13/1](buckup/2025.6.13/1/ "buckup/2025.6.13/1")
