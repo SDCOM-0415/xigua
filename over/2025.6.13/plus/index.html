@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>西瓜创客</title>
+	<style>
+		body {
+			background-image: url("../../../public/pic/星空.jpg");
+			background-size: cover;
+			background-attachment: fixed;
+			background-position: center;
+			min-height: 100vh;
+			padding: 20px;
+		}
+
+		.page-header {
+			text-align: center;
+			color: white;
+			font-size: 2.5em;
+			margin: 20px 0;
+			text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+			animation: fadeIn 1.5s ease-out;
+		}
+
+		.subtitle {
+			font-size: 0.5em;
+			color: rgba(255, 255, 255, 0.9);
+			margin-top: 10px;
+		}
+
+		.content-block {
+			background-color: rgba(255, 255, 255, 0.3);
+			width: 90%;
+			height: auto;
+			min-height: 300px;
+			margin-left: 5%;
+			margin-top: 3%;
+			text-align: center;
+			border-radius: 15px;
+			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+			padding: 30px;
+			box-sizing: border-box;
+			opacity: 0;
+			transform: translateY(20px);
+			animation: fadeIn 1s ease-out forwards;
+			animation-delay: calc(var(--animation-order, 0) * 0.2s);
+		}
+
+		.content-block:nth-child(2) {
+			--animation-order: 1;
+		}
+
+		.content-block:nth-child(3) {
+			--animation-order: 2;
+		}
+
+		.content-block:nth-child(4) {
+			--animation-order: 3;
+		}
+
+		.page-footer {
+			text-align: center;
+			color: white;
+			margin-top: 40px;
+			padding: 20px;
+			font-size: 0.9em;
+			text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+		}
+
+		@keyframes fadeIn {
+			from {
+				opacity: 0;
+				transform: translateY(-20px);
+			}
+			to {
+				opacity: 1;
+				transform: translateY(0);
+			}
+		}
+
+		@media (max-width: 768px) {
+			.steps-container {
+				flex-direction: column;
+			}
+
+			.step-item {
+				margin: 10px 0;
+			}
+
+			div {
+				width: 95%;
+				margin-left: 2.5%;
+				padding: 15px;
+			}
+
+			.page-header {
+				font-size: 2em;
+			}
+		}
+
+		img {
+			width: 40%;
+			margin-top: 2%;
+			transition: transform 0.3s ease, box-shadow 0.3s ease;
+			border-radius: 10px;
+			border: 3px solid rgba(255, 255, 255, 0.5);
+		}
+
+		img:hover {
+			transform: scale(1.05);
+			box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+		}
+
+		h2 {
+			color: white;
+			text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+			margin-bottom: 20px;
+		}
+
+        .step {
+            width: 90%;
+            margin: 0 auto;
+        }
+
+        .steps-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-start;
+            margin-top: 20px;
+        }
+
+        .step-item {
+            flex: 1;
+            margin: 0 15px;
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .step-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .step-desc {
+            color: white;
+            font-size: 1.2em;
+            margin-top: 10px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .description {
+            color: white;
+            font-size: 1.1em;
+            margin-top: 15px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+            padding: 0 20px;
+        }
+
+        div {
+            height: auto;
+            min-height: 300px;
+            padding: 30px;
+        }
+	</style>
+</head>
+
+
+<body>
+	<header class="page-header">
+		<h1>2025.6.13课程内容plus版本！</h1>
+		<p class="subtitle">本页面由SDCOM编写</p>
+	</header>
+
+	<div class="content-block">
+		<h2>空中之王 - 飞行器制作教程</h2>
+		<img src="../../../public/pic/空中之王.png">
+	</div>
+
+	<div class="content-block">
+		<h2>准备材料</h2>
+		<img src="../../../public/pic/准备材料.png">
+		<p class="description">请准备好所需的全部材料，确保材料完整后再开始制作。</p>
+	</div>
+
+	<div class="content-block">
+		<h2>制作步骤</h2>
+		<div class="steps-container">
+			<div class="step-item">
+				<img src="../../../public/pic/步骤一.png" class="step">
+				<p class="step-desc">第一步</p>
+			</div>
+			<div class="step-item">
+				<img src="../../../public/pic/步骤二.png" class="step">
+				<p class="step-desc">第二步</p>
+			</div>
+			<div class="step-item">
+				<img src="../../../public/pic/步骤三.png" class="step">
+				<p class="step-desc">第三步</p>
+			</div>
+		</div>
+	</div>
+
+	<footer class="page-footer">
+		<p>© Powered by <a href="https://www.sdcom.asia/" target="_blank">SDCOM</a> 2025</p>
+	</footer>
+
+	<script>
+		document.addEventListener('DOMContentLoaded', function() {
+			const contentBlocks = document.querySelectorAll('.content-block');
+			
+			const observer = new IntersectionObserver((entries) => {
+				entries.forEach(entry => {
+					if (entry.isIntersecting) {
+						entry.target.style.opacity = '1';
+						entry.target.style.transform = 'translateY(0)';
+					}
+				});
+			}, {
+				threshold: 0.1
+			});
+
+			contentBlocks.forEach(block => {
+				observer.observe(block);
+			});
+		});
+	</script>
+</body>
+
+</html>
