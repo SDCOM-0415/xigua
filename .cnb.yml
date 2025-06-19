@@ -27,6 +27,7 @@ $:
       - name: update dependencies
         script: fastfetch
 
+main:
   push: 
     - runner: 
         cpus: 1
