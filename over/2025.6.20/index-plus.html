@@ -37,6 +37,17 @@
 				opacity: 1;
 			}
 		}
+		
+		@keyframes slideOut {
+			0% {
+				transform: scale(1);
+				opacity: 1;
+			}
+			100% {
+				transform: scale(0.8);
+				opacity: 0;
+			}
+		}
 
 		.modal-content {
 			max-width: 80%;
@@ -384,17 +395,26 @@
 				});
 			});
 
-			// 关闭模态框
-			closeModal.addEventListener('click', function() {
-				modal.classList.remove('show');
-				document.body.style.overflow = ''; // 恢复滚动
-			});
+			// 关闭模态框的函数
+			function closeModalFunc() {
+				const modalContent = document.querySelector('.modal-content');
+				modalContent.style.animation = 'slideOut 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards';
+				
+				modalContent.addEventListener('animationend', function handler() {
+					modal.classList.remove('show');
+					document.body.style.overflow = ''; // 恢复滚动
+					modalContent.style.animation = '';
+					modalContent.removeEventListener('animationend', handler);
+				});
+			}
+
+			// 关闭按钮点击事件
+			closeModal.addEventListener('click', closeModalFunc);
 
 			// 点击模态框背景也关闭
 			modal.addEventListener('click', function(e) {
 				if (e.target === modal) {
-					modal.classList.remove('show');
-					document.body.style.overflow = ''; // 恢复滚动
+					closeModalFunc();
 				}
 			});
 		});
