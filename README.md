@@ -1,4 +1,4 @@
-# 欢迎使用来到 [SDCOM](https://www.sdcom.asia/ "https://www.sdcom.asia/") 的 Xigua_Web 引导页
+# 欢迎使用来到 [SDCOM](https://www.sdcom.top/ "https://www.sdcom.top/") 的 Xigua_Web 引导页
 
 # 运行状态： [![Netlify Status](https://api.netlify.com/api/v1/badges/a0c117f8-b6b8-42b6-828a-f75095546cad/deploy-status)](https://app.netlify.com/projects/famous-brioche-cac20b/deploys)
 
