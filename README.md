@@ -9,7 +9,7 @@
 <img src="public/pic/github-favicon.png" style="height: 1em; vertical-align: middle;" alt="GitHub图标"> [GitHub](https://github.com/SDCOM-0415/xigua "https://github.com/SDCOM-0415/xigua") </p>
 本页面访问地址：</p>
 [https://xigua.sdcom.asia/](https://xigua.sdcom.asia/ "https://xigua.sdcom.asia/")</p>
-[https://xg9.cn/my/DqxgM](https://xg9.cn/my/DqxgM "https://xg9.cn/my/DqxgM")</p>
+[https://xg9.cn/my/2wQg3](https://xg9.cn/my/2wQg3 "https://xg9.cn/my/2wQg3")</p>
 [https://famous-brioche-cac20b.netlify.app/](https://famous-brioche-cac20b.netlify.app/ "https://famous-brioche-cac20b.netlify.app/")
 
 ### 引导页主要特点
