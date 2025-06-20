@@ -1,0 +1,404 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>恐龙博物馆 - PLUS版</title>
+	<style>
+		/* 图片放大模态框样式 */
+		.modal {
+			display: none;
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: rgba(0, 0, 0, 0.8);
+			z-index: 1000;
+			justify-content: center;
+			align-items: center;
+			opacity: 0;
+			transition: opacity 0.3s ease;
+		}
+
+		.modal.show {
+			display: flex;
+			opacity: 1;
+		}
+
+		/* 添加PPT风格的动画 */
+		@keyframes slideIn {
+			0% {
+				transform: scale(0.8);
+				opacity: 0;
+			}
+			100% {
+				transform: scale(1);
+				opacity: 1;
+			}
+		}
+
+		.modal-content {
+			max-width: 80%;
+			max-height: 80%;
+			animation: slideIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+		}
+
+		.modal-content img {
+			max-width: 100%;
+			max-height: 80vh;
+			border-radius: 8px;
+			box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+		}
+
+		.close-modal {
+			position: absolute;
+			top: 20px;
+			right: 30px;
+			color: white;
+			font-size: 40px;
+			cursor: pointer;
+			transition: transform 0.2s;
+		}
+
+		.close-modal:hover {
+			transform: scale(1.2);
+		}
+
+		:root {
+			--card-width: 980px;
+			--card-height: 380px;
+			--card-bg: rgba(255, 255, 255, 0.85);
+			--card-radius: 15px;
+			--shadow-color: rgba(0, 0, 0, 0.2);
+			--transition-speed: 0.3s;
+		}
+
+		body {
+			background-image: url("../../public/pic/bg.png");
+			background-size: cover;
+			background-attachment: fixed;
+			font-family: 'Arial', sans-serif;
+			scroll-behavior: smooth;
+		}
+
+		/* 标题 */
+		.banner {
+			display: block;
+			margin: 0 auto;
+			max-width: 100%;
+			height: auto;
+		}
+
+		/* 恐龙内容卡片 */
+		.card {
+			width: var(--card-width);
+			height: var(--card-height);
+			background-color: var(--card-bg);
+			margin: 0 auto;
+			margin-top: 40px;
+			position: relative;
+			border-radius: var(--card-radius);
+			box-shadow: 0 4px 8px var(--shadow-color);
+			transition: all var(--transition-speed) ease;
+			overflow: hidden;
+		}
+
+		.card:hover {
+			transform: translateY(-5px);
+			box-shadow: 0 10px 20px var(--shadow-color);
+		}
+
+		/* 恐龙图片 */
+		.dinosaur {
+			width: 350px;
+			margin-top: 50px;
+			margin-left: 50px;
+			border-radius: 8px;
+			transition: transform var(--transition-speed);
+		}
+
+		.card:hover .dinosaur {
+			transform: scale(1.02);
+		}
+
+		/* 恐龙介绍 */
+		p {
+			position: absolute;
+			top: 50px;
+			left: 450px;
+			right: 50px;
+			line-height: 1.6;
+			font-size: 16px;
+			color: #333;
+		}
+
+		.know_more {
+			position: absolute;
+			bottom: 50px;
+			right: 50px;
+			transition: transform 0.2s;
+		}
+
+		.know_more:hover {
+			transform: scale(1.1);
+		}
+
+		/* 优化标题链接 */
+		h1 a {
+			text-decoration: none;
+			color: #2c3e50;
+			font-size: 24px;
+			display: block;
+			margin: 20px 0;
+			transition: color 0.3s;
+		}
+
+		h1 a:hover {
+			color: #e74c3c;
+		}
+
+		/* 性能优化 - 图片懒加载 */
+		img[loading="lazy"] {
+			opacity: 0;
+			transition: opacity 0.5s;
+		}
+
+		img[loading="lazy"].loaded {
+			opacity: 1;
+		}
+
+		/* 响应式设计 */
+		@media (max-width: 1200px) {
+			:root {
+				--card-width: 90%;
+			}
+			
+			p {
+				left: 420px;
+			}
+		}
+	</style>
+</head>
+
+<body>
+	
+	<!--三叠纪-->
+	<img class="banner" src="../../public/pic/三叠纪.png" loading="lazy">
+	<h1><a href="index.html" target="_blank"><center>标准版本</center></a></h1>
+	<!-- 恐龙卡片 -->
+	<div class="card">
+		<img class="dinosaur" src="../../public/pic/始盗龙.jpg" loading="lazy">
+		<a href="https://baike.baidu.com/item/%E5%A7%8B%E7%9B%97%E9%BE%99/849852?fr=aladdin">
+			<img class="know_more" src="../../public/pic/按钮.png" loading="lazy">
+		</a>
+		<p>
+			<strong>姓名：</strong>始盗龙<br>
+			<strong>身高：</strong>未知<br>
+			<strong>体长：</strong>1 ~ 1.5米<br>
+			<strong>体重：</strong>5 ~ 7kg<br>
+			<strong>食性：</strong>杂食<br><br>
+			<em>冷知识：</em>很多人都认为恐龙一定是一个非常高大的个体，但是始盗龙却是整个恐龙家族中比较矮小的一位，它们是一种小型恐龙。
+		</p>
+	</div>
+
+	<!-- 恐龙卡片 -->
+	<div class="card">
+		<img class="dinosaur" src="../../public/pic/板龙.jpg" loading="lazy">
+		<a href="https://baike.baidu.com/item/%E6%9D%BF%E9%BE%99/1473693" target="_blank">
+			<img class="know_more" src="../../public/pic/按钮.png" loading="lazy">
+		</a>
+		<p>
+			<strong>姓名：</strong>板龙<br>
+			<strong>身高：</strong>约 3.6 米<br>
+			<strong>体长：</strong>6 ~ 8米<br>
+			<strong>体重：</strong>约 5 吨<br>
+			<strong>食性：</strong>植食<br><br>
+			<em>冷知识：</em>板龙是生活在地球上食植物第一种巨型恐龙，板龙出现以前，最大的植食类动物的身材也就像一头猪那样大。
+		</p>
+	</div>
+
+	<!-- 恐龙卡片 -->
+	<div class="card">
+		<img class="dinosaur" src="../../public/pic/哥斯拉龙.jpg" loading="lazy">
+		<a href="https://baike.baidu.com/item/%E5%93%A5%E6%96%AF%E6%8B%89%E9%BE%99/1668319?fr=aladdin" target="_blank">
+			<img class="know_more" src="../../public/pic/按钮.png" loading="lazy">
+		</a>
+		<p>
+			<strong>姓名：</strong>哥斯拉龙<br>
+			<strong>身高：</strong>4 ~ 5.5 米<br>
+			<strong>体长：</strong>1 ~ 1.5米<br>
+			<strong>体重：</strong>5 ~ 7kg<br>
+			<strong>食性：</strong>杂食<br><br>
+			<em>冷知识：</em>哥斯拉龙很可能是叠纪时期个子最大的肉食性恐龙，所以被称为三叠纪的陆地上霸主。
+		</p>
+	</div>
+
+
+	<!--侏罗纪	-->
+	<img class="banner" src="../../public/pic/侏罗纪.png" loading="lazy">
+
+	<!-- 恐龙卡片 -->
+	<div class="card">
+		<img class="dinosaur" src="../../public/pic/梁龙.jpg" loading="lazy">
+		<a href="https://baike.baidu.com/item/%E6%A2%81%E9%BE%99/12701" target="_blank">
+			<img class="know_more" src="../../public/pic/按钮.png" loading="lazy">
+		</a>
+		<p>
+			<strong>姓名：</strong>梁龙<br>
+			<strong>身高：</strong>约 4 米<br>
+			<strong>体长：</strong>25 ~ 30米<br>
+			<strong>体重：</strong>约 10 吨<br>
+			<strong>食性：</strong>植食<br><br>
+			<em>冷知识：</em>梁龙的尾巴和头非常的长，脖子可以达到 7.5 米，尾巴可以达到 14 米长，整体相当于 6 辆小汽车。
+		</p>
+	</div>
+
+	<!-- 恐龙卡片 -->
+	<div class="card">
+		<img class="dinosaur" src="../../public/pic/冰脊龙.jpg" loading="lazy">
+		<a href="https://baike.baidu.com/item/%E5%86%B0%E8%84%8A%E9%BE%99" target="_blank">
+			<img class="know_more" src="../../public/pic/按钮.png" loading="lazy">
+		</a>
+		<p>
+			<strong>姓名：</strong>冰脊龙<br>
+			<strong>身高：</strong>约 2.5 米<br>
+			<strong>体长：</strong>约 6.5米<br>
+			<strong>体重：</strong>约 450 kg<br>
+			<strong>食性：</strong>食肉<br><br>
+			<em>冷知识：</em>冰脊龙是第一种发现于南极洲的肉食性恐龙，由于南极洲冬季长达6个月，它必须维持足够高的体温才能避免被冻僵，这说明它有可能是温血动物。
+		</p>
+	</div>
+
+	<!-- 恐龙卡片 -->
+	<div class="card">
+		<img class="dinosaur" src="../../public/pic/剑龙.jpg" loading="lazy">
+		<a href="https://baike.baidu.com/item/%E5%89%91%E9%BE%99/69539" target="_blank">
+			<img class="know_more" src="../../public/pic/按钮.png" loading="lazy">
+		</a>
+		<p>
+			<strong>姓名：</strong>剑龙<br>
+			<strong>身高：</strong>2.4 ~ 3.5 米<br>
+			<strong>体长：</strong>7 ~ 9米<br>
+			<strong>体重：</strong>2 ~ 4吨<br>
+			<strong>食性：</strong>草食<br><br>
+			<em>冷知识：</em>剑龙巨大的头部非常小，脑容量甚至比小狗还小，因此科学家认为它们是一种很笨的恐龙。剑龙是典型的食草恐龙。
+		</p>
+	</div>
+
+	<!--白垩纪	-->
+	<img class="banner" src="../../public/pic/白垩纪.png" loading="lazy">
+
+	<!-- 恐龙卡片 -->
+	<div class="card">
+		<img class="dinosaur" src="../../public/pic/霸王龙.jpg" loading="lazy">
+		<a href="https://baike.baidu.com/item/%E9%9C%B8%E7%8E%8B%E9%BE%99/15811" target="_blank">
+			<img class="know_more" src="../../public/pic/按钮.png" loading="lazy">
+		</a>
+		<p>
+			<strong>姓名：</strong>霸王龙<br>
+			<strong>身高：</strong>4 ~ 6 米<br>
+			<strong>体长：</strong>11.5 ~ 14.7米<br>
+			<strong>体重：</strong>约 9 吨<br>
+			<strong>食性：</strong>食肉<br><br>
+			<em>冷知识：</em>霸王龙拥有史上最强的咬合力，它们的咬合力一般9万牛顿—12万牛顿，约为鳄鱼咬合力（1.6万牛顿左右）的6倍。
+		</p>
+	</div>
+
+	<!-- 恐龙卡片 -->
+	<div class="card">
+		<img class="dinosaur" src="../../public/pic/沧龙.jpg" loading="lazy">
+		<a href="https://baike.baidu.com/item/%E6%B2%A7%E9%BE%99/109703" target="_blank">
+			<img class="know_more" src="../../public/pic/按钮.png" loading="lazy">
+		</a>
+		<p>
+			<strong>姓名：</strong>沧龙<br>
+			<strong>体长：</strong>15 ~ 17米<br>
+			<strong>体重：</strong>17 ~ 24吨<br>
+			<strong>食性：</strong>食肉<br><br>
+			<em>冷知识：</em>沧龙是史前海洋世界的绝对霸主，最主要的食物有蛇齿龙、金厨鲨、海龟、薄片龙等。
+		</p>
+	</div>
+
+	<!-- 恐龙卡片 -->
+	<div class="card">
+		<img class="dinosaur" src="../../public/pic/伤齿龙.jpg" loading="lazy">
+		<a href="https://baike.baidu.com/item/%E4%BC%A4%E9%BD%BF%E9%BE%99/1570805?fr=aladdin" target="_blank">
+			<img class="know_more" src="../../public/pic/按钮.png" loading="lazy">
+		</a>
+		<p>
+			<strong>姓名：</strong>伤齿龙<br>
+			<strong>身高：</strong>约 1 米<br>
+			<strong>体长：</strong>约 2 米<br>
+			<strong>体重：</strong>约 50 kg<br>
+			<strong>食性：</strong>食肉<br><br>
+			<em>冷知识：</em>伤齿龙是最聪明的恐龙之一，袋鼠的IQ大约在0.7。而伤齿龙的IQ高达5.3！可能和今天鸟类的智力相似。
+		</p>
+	</div>
+
+	<!-- 图片放大模态框 -->
+	<div id="imageModal" class="modal">
+		<span class="close-modal">&times;</span>
+		<div class="modal-content">
+			<img id="expandedImage">
+		</div>
+	</div>
+
+	<script>
+		// 图片懒加载
+		document.addEventListener("DOMContentLoaded", function() {
+			const lazyImages = document.querySelectorAll("img[loading='lazy']");
+			
+			const imageObserver = new IntersectionObserver((entries, observer) => {
+				entries.forEach(entry => {
+					if (entry.isIntersecting) {
+						const img = entry.target;
+						img.src = img.getAttribute('src');
+						img.classList.add('loaded');
+						observer.unobserve(img);
+					}
+				});
+			});
+
+			lazyImages.forEach(img => {
+				imageObserver.observe(img);
+			});
+
+			// 图片点击放大功能
+			const modal = document.getElementById('imageModal');
+			const modalImg = document.getElementById('expandedImage');
+			const closeModal = document.querySelector('.close-modal');
+			
+			// 为所有恐龙图片添加点击事件
+			document.querySelectorAll('.dinosaur').forEach(img => {
+				img.addEventListener('click', function() {
+					modal.classList.add('show');
+					modalImg.src = this.src;
+					document.body.style.overflow = 'hidden'; // 禁止滚动
+					
+					// 重置动画以便每次点击都能触发
+					const content = document.querySelector('.modal-content');
+					content.style.animation = 'none';
+					void content.offsetWidth; // 触发重绘
+					content.style.animation = 'slideIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards';
+				});
+			});
+
+			// 关闭模态框
+			closeModal.addEventListener('click', function() {
+				modal.classList.remove('show');
+				document.body.style.overflow = ''; // 恢复滚动
+			});
+
+			// 点击模态框背景也关闭
+			modal.addEventListener('click', function(e) {
+				if (e.target === modal) {
+					modal.classList.remove('show');
+					document.body.style.overflow = ''; // 恢复滚动
+				}
+			});
+		});
+	</script>
+</body>
+
+</html>

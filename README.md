@@ -8,9 +8,9 @@
 <img src="https://cnb.cool/images/favicon.png" style="height: 1em; vertical-align: middle;" alt="CNB图标"> [CNB](https://cnb.cool/SDCOM_code/xigua/web "https://cnb.cool/SDCOM_code/xigua/web") 
 <img src="public/pic/github-favicon.png" style="height: 1em; vertical-align: middle;" alt="GitHub图标"> [GitHub](https://github.com/SDCOM-0415/xigua "https://github.com/SDCOM-0415/xigua") </p>
 本页面访问地址：</p>
+[https://xigua.sdcom.top/](https://xigua.sdcom.top/ "https://xigua.sdcom.top/")</p>
 [https://xigua.sdcom.asia/](https://xigua.sdcom.asia/ "https://xigua.sdcom.asia/")</p>
-[https://xg9.cn/my/2wQg3](https://xg9.cn/my/2wQg3 "https://xg9.cn/my/2wQg3")</p>
-[https://famous-brioche-cac20b.netlify.app/](https://famous-brioche-cac20b.netlify.app/ "https://famous-brioche-cac20b.netlify.app/")
+[https://xg9.cn/my/2wQg3](https://xg9.cn/my/2wQg3 "https://xg9.cn/my/2wQg3")
 
 ### 引导页主要特点
 - 🎨 优雅的设计风格
@@ -96,6 +96,9 @@ Guide
 [over/2025.6.13/index.html](over/2025.6.13/index.html "over/2025.6.13/index.html")
 
 ## 2025.6.20
+Guide
+[buckup/2025.6.20/guide](buckup/2025.6.20/guide/ "buckup/2025.6.20/guide")
+
 挑战1-调图片位置
 [buckup/2025.6.20/1](buckup/2025.6.20/1/ "buckup/2025.6.20/1")
 
@@ -107,3 +110,6 @@ Guide
 
 挑战4-调按钮位置
 [buckup/2025.6.20/4](buckup/2025.6.20/4/ "buckup/2025.6.20/4")
+
+绝对定位
+[over/2025.6.20/index.html](over/2025.6.20/index.html "over/2025.6.20/index.html")

@@ -5,12 +5,12 @@
     <meta name="description" content="欢迎使用来到 SDCOM 的 Xigua_Web">
     <meta name="keywords" content="文档,教程,Linux,macOS,技术指南,SDCOM,SDCOM's BLOG,Xigua_Web,xigua,西瓜创客,xiguacity.cn,xiguacity,xigua.pro">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="public/pic/tubiao.jpg">
-    <link rel="shortcut icon" href="public/pic/tubiao.jpg">
+    <link rel="icon" href="../../../public/pic/tubiao.jpg">
+    <link rel="shortcut icon" href="../../../public/pic/tubiao.jpg">
     <title>Xigua_Web引导页</title>
     <link rel="stylesheet" href="../../../public/css/style.css">
     <!-- 引入marked.js用于解析Markdown -->
-    <script src="//cdn.jsdmirror.cn/npm/marked/marked.min.js"></script>
+    <script src="//cdn.jsd.hydun.com/npm/marked/marked.min.js"></script>
 </head>
 <body>
     <div class="container">
@@ -41,7 +41,8 @@
         </main>
 
         <footer>
-            <p>&copy; 2025 <a href="https://www.sdcom.asia/" target="_blank">SDCOM</a> | 使用 <a href="https://github.com/markedjs/marked" target="_blank">marked.js</a> 构建</p>
+            <p>&copy; 2025 <a href="https://www.sdcom.top/" target="_blank">SDCOM</a> | 使用 <a href="https://github.com/markedjs/marked" target="_blank">marked.js</a> 构建</p>
+            <p><a href="https://beian.miit.gov.cn/" target="_blank">赣ICP备2023009313号-3</a></p>
         </footer>+
     </div>
 
@@ -56,15 +57,9 @@
                     return response.text();
                 })
                 .then(markdown => {
-                    // 配置marked.js
-                    const renderer = new marked.Renderer();
-                    renderer.link = function(href, title, text) {
-                        return `<a href="${href}" target="_blank" rel="noopener noreferrer"${title ? ` title="${title}"` : ''}>${text}</a>`;
-                    };
-                    
                     // 解析Markdown
                     const contentElement = document.getElementById('content');
-                    contentElement.innerHTML = marked.parse(markdown, { renderer });
+                    contentElement.innerHTML = marked.parse(markdown);
                     
                     // 生成目录
                     generateTOC();
@@ -129,11 +124,11 @@
                 // 如果有代码块，动态加载highlight.js
                 const link = document.createElement('link');
                 link.rel = 'stylesheet';
-                link.href = '//cdn.jsdmirror.cn/npm/highlight.js/styles/github.min.css';
+                link.href = '//cdn.jsd.hydun.com/npm/highlight.js/styles/github.min.css';
                 document.head.appendChild(link);
                 
                 const script = document.createElement('script');
-                script.src = '//cdn.jsdmirror.cn/npm/highlight.js/highlight.min.js';
+                script.src = '//cdn.jsd.hydun.com/npm/highlight.js/highlight.min.js';
                 script.onload = function() {
                     hljs.highlightAll();
                 };
