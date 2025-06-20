@@ -56,15 +56,9 @@
                     return response.text();
                 })
                 .then(markdown => {
-                    // 配置marked.js
-                    const renderer = new marked.Renderer();
-                    renderer.link = function(href, title, text) {
-                        return `<a href="${href}" target="_blank" rel="noopener noreferrer"${title ? ` title="${title}"` : ''}>${text}</a>`;
-                    };
-                    
                     // 解析Markdown
                     const contentElement = document.getElementById('content');
-                    contentElement.innerHTML = marked.parse(markdown, { renderer });
+                    contentElement.innerHTML = marked.parse(markdown);
                     
                     // 生成目录
                     generateTOC();
