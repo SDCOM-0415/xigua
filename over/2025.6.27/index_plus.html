@@ -123,25 +123,26 @@
             transition: all 0.3s;
         }
 
-        /* 为每个章节链接设置不同的颜色 */
-        #guide h3:nth-child(1) a { color: #e94e77; }
-        #guide h3:nth-child(2) a { color: #d68189; }
-        #guide h3:nth-child(3) a { color: #c6a49a; }
-        #guide h3:nth-child(4) a { color: #c6e5d9; }
-        #guide h3:nth-child(5) a { color: #f4ead5; }
-        #guide h3:nth-child(6) a { color: #ffe1a8; }
-        #guide h3:nth-child(7) a { color: #e26d5c; }
-        #guide h3:nth-child(8) a { color: #723d46; }
+        /* 导航栏链接样式 */
+        #guide h3 a {
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            background-size: 200% auto;
+            animation: textShine 2s linear infinite;
+            transition: all 0.3s ease;
+        }
 
-        /* 悬停效果 */
-        #guide h3:nth-child(1) a:hover { color: #ff5a8a; text-shadow: 0 0 5px rgba(233, 78, 119, 0.5); }
-        #guide h3:nth-child(2) a:hover { color: #ff9aa8; text-shadow: 0 0 5px rgba(214, 129, 137, 0.5); }
-        #guide h3:nth-child(3) a:hover { color: #e0bdb0; text-shadow: 0 0 5px rgba(198, 164, 154, 0.5); }
-        #guide h3:nth-child(4) a:hover { color: #d8f7eb; text-shadow: 0 0 5px rgba(198, 229, 217, 0.5); }
-        #guide h3:nth-child(5) a:hover { color: #ffffff; text-shadow: 0 0 5px rgba(244, 234, 213, 0.5); }
-        #guide h3:nth-child(6) a:hover { color: #fff3c4; text-shadow: 0 0 5px rgba(255, 225, 168, 0.5); }
-        #guide h3:nth-child(7) a:hover { color: #ff7d6a; text-shadow: 0 0 5px rgba(226, 109, 92, 0.5); }
-        #guide h3:nth-child(8) a:hover { color: #8a4a55; text-shadow: 0 0 5px rgba(114, 61, 70, 0.5); }
+        #guide h3 a:hover {
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+            transform: scale(1.05);
+        }
+
+        @keyframes textShine {
+            to {
+                background-position: 200% center;
+            }
+        }
 
         /* 漫画图片样式 */
         .comic-image {
@@ -435,5 +436,35 @@
                 }, 300);
             }, 250);
         }
+        
+        // 生成随机颜色的函数
+        function getRandomColor() {
+            const letters = '0123456789ABCDEF';
+            let color = '#';
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+        
+        // 为导航栏链接应用随机渐变色
+        function applyRandomGradients() {
+            const navLinks = document.querySelectorAll('#guide h3 a');
+            
+            navLinks.forEach(link => {
+                const color1 = getRandomColor();
+                const color2 = getRandomColor();
+                const color3 = getRandomColor();
+                
+                // 创建随机渐变
+                const gradient = `linear-gradient(45deg, ${color1}, ${color2}, ${color3})`;
+                
+                // 应用渐变到链接
+                link.style.backgroundImage = gradient;
+            });
+        }
+        
+        // 页面加载时应用随机渐变色
+        document.addEventListener('DOMContentLoaded', applyRandomGradients);
     </script>
 </body>
