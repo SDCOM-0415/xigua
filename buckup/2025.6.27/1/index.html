@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+
+<head>
+	<title>漫画博客</title>
+	<meta charset="UTF-8">
+	<!-- 链接外部css文件  -->
+	<link rel="stylesheet" href="main.css">
+	<style type="text/css">
+		/*  设置背景  */
+		body {
+			background-image: url(背景.png); /*添加背景图片*/
+			background-size: 110%; /*设置背景图片尺寸*/
+			background-attachment: fixed; /*固定背景位置*/
+
+		}
+
+		/*顶部图片尺寸*/
+		#top {
+			width: 100%; /*设置顶部图片宽度等于浏览器宽度*/
+			height: 10%;
+		}
+
+		/* 设置八个漫画区域 */
+		div {
+			width: 60%;
+			height: 1200px;
+			background-color: rgba(255, 255, 255, 0.5); /*设置背景颜色*/
+			font-weight: bold; /*设置字体粗细*/
+			position: relative; /*设置定位模式*/
+			text-align: center;
+			left: 30%;
+			border-radius: 15px; /*设置圆角边框*/
+		}
+
+
+		/* 漫画章节标题 */
+        h2 {
+            width: 100%;
+            height: 5%;
+            text-align: center;
+            font-size: 60px;
+            font-family: "Ma Shan Zheng";
+            color: rgba(26, 25, 24, 0.7); /*设置字体颜色*/
+            border-color: rgba(0, 0, 0, 0.3);
+            border-width: 5%;
+            border-style: solid;
+            border-radius: 15px; /*设置圆角边框*/
+            background-color: r gba(255, 255, 255, 0.7); /*设置背景颜色*/
+
+		}
+
+		/*——————————————————————————————————————————————————————*/
+		/*你需要在这里编写代码，创建一个 id 选择器 guide，并添加专属的样式*/
+
+
+
+		/*----------------------------------------------------*/
+	</style>
+
+</head>
+
+<body>
+	<img id="top" src="顶部图片.png">
+	<!--——————————————————————————————————————-->
+	<!--你需要在这里编写代码，给 div 标签添加 id -->
+	<div>
+
+	</div>
+
+
+	<!------------------------------------------>
+
+
+	<!-- 章节一  -->
+	<div>
+		<h2>厉害的胖达</h2>
+		<img src="1.png">
+	</div>
+
+	<!-- 章节二 -->
+	<div>
+    	<h2>绝不迟到</h2>
+    	<img src="2.png">
+  	</div>
+
+	<!-- 章节三 -->
+	<div>
+    	<h2>无限循环</h2>
+    	<img src="3.png">
+  	</div>
+
+	<!-- 章节四 -->
+	<div>
+    	<h2>帽子控</h2>
+    	<img src="4.png">
+	</div>
+</body>
+
+</html>
