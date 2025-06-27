@@ -1,13 +1,10 @@
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <head>
     <title>漫画博客 Plus</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- 链接外部css文件  -->
     <link rel="stylesheet" href="../../public/css/main.css">
-    <!-- 添加Google字体 -->
     <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&display=swap" rel="stylesheet">
-    <!-- 添加Font Awesome图标 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style type="text/css">
         /* 汉堡菜单按钮 */
@@ -37,15 +34,15 @@
             font-size: 24px;
         }
 
-        /* 全局样式 */
+        /* 全局样式设置 */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            scroll-behavior: smooth;
+            scroll-behavior: smooth; /* 启用平滑滚动效果 */
         }
 
-        /*  设置背景  */
+        /* 页面背景设置 */
         body {
             background-image: url(../../public/pic/背景.png);
             background-size: cover;
@@ -54,9 +51,7 @@
             transition: background-color 0.3s;
         }
 
-        /* 此处移除了暗黑模式样式 */
-
-        /*顶部图片容器*/
+        /* 顶部图片容器 */
         .header-container {
             width: 100%;
             height: 200px;
@@ -68,10 +63,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            /* 移除了transform过渡效果 */
         }
-
-        /* 移除了鼠标悬停时的放大效果 */
 
         /* 设置漫画区域 */
         .comic-container {
@@ -266,9 +258,7 @@
             visibility: visible;
         }
 
-        /* 此处移除了暗黑模式切换按钮样式 */
-
-        /* 图片查看器 */
+        /* 图片查看器 - 全屏显示选中的漫画图片 */
         .image-viewer {
             position: fixed;
             top: 0;
@@ -577,62 +567,59 @@
         </div>
     </div>
 
-    <!-- JavaScript代码 -->
     <script>
-        // 获取导航栏和回到顶部按钮元素
+        /**
+         * 页面导航和交互控制
+         * 包含导航栏固定、返回顶部、移动菜单等功能
+         */
+        
+        // 初始化页面元素
         const guideElement = document.getElementById('guide');
         const backToTopButton = document.getElementById('back-to-top');
         const hamburgerMenu = document.querySelector('.hamburger-menu');
         const mobileNav = document.querySelector('.mobile-nav');
         const mobileNavLinks = document.querySelectorAll('.mobile-nav h3 a');
         
-        // 设置导航栏固定在顶部的滚动阈值
-        const stickyThreshold = 200; // 当页面滚动超过顶部图片高度(200px)时，导航栏移动到顶部
+        // 导航栏固定阈值：页面滚动超过200px时，导航栏固定在顶部
+        const stickyThreshold = 200;
         
-        // 监听页面滚动事件
+        /**
+         * 页面滚动处理
+         * 控制返回顶部按钮的显示/隐藏和导航栏的固定定位
+         */
         window.addEventListener('scroll', () => {
-            // 当页面滚动超过300px时显示回到顶部按钮
-            if (window.scrollY > 300) {
-                backToTopButton.classList.add('visible');
-            } else {
-                backToTopButton.classList.remove('visible');
-            }
+            // 控制返回顶部按钮显示
+            backToTopButton.classList.toggle('visible', window.scrollY > 300);
             
-            // 当页面滚动超过阈值时，导航栏移动到顶部
-            if (window.scrollY > stickyThreshold) {
-                guideElement.classList.add('sticky');
-            } else {
-                guideElement.classList.remove('sticky');
-            }
+            // 控制导航栏固定定位
+            guideElement.classList.toggle('sticky', window.scrollY > stickyThreshold);
         });
 
-        // 汉堡菜单点击事件
+        /**
+         * 移动端导航菜单控制
+         */
+        // 切换菜单显示状态和图标
         hamburgerMenu.addEventListener('click', () => {
             mobileNav.classList.toggle('active');
-            // 切换汉堡菜单图标
             const icon = hamburgerMenu.querySelector('i');
-            if (mobileNav.classList.contains('active')) {
-                icon.classList.remove('fa-bars');
-                icon.classList.add('fa-times');
-            } else {
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-            }
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
         });
 
-        // 移动导航链接点击事件
+        // 点击导航链接后关闭菜单
         mobileNavLinks.forEach(link => {
             link.addEventListener('click', () => {
-                // 关闭移动导航菜单
                 mobileNav.classList.remove('active');
-                // 恢复汉堡菜单图标
                 const icon = hamburgerMenu.querySelector('i');
                 icon.classList.remove('fa-times');
                 icon.classList.add('fa-bars');
             });
         });
 
-        // 检测设备方向变化，优化布局
+        /**
+         * 设备方向变化处理
+         * 在设备旋转时重新计算布局并关闭打开的菜单
+         */
         window.addEventListener('orientationchange', () => {
             // 重新计算布局
             setTimeout(() => {
