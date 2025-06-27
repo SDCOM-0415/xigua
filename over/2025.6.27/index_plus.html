@@ -641,7 +641,11 @@
             });
         });
 
-        // 图片查看器功能
+        /**
+         * 图片查看器功能
+         * 实现漫画图片的全屏查看、缩放、滑动切换等功能
+         */
+        // 初始化图片查看器元素
         const imageViewer = document.querySelector('.image-viewer');
         const viewerImg = imageViewer.querySelector('img');
         const closeButton = document.querySelector('.close-button');
@@ -650,28 +654,31 @@
         const nextButton = document.querySelector('.viewer-next');
         const touchHint = document.querySelector('.touch-hint');
         
-        let currentImageIndex = 0;
-        let scale = 1;
-        let translateX = 0;
-        let translateY = 0;
-        let startX = 0;
-        let startY = 0;
-        let lastTouchDistance = 0;
+        // 图片查看器状态变量
+        let currentImageIndex = 0;  // 当前显示的图片索引
+        let scale = 1;              // 缩放比例
+        let translateX = 0;         // X轴平移距离
+        let translateY = 0;         // Y轴平移距离
+        let startX = 0;             // 触摸起始X坐标
+        let startY = 0;             // 触摸起始Y坐标
+        let lastTouchDistance = 0;  // 双指触摸时的初始距离
         
-        // 为每个漫画图片添加点击事件
+        /**
+         * 图片点击事件处理
+         * 点击漫画图片时在查看器中显示
+         */
         comicImages.forEach((img, index) => {
             img.addEventListener('click', () => {
                 currentImageIndex = index;
                 viewerImg.src = img.src;
                 imageViewer.classList.add('active');
                 
-                // 显示触摸提示，3秒后淡出
+                // 显示触摸操作提示，3秒后自动淡出
                 touchHint.classList.remove('fade');
                 setTimeout(() => {
                     touchHint.classList.add('fade');
                 }, 3000);
                 
-                // 重置缩放和位移
                 resetZoomAndPosition();
             });
         });
@@ -750,30 +757,37 @@
             }, 250);
         }
         
-        // 触摸事件处理
+        /**
+         * 触摸手势处理
+         * 实现图片的拖动、缩放和滑动切换功能
+         */
+        // 触摸开始事件
         viewerImg.addEventListener('touchstart', (e) => {
             if (e.touches.length === 1) {
-                // 单指触摸，记录起始位置
+                // 单指触摸：记录起始位置，用于拖动或滑动切换
                 startX = e.touches[0].clientX;
                 startY = e.touches[0].clientY;
             } else if (e.touches.length === 2) {
-                // 双指触摸，计算初始距离
+                // 双指触摸：记录初始距离，用于缩放
                 lastTouchDistance = getTouchDistance(e.touches);
             }
-            e.preventDefault();
+            e.preventDefault(); // 阻止默认行为，防止浏览器的缩放或滚动
         });
         
+        // 触摸移动事件
         viewerImg.addEventListener('touchmove', (e) => {
             e.preventDefault();
             
             if (e.touches.length === 1 && scale > 1) {
-                // 单指移动且已缩放，实现拖动
+                // 单指拖动（仅当图片已缩放时）
                 const deltaX = e.touches[0].clientX - startX;
                 const deltaY = e.touches[0].clientY - startY;
                 
+                // 根据缩放比例调整拖动速度
                 translateX += deltaX / scale;
                 translateY += deltaY / scale;
                 
+                // 更新起始位置
                 startX = e.touches[0].clientX;
                 startY = e.touches[0].clientY;
                 
@@ -783,10 +797,10 @@
                 const currentDistance = getTouchDistance(e.touches);
                 const delta = currentDistance - lastTouchDistance;
                 
-                // 调整缩放比例
+                // 只有当距离变化足够大时才调整缩放，避免微小变化
                 if (Math.abs(delta) > 5) {
                     const newScale = scale * (1 + delta * 0.01);
-                    // 限制缩放范围
+                    // 限制缩放范围在0.5x到3x之间
                     scale = Math.min(Math.max(newScale, 0.5), 3);
                     lastTouchDistance = currentDistance;
                     updateTransform();
@@ -794,18 +808,20 @@
             }
         });
         
+        // 触摸结束事件
         viewerImg.addEventListener('touchend', (e) => {
             if (e.touches.length < 2) {
-                lastTouchDistance = 0;
+                lastTouchDistance = 0; // 重置双指距离
             }
             
-            // 如果是单指触摸结束且没有缩放，检测是否为滑动手势
+            // 处理滑动切换图片（仅当未缩放时）
             if (e.touches.length === 0 && scale === 1) {
                 const endX = e.changedTouches[0].clientX;
                 const deltaX = endX - startX;
                 
-                // 如果水平滑动距离足够大，切换图片
+                // 水平滑动超过50px时切换图片
                 if (Math.abs(deltaX) > 50) {
+                    // 向右滑动显示上一张，向左滑动显示下一张
                     navigateImages(deltaX > 0 ? -1 : 1);
                 }
             }
