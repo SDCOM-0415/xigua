@@ -256,7 +256,7 @@
     <!-- 章节二  -->
     <div class="comic-container">
         <h2 id="chapter2">绝不迟到</h2>
-
+        <img class="comic-image" src="../../public/pic/2.png" alt="第二章">
     </div>
 
     <!-- 章节三 -->
@@ -295,5 +295,50 @@
         <img class="comic-image" src="../../public/pic/8.png" alt="第八章">
     </div>
 
+    <!-- 图片查看器 -->
+    <div class="image-viewer">
+        <img src="" alt="放大查看">
+    </div>
 
+    <!-- JavaScript代码 -->
+    <script>
+        // 回到顶部按钮功能
+        const backToTopButton = document.getElementById('back-to-top');
+        
+        // 监听页面滚动事件
+        window.addEventListener('scroll', () => {
+            // 当页面滚动超过300px时显示按钮
+            if (window.scrollY > 300) {
+                backToTopButton.classList.add('visible');
+            } else {
+                backToTopButton.classList.remove('visible');
+            }
+        });
+        
+        // 点击按钮时滚动回顶部
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth' // 平滑滚动效果
+            });
+        });
+
+        // 图片查看器功能
+        const imageViewer = document.querySelector('.image-viewer');
+        const viewerImg = imageViewer.querySelector('img');
+        const comicImages = document.querySelectorAll('.comic-image');
+        
+        // 为每个漫画图片添加点击事件
+        comicImages.forEach(img => {
+            img.addEventListener('click', () => {
+                viewerImg.src = img.src;
+                imageViewer.classList.add('active');
+            });
+        });
+        
+        // 点击图片查看器任意位置关闭
+        imageViewer.addEventListener('click', () => {
+            imageViewer.classList.remove('active');
+        });
+    </script>
 </body>
