@@ -10,7 +10,7 @@
 本页面访问地址：</p>
 [https://xigua.sdcom.top/](https://xigua.sdcom.top/ "https://xigua.sdcom.top/")</p>
 [https://xigua.sdcom.asia/](https://xigua.sdcom.asia/ "https://xigua.sdcom.asia/")</p>
-[https://xg9.cn/my/2wQg3](https://xg9.cn/my/2wQg3 "https://xg9.cn/my/2wQg3")
+[https://xg9.cn/my/77WgDL](https://xg9.cn/my/77WgDL "https://xg9.cn/my/77WgDL")
 
 ### 引导页主要特点
 - 🎨 优雅的设计风格
