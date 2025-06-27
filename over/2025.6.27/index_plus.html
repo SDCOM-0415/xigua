@@ -1,0 +1,299 @@
+  <!DOCTYPE html>
+<head>
+    <title>漫画博客 Plus</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 链接外部css文件  -->
+    <link rel="stylesheet" href="../../public/css/main.css">
+    <!-- 添加Google字体 -->
+    <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&display=swap" rel="stylesheet">
+    <!-- 添加Font Awesome图标 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style type="text/css">
+        /* 全局样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        /*  设置背景  */
+        body {
+            background-image: url(../../public/pic/背景.png);
+            background-size: cover;
+            background-attachment: fixed;
+            font-family: 'Ma Shan Zheng', cursive;
+            transition: background-color 0.3s;
+        }
+
+        /* 此处移除了暗黑模式样式 */
+
+        /*顶部图片容器*/
+        .header-container {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        #top {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .header-container:hover #top {
+            transform: scale(1.05);
+        }
+
+        /* 设置漫画区域 */
+        .comic-container {
+            width: 60%;
+            height: 1200px;
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 15px;
+            position: relative;
+            text-align: center;
+            left: 30%;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s;
+            margin-bottom: 30px;
+            font-weight: bold;
+        }
+
+        .comic-container:hover {
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        /* 漫画章节标题 */
+        h2 {
+            width: 100%;
+            padding: 20px;
+            font-size: 60px;
+            font-family: "Ma Shan Zheng";
+            color: rgba(26, 25, 24, 0.9);
+            border: 5px solid;
+            border-radius: 15px;
+            background-color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 20px;
+            transition: all 0.3s;
+        }
+
+        h2:hover {
+            transform: scale(1.02);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        /* 导航栏区域样式 */
+        #guide {
+            width: 300px;
+            height: 400px;
+            position: fixed;
+            left: 5%;
+            top: 30%;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            z-index: 100;
+            font-family: initial; /* 重置字体为浏览器默认 */
+        }
+
+        /* 目录样式 */
+        #guide h3 {
+            margin: 15px 0;
+            transition: transform 0.3s;
+            font-family: initial; /* 重置字体为浏览器默认 */
+        }
+
+        #guide h3:hover {
+            transform: translateX(10px);
+        }
+
+        a {
+            text-decoration: none;
+            color: rgb(233, 127, 121);
+            transition: all 0.3s;
+        }
+
+        a:hover {
+            color: rgb(255, 127, 121);
+            text-shadow: 0 0 5px rgba(255, 127, 121, 0.3);
+        }
+
+        /* 漫画图片样式 */
+        .comic-image {
+            max-width: 100%;
+            height: auto;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .comic-image:hover {
+            transform: scale(1.02);
+        }
+
+        /* 返回顶部按钮 */
+        #back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: rgba(233, 127, 121, 0.9);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            opacity: 0;
+            visibility: hidden;
+            z-index: 1000;
+        }
+
+        #back-to-top:hover {
+            background-color: rgb(255, 127, 121);
+            transform: translateY(-5px);
+        }
+
+        #back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* 此处移除了暗黑模式切换按钮样式 */
+
+        /* 图片查看器 */
+        .image-viewer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+        }
+
+        .image-viewer img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+        }
+
+        .image-viewer.active {
+            display: flex;
+        }
+
+        /* 此处移除了原版按钮样式 */
+
+        /* 响应式设计 */
+        @media (max-width: 1200px) {
+            .comic-container {
+                width: 80%;
+                left: 10%;
+            }
+
+            #guide {
+                width: 200px;
+                font-size: 0.9em;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .comic-container {
+                width: 95%;
+                left: 2.5%;
+                box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+            }
+
+            h2 {
+                font-size: 40px;
+            }
+
+            #guide {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 返回顶部按钮 -->
+    <div id="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <div class="header-container">
+        <img id="top" src="../../public/pic/顶部图片.png">
+    </div>
+
+    <!-- 导航栏 -->
+    <div id="guide">
+		<h3><a href="#chapter1">第一章 厉害的胖达</a></h3>
+		<h3><a href="#chapter2">第二章 绝不迟到</a></h3>
+		<h3><a href="#chapter3">第三章 无限循环</a></h3>
+		<h3><a href="#chapter4">第四章 帽子控</a></h3>
+		<h3><a href="#chapter5">第五章 合影</a></h3>
+		<h3><a href="#chapter6">第六章 循序渐进</a></h3>
+		<h3><a href="#chapter7">第七章 觉悟</a></h3>
+		<h3><a href="#chapter8">第八章 拔萝卜</a></h3>
+    </div>
+
+    <!-- 章节一  -->
+    <div class="comic-container">
+        <h2 id="chapter1">厉害的胖达</h2>
+        <img class="comic-image" src="../../public/pic/1.png" alt="第一章">
+    </div>
+
+    <!-- 章节二  -->
+    <div class="comic-container">
+        <h2 id="chapter2">绝不迟到</h2>
+
+    </div>
+
+    <!-- 章节三 -->
+    <div class="comic-container">
+        <h2 id="chapter3">无限循环</h2>
+        <img class="comic-image" src="../../public/pic/3.png" alt="第三章">
+    </div>
+
+    <!-- 章节四 -->
+    <div class="comic-container">
+        <h2 id="chapter4">帽子控</h2>
+        <img class="comic-image" src="../../public/pic/4.png" alt="第四章">
+    </div>
+
+    <!-- 章节五 -->
+    <div class="comic-container">
+        <h2 id="chapter5">合影</h2>
+        <img class="comic-image" src="../../public/pic/5.png" alt="第五章">
+    </div>
+
+    <!-- 章节六 -->
+    <div class="comic-container">
+        <h2 id="chapter6">循序渐进</h2>
+        <img class="comic-image" src="../../public/pic/6.png" alt="第六章">
+    </div>
+
+    <!-- 章节七 -->
+    <div class="comic-container">
+        <h2 id="chapter7">觉悟</h2>
+        <img class="comic-image" src="../../public/pic/7.png" alt="第七章">
+    </div>
+
+    <!-- 章节八 -->
+    <div class="comic-container">
+        <h2 id="chapter8">拔萝卜</h2>
+        <img class="comic-image" src="../../public/pic/8.png" alt="第八章">
+    </div>
+
+
+</body>
