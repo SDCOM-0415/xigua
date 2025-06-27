@@ -169,18 +169,21 @@
         }
 
         .mobile-nav h3 a {
-            color: white;
             font-size: 24px;
             display: block;
             padding: 10px;
             border-radius: 10px;
-            background-color: rgba(255, 255, 255, 0.1);
             transition: all 0.3s ease;
             width: 100%;
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            background-size: 200% auto;
+            animation: textShine 2s linear infinite;
         }
 
         .mobile-nav h3 a:hover {
-            background-color: rgba(255, 255, 255, 0.2);
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
             transform: scale(1.05);
         }
 
@@ -842,7 +845,7 @@
         
         // 为导航栏链接应用随机渐变色
         function applyRandomGradients() {
-            const navLinks = document.querySelectorAll('#guide h3 a');
+            const navLinks = document.querySelectorAll('#guide h3 a, .mobile-nav h3 a');
             
             navLinks.forEach(link => {
                 const color1 = getRandomColor();
