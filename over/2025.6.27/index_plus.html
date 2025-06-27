@@ -41,12 +41,10 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.3s;
+            /* 移除了transform过渡效果 */
         }
 
-        .header-container:hover #top {
-            transform: scale(1.05);
-        }
+        /* 移除了鼠标悬停时的放大效果 */
 
         /* 设置漫画区域 */
         .comic-container {
@@ -175,21 +173,56 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
-            display: none;
+            background-color: rgba(0, 0, 0, 0.95);
+            display: flex;
             justify-content: center;
             align-items: center;
             z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease-in-out;
         }
 
         .image-viewer img {
             max-width: 90%;
             max-height: 90%;
             object-fit: contain;
+            transform: scale(0.8);
+            opacity: 0;
+            transition: all 0.3s ease-in-out;
         }
 
         .image-viewer.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .image-viewer.active img {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        /* 关闭按钮样式 */
+        .close-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
             display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            color: white;
+            font-size: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .close-button:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+            transform: rotate(90deg);
         }
 
         /* 此处移除了原版按钮样式 */
@@ -297,6 +330,9 @@
 
     <!-- 图片查看器 -->
     <div class="image-viewer">
+        <div class="close-button">
+            <i class="fas fa-times"></i>
+        </div>
         <img src="" alt="放大查看">
     </div>
 
@@ -326,6 +362,7 @@
         // 图片查看器功能
         const imageViewer = document.querySelector('.image-viewer');
         const viewerImg = imageViewer.querySelector('img');
+        const closeButton = document.querySelector('.close-button');
         const comicImages = document.querySelectorAll('.comic-image');
         
         // 为每个漫画图片添加点击事件
@@ -336,9 +373,35 @@
             });
         });
         
-        // 点击图片查看器任意位置关闭
-        imageViewer.addEventListener('click', () => {
-            imageViewer.classList.remove('active');
+        // 点击关闭按钮关闭查看器
+        closeButton.addEventListener('click', (e) => {
+            e.stopPropagation(); // 阻止事件冒泡
+            closeImageViewer();
         });
+        
+        // 点击图片查看器背景关闭
+        imageViewer.addEventListener('click', (e) => {
+            // 如果点击的是图片查看器本身（背景）而不是图片
+            if (e.target === imageViewer) {
+                closeImageViewer();
+            }
+        });
+        
+        // 关闭图片查看器的函数
+        function closeImageViewer() {
+            // 先添加关闭动画的类
+            viewerImg.style.transform = 'scale(0.8)';
+            viewerImg.style.opacity = '0';
+            
+            // 延迟移除active类，让动画有时间执行
+            setTimeout(() => {
+                imageViewer.classList.remove('active');
+                // 重置图片样式，为下次打开做准备
+                setTimeout(() => {
+                    viewerImg.style.transform = '';
+                    viewerImg.style.opacity = '';
+                }, 300);
+            }, 250);
+        }
     </script>
 </body>
