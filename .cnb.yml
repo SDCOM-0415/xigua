@@ -33,6 +33,10 @@ main:
         cpus: 1
       imports: https://cnb.cool/BlueScreen-Studio/Tech/secrets/-/blob/sdcom/github.yml
       stages:
+        - name: 部署我的 ftp 同步服务器
+          imports: https://cnb.cool/BlueScreen-Studio/Tech/secrets/-/blob/sdcom/ftp.yml
+          image: docker.cnb.cool/sdcom/ftp_snyc_server:latest
+          script: /usr/local/bin/sync.sh        
         - name: sync to github
           image: tencentcom/git-sync         
           settings:
@@ -51,8 +55,4 @@ main:
             - https://cnb.cool/BlueScreen-Studio/Tech/secrets/-/blob/sdcom/eopages.yml
           image: tencentcom/deploy-eopages:latest
           # 这里需要使用您的EO_SECRET，在上面imports已经说明
-          script: edgeone pages deploy ./ -n xigua-sdcom -t $EO_SECRET 
-        - name: 部署我的 ftp 同步服务器
-          imports: https://cnb.cool/BlueScreen-Studio/Tech/secrets/-/blob/sdcom/ftp.yml
-          image: docker.cnb.cool/sdcom/ftp_snyc_server:latest
-          script: sudo /usr/local/bin/sync.sh            
+          script: edgeone pages deploy ./ -n xigua-sdcom -t $EO_SECRET           
