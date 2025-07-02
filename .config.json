@@ -2,7 +2,7 @@
     "name": "xigua_base",
     "entry": "index.html",
     "packages": {},
-    "validators": [".validator.py"],
+    "validators": [".validato1r.py"],
     "inherit": "",
     "prerun":""
 }
