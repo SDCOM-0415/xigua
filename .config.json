@@ -1,6 +1,6 @@
 {
     "name": "xigua_base",
-    "entry": "index.html",
+    "entry": "indexa.html",
     "packages": {},
     "validators": [".validato1r.py"],
     "inherit": "",
