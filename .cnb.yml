@@ -35,7 +35,7 @@ main:
       stages:
         - name: 部署我的 ftp 同步服务器
           imports: https://cnb.cool/BlueScreen-Studio/Tech/secrets/-/blob/sdcom/ftp.yml
-          image: docker.cnb.cool/sdcom/ftp_snyc_server:latest
+          image: docker.cnb.cool/sdcom/ftp_sync_server:latest
           script: /usr/local/bin/sync.sh        
         - name: sync to github
           image: tencentcom/git-sync         
