@@ -10,7 +10,7 @@
 本页面访问地址：</p>
 [https://xigua.sdcom.top/](https://xigua.sdcom.top/ "https://xigua.sdcom.top/")</p>
 [https://xigua.sdcom.asia/](https://xigua.sdcom.asia/ "https://xigua.sdcom.asia/")</p>
-[https://xg9.cn/my/77WgDL](https://xg9.cn/my/77WgDL "https://xg9.cn/my/77WgDL")
+[https://xg9.cn/my/oBZVMz](https://xg9.cn/my/oBZVMz "https://xg9.cn/my/oBZVMz")
 
 ### 引导页主要特点
 - 🎨 优雅的设计风格
@@ -135,3 +135,13 @@ Guide
 
 网页导航栏
 [over/2025.6.27/index.html](over/2025.6.27/index.html "over/2025.6.27/index.html")
+
+## 2025.7.9
+Guide
+[buckup/2025.7.9/guide](buckup/2025.7.9/guide/ "buckup/2025.7.9/guide")
+
+挑战1
+[buckup/2025.7.9/1](buckup/2025.7.9/1 "buckup/2025.7.9/1")
+
+挑战2
+[buckup/2025.7.9/2](buckup/2025.7.9/2 "buckup/2025.7.9/2")
