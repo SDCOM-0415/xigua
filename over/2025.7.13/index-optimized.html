@@ -8,6 +8,9 @@
     <title>宜居星球 - 探索宇宙中的宜居行星</title>
     <meta name="description" content="探索宇宙中的宜居行星，了解它们的特性和有趣的太空冷知识">
     
+    <!-- 添加Font Awesome图标库 -->
+    <link rel="stylesheet" href="https://cdn.jsdmirror.cn/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    
     <style>
         /* CSS变量定义 */
         :root {
@@ -111,16 +114,19 @@
             top: 80px;
             opacity: 0;
             transition: all var(--transition-speed);
+            max-width: 300px; /* 限制宽度 */
         }
 
         .planet-trivia {
             color: var(--trivia-text-color);
-            font-size: 18px;
+            font-size: 16px;
             position: absolute;
             left: 120px;
-            top: 270px;
+            bottom: 20px; /* 改用bottom定位，确保在底部 */
             opacity: 0;
             transition: all var(--transition-speed);
+            max-width: 480px; /* 限制宽度，防止文本过长 */
+            line-height: 1.4; /* 增加行高，提高可读性 */
         }
 
         /* 悬停效果 */
@@ -202,9 +208,15 @@
             justify-content: center;
             align-items: center;
             text-decoration: none;
-            font-size: 24px;
+            font-size: 20px;
             opacity: 0;
-            transition: opacity 0.3s;
+            transition: opacity 0.3s, background-color 0.3s, transform 0.3s;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+        
+        .back-to-top:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+            transform: translateY(-3px);
         }
 
         .back-to-top.visible {
@@ -363,7 +375,7 @@
         <p>© 2025 宜居星球探索 | 探索宇宙的奥秘</p>
     </footer>
 
-    <a href="#" class="back-to-top" id="backToTop">↑</a>
+    <a href="#" class="back-to-top" id="backToTop"><i class="fas fa-arrow-up"></i></a>
 
     <script>
         // 返回顶部按钮功能
