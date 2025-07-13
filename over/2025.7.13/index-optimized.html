@@ -78,6 +78,21 @@
             transition: all var(--hover-transition);
             overflow: hidden;
         }
+        
+        /* 百科提示样式 */
+        .baike-hint {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            color: #cccccc;
+            font-size: 14px;
+            opacity: 0;
+            transition: opacity var(--transition-speed);
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 5px 10px;
+            border-radius: 4px;
+            z-index: 10;
+        }
 
         .planet-card:hover {
             background: url("../../public/pic/边框.png");
@@ -132,7 +147,8 @@
         /* 悬停效果 */
         .planet-card:hover .planet-title,
         .planet-card:hover .planet-info,
-        .planet-card:hover .planet-trivia {
+        .planet-card:hover .planet-trivia,
+        .planet-card:hover .baike-hint {
             opacity: 1;
         }
 
@@ -183,6 +199,14 @@
                 margin-top: 20px;
                 opacity: 1;
             }
+            
+            .baike-hint {
+                position: relative;
+                text-align: center;
+                margin-top: 10px;
+                opacity: 1;
+                background-color: transparent;
+            }
         }
 
         /* 页脚样式 */
@@ -192,6 +216,16 @@
             padding: 20px;
             color: var(--secondary-text-color);
             font-size: 0.9rem;
+        }
+        
+        /* 页脚超链接样式 */
+        .page-footer a {
+            color: #ffeb3b;
+            text-decoration: none;
+        }
+        
+        .page-footer a:hover {
+            text-decoration: underline;
         }
 
         /* 返回顶部按钮 */
@@ -233,6 +267,7 @@
 
     <main class="planets-container">
         <!-- 鲸鱼座τ星e -->
+        <a href="https://baike.baidu.com/item/%E9%B2%B8%E9%B1%BC%E5%BA%A7T%E6%98%9Fe/12619986" target="_blank" class="planet-card">
         <article class="planet-card">
             <img class="planet-image" src="../../public/pic/鲸鱼座τ星e.png" alt="鲸鱼座τ星e行星图像">
             <h2 class="planet-title">鲸鱼座τ星e</h2>
@@ -247,8 +282,10 @@
                 于1990年4月24日在美国肯尼迪航天中心发射
             </div>
         </article>
+        </a>
 
         <!-- 开普勒 283c -->
+        <a href="https://wiki.91lovea.xyz/Kepler-283c" target="_blank" class="planet-card">
         <article class="planet-card">
             <img class="planet-image" src="../../public/pic/开普勒 283c.png" alt="开普勒 283c行星图像">
             <h2 class="planet-title">开普勒 283c</h2>
@@ -262,8 +299,10 @@
                 冷知识：在火星上，日落是蓝色的哦～
             </div>
         </article>
+        </a>
 
         <!-- k2-3d -->
+        <a href="https://wiki.91lovea.xyz/K2-3d" target="_blank" class="planet-card">
         <article class="planet-card">
             <img class="planet-image" src="../../public/pic/k2-3d.png" alt="k2-3d行星图像">
             <h2 class="planet-title">k2-3d</h2>
@@ -277,8 +316,10 @@
                 冷知识：在行星 HD188753 上能够同时看到三颗太阳
             </div>
         </article>
+        </a>
 
         <!-- 格利泽 832c -->
+        <a href="https://baike.baidu.com/item/%E6%A0%BC%E5%88%A9%E6%B3%BD832c/14693702" target="_blank" class="planet-card">
         <article class="planet-card">
             <img class="planet-image" src="../../public/pic/格利泽 832c.png" alt="格利泽 832c行星图像">
             <h2 class="planet-title">格利泽 832c</h2>
@@ -292,8 +333,10 @@
                 冷知识：据推测，巨蟹座 55e 上全部都是钻石
             </div>
         </article>
+        </a>
 
         <!-- 开普勒 452b -->
+        <a href="https://baike.baidu.com/item/Kepler-452%20b/54897865" target="_blank" class="planet-card">
         <article class="planet-card">
             <img class="planet-image" src="../../public/pic/开普勒 452b.png" alt="开普勒 452b行星图像">
             <h2 class="planet-title">开普勒 452b</h2>
@@ -307,8 +350,10 @@
                 冷知识：我们现在沐浴的阳光，是太阳八分钟前发射出来的
             </div>
         </article>
+        </a>
 
         <!-- 开普勒 62e -->
+        <a href="https://baike.baidu.com/item/%E5%BC%80%E6%99%AE%E5%8B%92-62e/2270660" target="_blank" class="planet-card">
         <article class="planet-card">
             <img class="planet-image" src="../../public/pic/开普勒 62e.png" alt="开普勒 62e行星图像">
             <h2 class="planet-title">开普勒 62e</h2>
@@ -322,8 +367,10 @@
                 冷知识：月球正在离地球越来越远，每年都在远离地球 3.8 厘米
             </div>
         </article>
+        </a>
 
         <!-- 开普勒 442b -->
+        <a href="https://baike.baidu.com/item/%E5%BC%80%E6%99%AE%E5%8B%92-442b/16543023" target="_blank" class="planet-card">
         <article class="planet-card">
             <img class="planet-image" src="../../public/pic/开普勒 442b.png" alt="开普勒 442b行星图像">
             <h2 class="planet-title">开普勒 442b</h2>
@@ -337,8 +384,10 @@
                 冷知识：在地球上无法看到月球的背面
             </div>
         </article>
+        </a>
 
         <!-- 格利泽 667c -->
+        <a href="https://baike.baidu.com/item/%E6%A0%BC%E5%88%A9%E6%B3%BD667C/15274475" target="_blank" class="planet-card">
         <article class="planet-card">
             <img class="planet-image" src="../../public/pic/格利泽 667c.png" alt="格利泽 667c行星图像">
             <h2 class="planet-title">格利泽 667c</h2>
@@ -353,8 +402,10 @@
                 而公转只需要 225 天
             </div>
         </article>
+        </a>
 
         <!-- 开普勒 296e -->
+        <a href="https://yb.tencent.com/s/2riKdKuMbaXX" target="_blank" class="planet-card">
         <article class="planet-card">
             <img class="planet-image" src="../../public/pic/开普勒 296e.png" alt="开普勒 296e行星图像">
             <h2 class="planet-title">开普勒 296e</h2>
@@ -369,10 +420,11 @@
                 其高度为地球上海拔最高的珠穆朗玛峰的三倍。
             </div>
         </article>
+        </a>
     </main>
 
     <footer class="page-footer">
-        <p>© 2025 宜居星球探索 | 探索宇宙的奥秘</p>
+        <p>© Powered by <a href="https://www.sdcom.top" target="_blank">SDCOM</a> | 2025 </p>
     </footer>
 
     <a href="#" class="back-to-top" id="backToTop"><i class="fas fa-arrow-up"></i></a>
