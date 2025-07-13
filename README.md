@@ -167,3 +167,12 @@ Guide
 
 挑战2：文字的效果
 [backup/2025.7.13/2](backup/2025.7.13/2 "backup/2025.7.13/2")
+
+挑战3：同步出现
+[backup/2025.7.13/3](backup/2025.7.13/3 "backup/2025.7.13/3")
+
+挑战4：图片的移动
+[backup/2025.7.13/4](backup/2025.7.13/4 "backup/2025.7.13/4")
+
+伪类选择器
+[over/2025.7.13/index.html](over/2025.7.13/index.html "over/2025.7.13/index.html")

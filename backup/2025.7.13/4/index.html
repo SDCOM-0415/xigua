@@ -6,6 +6,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>宜居星球</title>
+
 	<style>
 		body {
 			background: url("../../../public/pic/bg1.png");
@@ -25,12 +26,21 @@
 		div:hover {
 			background: url("../../../public/pic/边框.png");
 		}
-
+		/* ——————————————————————————— */
+		/* 你需要在这里调整图片一开始的位置 */
 		img {
 			position: absolute;
-			left: 30px;
+			left: 200px;
 		}
-		
+		/* -------------------------- */
+		/* —————————————————————————————————————————— */
+		/* 你需要在这里设置伪类实现鼠标放上去，图片移动的效果 */
+        div:hover img {
+            position: absolute;
+            left: 30px;
+        }
+		/* ------------------------------------------ */
+
 		h1 {
 			color: white;
 			font-size: 30px;
@@ -40,27 +50,25 @@
 			opacity: 0;
 		}
 
-		h1:hover {
+		div:hover h1 {
 			opacity: 1;
 		}
-		/* ————————————————————————————————————*/
-		/* 你需要在这里实现 p 标签一开始是消失的 */
+
 		p {
 			color: white;
 			font-size: 18px;
 			position: absolute;
 			left: 384px;
-			top: 80px;	
-            opacity: 0;				
+			top: 80px;
+			opacity: 0;
 		}
-		/* ---------------------------------- */
-    	/* ——————————————————————————————————————————— */
-		/* 你需要在这里实现鼠标放到 p 标签上时，内容出现 */
+
 		div:hover p {
-            opacity: 1;
-            }		
-		/* ------------------------------------------- */
+			opacity: 1;
+		}
+		
 	</style>
+
 </head>
 
 <body>
