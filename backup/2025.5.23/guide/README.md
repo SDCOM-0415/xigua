@@ -1,4 +1,4 @@
-# 欢迎使用来到 [SDCOM](https://www.sdcom.asia/ "https://www.sdcom.asia/") 的 Xigua_Web 引导页
+# 欢迎使用来到 [SDCOM](https://www.sdcom.asia/ "https://www.sdcom.asia/") 的 Xigua_Web
 
 # 运行状态： [![Netlify Status](https://api.netlify.com/api/v1/badges/a0c117f8-b6b8-42b6-828a-f75095546cad/deploy-status)](https://app.netlify.com/projects/famous-brioche-cac20b/deploys)
 
@@ -9,7 +9,7 @@
 <img src="../../../public/pic/github-favicon.png" style="height: 1em; vertical-align: middle;" alt="GitHub图标"> [GitHub](https://github.com/SDCOM-0415/xigua "https://github.com/SDCOM-0415/xigua") </p>
 本页面访问地址：</p>
 [https://xigua.sdcom.asia/](https://xigua.sdcom.asia/ "https://xigua.sdcom.asia/")</p>
-[https://xg9.cn/my/OQJ9W](https://xg9.cn/my/OQJ9W "https://xg9.cn/my/OQJ9W")</p>
+[https://xg9.cn/my/MPn0g/](https://xg9.cn/my/MPn0g/ "https://xg9.cn/my/MPn0g/")</p>
 [https://famous-brioche-cac20b.netlify.app/](https://famous-brioche-cac20b.netlify.app/ "https://famous-brioche-cac20b.netlify.app/")
 
 ### 引导页主要特点
@@ -26,36 +26,14 @@
 
 ## 内容
 ## 2025.5.23
-Guide
-[buckup/2025.5.23/guide](../../../buckup/2025.5.23/guide/ "buckup/2025.5.23/guide") 
+### 挑战1-添加标题
+[backup/2025.5.23/1](../../../backup/2025.5.23/1/ "backup/2025.5.23/1")
 
-挑战1-添加标题
-[buckup/2025.5.23/1](../../../buckup/2025.5.23/1/ "buckup/2025.5.23/1")
+### 挑战2-添加内容
+[backup/2025.5.23/2](../../../backup/2025.5.23/2/ "backup/2025.5.23/2")
 
-挑战2-添加内容
-[buckup/2025.5.23/2](../../../buckup/2025.5.23/2/ "buckup/2025.5.23/2")
+### 挑战 3-添加图片
+[backup/2025.5.23/3](../../../backup/2025.5.23/3/ "backup/2025.5.23/3")
 
-挑战 3-添加图片
-[buckup/2025.5.23/3](../../../buckup/2025.5.23/3/ "buckup/2025.5.23/3")
-
-初识 HTML-完成
+### 初识 HTML-完成
 [over/2025.5.23/index.html](../../../over/2025.5.23/index.html "over/2025.5.23")
-
-## 2025.5.30
-Guide
-[buckup/2025.5.30/guide](../../../buckup/2025.5.30/guide/ "buckup/2025.5.30/guide")
-
-挑战1-显示古诗
-[buckup/2025.5.30/1](../../../buckup/2025.5.30/1/ "buckup/2025.5.30/1")
-
-挑战 2-字体颜色
-[buckup/2025.5.30/2](../../../buckup/2025.5.30/2/ "buckup/2025.5.30/2")
-
-挑战 3-标签属性
-[buckup/2025.5.30/3](../../../buckup/2025.5.30/3/ "buckup/2025.5.30/3")
-
-挑战 4-文本居中
-[buckup/2025.5.30/4](../../../buckup/2025.5.30/4/ "buckup/2025.5.30/4")
-
-让网页变漂亮CSS
-[over/2025.5.30/index.html](../../../over/2025.5.30/index.html "over/2025.5.30/index.html")
