@@ -22,7 +22,7 @@
 			height: 500px;
 			background-color: rgba(112, 128, 144, 0.6);
 			margin-left: 25%;
-			margin-top: 15%;
+			margin-top: 5%; /* 减小上边距，使卡片向上移动 */
 			border-radius: 40px;
 			backdrop-filter: blur(2px);
 		}
@@ -74,7 +74,7 @@
 			height: 70%;
 			position: fixed;
 			left: 10%;
-			top: 120px; /* 添加top属性，使导航栏位置更高 */
+			top: 0%; /* 从页面顶部开始 */
 			text-align: center;
 			display: flex;
 			flex-direction: column;
@@ -128,7 +128,7 @@
 
 <body>
 	<!-- 页面标题 -->
-	<div style="position: fixed; top: 20px; left: 0; width: 100%; text-align: center; z-index: 999;">
+	<div style="position: fixed; top: 20px; left: 10.5%; width: 90%; text-align: center; z-index: 999;">
 		<h1 style="color: white; font-size: 36px; text-shadow: 0 0 10px rgba(0,0,0,0.5); margin: 0; padding: 15px 30px; background-color: rgba(112, 128, 144, 0.6); display: inline-block; border-radius: 20px; backdrop-filter: blur(5px); box-shadow: 0 5px 15px rgba(0,0,0,0.3);">
 			<i class="fas fa-rocket" style="margin-right: 15px;"></i>
 			太阳系漫游指南
@@ -137,7 +137,7 @@
 	</div>
 	
 	<!-- 页面介绍 -->
-	<div style="width: 60%; margin: 120px auto 0; background-color: rgba(112, 128, 144, 0.6); padding: 20px; border-radius: 20px; text-align: center; backdrop-filter: blur(5px); box-shadow: 0 5px 15px rgba(0,0,0,0.3);">
+	<div style="width: 60%; margin: 120px 0 0 25%; background-color: rgba(112, 128, 144, 0.6); padding: 20px; border-radius: 20px; text-align: center; backdrop-filter: blur(5px); box-shadow: 0 5px 15px rgba(0,0,0,0.3);">
 		<h2 style="color: white; margin-top: 0;">欢迎探索太阳系</h2>
 		<p style="color: white; font-size: 16px; line-height: 1.6;">
 			这是一份太阳系漫游指南，带您了解太阳系中的八大行星。<br>
@@ -388,6 +388,8 @@
         </div>
 	</div>
 
+
+    <a href="https://wiki.91lovea.xyz/Mercury">
 	<div class="intro"  id="planet1">
 		<img src="../../public/pic/水星.jpg">
 		<p class="data1">
@@ -410,7 +412,9 @@
 		  首次证明了水星两极存有水冰。（很可能是来自彗星和小行星）。
 		</p>
 	</div>
+    </a>
 
+    <a href="https://wiki.91lovea.xyz/Venus">
 	<div class="intro" id="planet2">
 		<img src="../../public/pic/金星.jpg">
 		<p class="data1">
@@ -433,8 +437,9 @@
 		  自转方向跟天王星一样与其它行星相反，是自东向西。因此，在金星上看，太阳是西升东落。
 		</p>
 	</div>
+    </a>
 
-
+    <a href="https://wiki.91lovea.xyz/Earth">
 	<div class="intro" id="planet3">
 		<img src="../../public/pic/地球.jpg">
 		<p class="data1">
@@ -456,8 +461,9 @@
 		  围绕着地球以30天的周期旋转，而地球以近24小时的周期自转并且以一年的周期绕太阳公转。
 		</p>
 	</div>
+    </a>
 
-
+    <a href="https://wiki.91lovea.xyz/Mars">
 	<div class="intro" id="planet4">
 		<img src="../../public/pic/火星.jpg">
 		<p class="data1">
@@ -480,8 +486,9 @@
 		  为“荧惑”。而在古罗马神话中，则把火星比喻为身披盔甲浑身是血的战神“玛尔斯”。
 		</p>
 	</div>
-	
+    </a>
 
+    <a href="https://wiki.91lovea.xyz/Jupiter">
 	<div class="intro" id="planet5">
 		<img src="../../public/pic/木星.jpg">
 		<p class="data1">
@@ -503,7 +510,7 @@
 		  反射太阳光的能力也强。西方人把威严的罗马主神“朱必特”的宝座安放在了木星上。
 		</p>
 	</div>
-
+    </a>
 
 	<div class="intro" id="planet6">
 		<img src="../../public/pic/土星.jpg">
