@@ -97,45 +97,200 @@
 
 <body>
 
-	<div style="position: fixed; top: 85%; left: 80%; z-index: 1000;">
-		<audio id="bgMusic" controls>
+	<!-- 音乐播放器 -->
+	<div id="audioPlayerContainer" style="position: fixed; top: 75%; left: 80%; z-index: 1000; display: block; transition: opacity 0.3s, transform 0.3s;">
+		<audio id="bgMusic">
 			<source src="../../public/music/Encanto.mp3" type="audio/mpeg">
 			您的浏览器不支持音频元素。
 		</audio>
-		<div style="margin-top: 10px; text-align: center;">
-			<button onclick="prevMusic()" style="margin-right: 10px; padding: 5px 10px; background-color: rgba(112, 128, 144, 0.7); border: none; border-radius: 5px; color: white; cursor: pointer;">
-				<i class="fas fa-step-backward"></i>
-			</button>
-			<button onclick="nextMusic()" style="padding: 5px 10px; background-color: rgba(112, 128, 144, 0.7); border: none; border-radius: 5px; color: white; cursor: pointer;">
-				<i class="fas fa-step-forward"></i>
-			</button>
+		
+		<div class="custom-audio-player" style="background-color: rgba(112, 128, 144, 0.7); padding: 10px; border-radius: 10px; width: 250px; cursor: move;" id="draggablePlayer">
+			<!-- 拖动区域和关闭按钮 -->
+			<div style="display: flex; justify-content: space-between; margin-bottom: 5px; background-color: rgba(0, 0, 0, 0.2); padding: 5px; border-radius: 5px;">
+				<div style="color: white; font-size: 12px; display: flex; align-items: center;">
+					<i class="fas fa-arrows-alt" style="margin-right: 5px;"></i>拖动区域
+				</div>
+				<button onclick="togglePlayerVisibility()" style="background: none; border: none; color: white; cursor: pointer; padding: 0; transition: all 0.3s;">
+					<i class="fas fa-times"></i>
+				</button>
+			</div>
+			<!-- 显示当前播放的音乐名称 -->
+			<div id="musicName" style="color: white; margin-bottom: 10px; text-align: center; font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+				Encanto
+			</div>
+			
+			<!-- 播放控制按钮 -->
+			<div style="display: flex; justify-content: center; align-items: center; margin-bottom: 10px;">
+				<button onclick="prevMusic()" style="width: 40px; height: 40px; border-radius: 50%; background-color: rgba(255, 255, 255, 0.2); border: none; color: white; margin-right: 10px; cursor: pointer;">
+					<i class="fas fa-step-backward"></i>
+				</button>
+				<button id="playPauseBtn" onclick="togglePlay()" style="width: 50px; height: 50px; border-radius: 50%; background-color: rgba(255, 255, 255, 0.3); border: none; color: white; margin-right: 10px; cursor: pointer;">
+					<i class="fas fa-play"></i>
+				</button>
+				<button onclick="nextMusic()" style="width: 40px; height: 40px; border-radius: 50%; background-color: rgba(255, 255, 255, 0.2); border: none; color: white; cursor: pointer;">
+					<i class="fas fa-step-forward"></i>
+				</button>
+			</div>
+			
+			<!-- 进度条 -->
+			<div style="display: flex; align-items: center; margin-bottom: 10px;">
+				<span id="currentTime" style="color: white; font-size: 12px; margin-right: 5px;">0:00</span>
+				<input type="range" id="seekBar" value="0" step="1" style="flex-grow: 1; height: 5px;" oninput="seekTo()">
+				<span id="duration" style="color: white; font-size: 12px; margin-left: 5px;">0:00</span>
+			</div>
+			
+			<!-- 音量控制 -->
+			<div style="display: flex; align-items: center;">
+				<button onclick="toggleMute()" style="background: none; border: none; color: white; cursor: pointer; padding: 0; margin-right: 5px;">
+					<i id="volumeIcon" class="fas fa-volume-up"></i>
+				</button>
+				<input type="range" id="volumeControl" min="0" max="1" step="0.1" value="1" style="flex-grow: 1; height: 5px;" oninput="changeVolume()">
+			</div>
 		</div>
 	</div>
 
 	<script>
-		// 音乐列表
+		// 音乐列表及名称
 		const musicList = [
 			"../../public/music/Encanto.mp3",
 			"../../public/music/Welcome To Los Santos.mp3",
 			"../../public/music/North Yankton Memories.mp3",
-            "../../public/music/Dive.mp3"
+            "../../public/music/Dive.mp3",
+            "../../public/music/Minecraft.mp3",
+            "../../public/music/C418 - Taswell.flac",
+		];
+		
+		const musicNames = [
+			"Encanto",
+			"Welcome To Los Santos",
+			"North Yankton Memories",
+			"Dive",
+            "Minecraft",
+            "Taswell"
 		];
 		
 		let currentMusicIndex = 0;
+		let isPlaying = false;
 		const audioElement = document.getElementById("bgMusic");
+		const playPauseBtn = document.getElementById("playPauseBtn");
+		const musicNameDisplay = document.getElementById("musicName");
+		const seekBar = document.getElementById("seekBar");
+		const volumeControl = document.getElementById("volumeControl");
+		const volumeIcon = document.getElementById("volumeIcon");
+		const currentTimeDisplay = document.getElementById("currentTime");
+		const durationDisplay = document.getElementById("duration");
+		
+		// 初始化
+		window.onload = function() {
+			// 设置初始音量
+			audioElement.volume = volumeControl.value;
+			
+			// 添加事件监听器来更新进度条
+			audioElement.addEventListener('timeupdate', updateProgress);
+			audioElement.addEventListener('loadedmetadata', function() {
+				seekBar.max = audioElement.duration;
+				updateDurationDisplay();
+			});
+		};
+		
+		// 播放/暂停切换
+		function togglePlay() {
+			if (audioElement.paused) {
+				audioElement.play();
+				playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+				isPlaying = true;
+			} else {
+				audioElement.pause();
+				playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+				isPlaying = false;
+			}
+		}
 		
 		// 播放下一首
 		function nextMusic() {
 			currentMusicIndex = (currentMusicIndex + 1) % musicList.length;
-			audioElement.src = musicList[currentMusicIndex];
-			audioElement.play();
+			changeMusic();
 		}
 		
 		// 播放上一首
 		function prevMusic() {
 			currentMusicIndex = (currentMusicIndex - 1 + musicList.length) % musicList.length;
+			changeMusic();
+		}
+		
+		// 更改当前播放的音乐
+		function changeMusic() {
 			audioElement.src = musicList[currentMusicIndex];
-			audioElement.play();
+			musicNameDisplay.textContent = musicNames[currentMusicIndex];
+			
+			if (isPlaying || audioElement.paused) {
+				audioElement.play();
+				playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+				isPlaying = true;
+			}
+		}
+		
+		// 调整播放位置
+		function seekTo() {
+			audioElement.currentTime = seekBar.value;
+		}
+		
+		// 更新进度条和时间显示
+		function updateProgress() {
+			seekBar.value = audioElement.currentTime;
+			updateCurrentTimeDisplay();
+			
+			// 如果是新加载的音乐，更新总时长
+			if (seekBar.max !== audioElement.duration && !isNaN(audioElement.duration)) {
+				seekBar.max = audioElement.duration;
+				updateDurationDisplay();
+			}
+		}
+		
+		// 更新当前时间显示
+		function updateCurrentTimeDisplay() {
+			currentTimeDisplay.textContent = formatTime(audioElement.currentTime);
+		}
+		
+		// 更新总时长显示
+		function updateDurationDisplay() {
+			durationDisplay.textContent = formatTime(audioElement.duration);
+		}
+		
+		// 格式化时间为 分:秒 格式
+		function formatTime(seconds) {
+			const minutes = Math.floor(seconds / 60);
+			const remainingSeconds = Math.floor(seconds % 60);
+			return `${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
+		}
+		
+		// 调整音量
+		function changeVolume() {
+			audioElement.volume = volumeControl.value;
+			updateVolumeIcon();
+		}
+		
+		// 切换静音
+		function toggleMute() {
+			if (audioElement.muted) {
+				audioElement.muted = false;
+				volumeControl.value = audioElement.volume > 0 ? audioElement.volume : 0.5;
+			} else {
+				audioElement.muted = true;
+				volumeControl.value = 0;
+			}
+			updateVolumeIcon();
+		}
+		
+		// 更新音量图标
+		function updateVolumeIcon() {
+			if (audioElement.muted || audioElement.volume === 0) {
+				volumeIcon.className = "fas fa-volume-mute";
+			} else if (audioElement.volume < 0.5) {
+				volumeIcon.className = "fas fa-volume-down";
+			} else {
+				volumeIcon.className = "fas fa-volume-up";
+			}
 		}
 		
 		// 当前音乐播放结束后自动播放下一首
@@ -344,4 +499,174 @@
 		</p>
 	</div>
 
+	<!-- 右下角音乐图标按钮（用于显示播放器） -->
+	<div id="showPlayerBtn" style="position: fixed; bottom: 20px; right: 20px; background-color: rgba(112, 128, 144, 0.7); width: 50px; height: 50px; border-radius: 50%; display: flex; justify-content: center; align-items: center; cursor: pointer; z-index: 1000; display: none; box-shadow: 0 2px 10px rgba(0,0,0,0.2); transition: all 0.3s;">
+		<i class="fas fa-music" style="color: white; font-size: 24px;"></i>
+	</div>
+
+	<!-- 返回顶部按钮 -->
+	<div id="backToTopBtn" style="position: fixed; bottom: 80px; right: 20px; background-color: rgba(112, 128, 144, 0.7); width: 50px; height: 50px; border-radius: 50%; display: flex; justify-content: center; align-items: center; cursor: pointer; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.2); transition: all 0.3s; opacity: 0; transform: translateY(20px);">
+		<i class="fas fa-arrow-up" style="color: white; font-size: 24px;"></i>
+	</div>
+
+	<!-- 添加拖动功能和显示/隐藏功能的JavaScript代码 -->
+	<script>
+		// 获取DOM元素
+		const draggablePlayer = document.getElementById('draggablePlayer');
+		const playerContainer = document.getElementById('audioPlayerContainer');
+		const showPlayerBtn = document.getElementById('showPlayerBtn');
+		const backToTopBtn = document.getElementById('backToTopBtn');
+		
+		// ===== 拖动功能 =====
+		let isDragging = false;
+		let offsetX, offsetY;
+
+		// 鼠标按下事件
+		draggablePlayer.addEventListener('mousedown', function(e) {
+			// 只有点击拖动区域或播放器背景时才允许拖动
+			if (e.target.closest('button') || e.target.closest('input') || e.target.closest('i')) {
+				return;
+			}
+			
+			isDragging = true;
+			
+			// 计算鼠标在元素内的偏移量
+			const rect = playerContainer.getBoundingClientRect();
+			offsetX = e.clientX - rect.left;
+			offsetY = e.clientY - rect.top;
+			
+			// 防止选中文本
+			e.preventDefault();
+			
+			// 添加拖动时的样式
+			draggablePlayer.style.opacity = '0.8';
+		});
+
+		// 鼠标移动事件
+		document.addEventListener('mousemove', function(e) {
+			if (!isDragging) return;
+			
+			// 计算新位置
+			const x = Math.max(0, Math.min(e.clientX - offsetX, window.innerWidth - draggablePlayer.offsetWidth));
+			const y = Math.max(0, Math.min(e.clientY - offsetY, window.innerHeight - draggablePlayer.offsetHeight));
+			
+			// 设置新位置
+			playerContainer.style.left = x + 'px';
+			playerContainer.style.top = y + 'px';
+		});
+
+		// 鼠标释放事件
+		document.addEventListener('mouseup', function() {
+			if (isDragging) {
+				isDragging = false;
+				draggablePlayer.style.opacity = '1';
+			}
+		});
+		
+		// 鼠标离开窗口时
+		document.addEventListener('mouseleave', function() {
+			if (isDragging) {
+				isDragging = false;
+				draggablePlayer.style.opacity = '1';
+			}
+		});
+
+		// ===== 显示/隐藏播放器 =====
+		function togglePlayerVisibility() {
+			if (playerContainer.style.display === 'none') {
+				// 显示播放器
+				playerContainer.style.display = 'block';
+				playerContainer.style.opacity = '0';
+				playerContainer.style.transform = 'scale(0.9)';
+				
+				// 使用setTimeout创建动画效果
+				setTimeout(() => {
+					playerContainer.style.opacity = '1';
+					playerContainer.style.transform = 'scale(1)';
+				}, 10);
+				
+				showPlayerBtn.style.opacity = '0';
+				showPlayerBtn.style.transform = 'scale(0.9)';
+				
+				setTimeout(() => {
+					showPlayerBtn.style.display = 'none';
+				}, 300);
+			} else {
+				// 隐藏播放器
+				playerContainer.style.opacity = '0';
+				playerContainer.style.transform = 'scale(0.9)';
+				
+				setTimeout(() => {
+					playerContainer.style.display = 'none';
+				}, 300);
+				
+				showPlayerBtn.style.display = 'flex';
+				showPlayerBtn.style.opacity = '0';
+				showPlayerBtn.style.transform = 'scale(0.9)';
+				
+				setTimeout(() => {
+					showPlayerBtn.style.opacity = '1';
+					showPlayerBtn.style.transform = 'scale(1)';
+				}, 10);
+			}
+		}
+		
+		// 点击音乐图标显示播放器
+		showPlayerBtn.addEventListener('click', togglePlayerVisibility);
+		
+		// 添加按钮悬停效果
+		showPlayerBtn.addEventListener('mouseenter', function() {
+			this.style.transform = 'scale(1.1)';
+			this.style.backgroundColor = 'rgba(112, 128, 144, 0.9)';
+		});
+		
+		showPlayerBtn.addEventListener('mouseleave', function() {
+			this.style.transform = 'scale(1)';
+			this.style.backgroundColor = 'rgba(112, 128, 144, 0.7)';
+		});
+		
+		// ===== 返回顶部功能 =====
+		backToTopBtn.addEventListener('click', function() {
+			// 平滑滚动到顶部
+			window.scrollTo({
+				top: 0,
+				behavior: 'smooth'
+			});
+		});
+		
+		// 添加按钮悬停效果
+		backToTopBtn.addEventListener('mouseenter', function() {
+			this.style.transform = 'translateY(0) scale(1.1)';
+			this.style.backgroundColor = 'rgba(112, 128, 144, 0.9)';
+		});
+		
+		backToTopBtn.addEventListener('mouseleave', function() {
+			this.style.transform = window.scrollY > 300 ? 'translateY(0) scale(1)' : 'translateY(20px) scale(1)';
+			this.style.backgroundColor = 'rgba(112, 128, 144, 0.7)';
+		});
+		
+		// 监听滚动事件，控制返回顶部按钮的显示/隐藏
+		window.addEventListener('scroll', function() {
+			if (window.scrollY > 300) {
+				backToTopBtn.style.opacity = '1';
+				backToTopBtn.style.transform = 'translateY(0)';
+			} else {
+				backToTopBtn.style.opacity = '0';
+				backToTopBtn.style.transform = 'translateY(20px)';
+			}
+		});
+		
+		// 为播放器添加过渡效果
+		playerContainer.style.transition = 'opacity 0.3s, transform 0.3s';
+		showPlayerBtn.style.transition = 'opacity 0.3s, transform 0.3s, background-color 0.3s';
+		
+		// 初始化时设置正确的状态
+		window.addEventListener('DOMContentLoaded', function() {
+			// 初始化时检查滚动位置
+			if (window.scrollY > 300) {
+				backToTopBtn.style.opacity = '1';
+				backToTopBtn.style.transform = 'translateY(0)';
+			}
+		});
+	</script>
 </body>
