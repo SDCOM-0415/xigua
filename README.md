@@ -25,116 +25,43 @@
 4. 保存文件，刷新页面即可看到更新
 
 ## 内容
-## 2025.5.23
+## 2025.7.16
 Guide
-[backup/2025.5.23/guide](backup/2025.5.23/guide/ "backup/2025.5.23/guide") 
+[backup/2025.7.16/guide](backup/2025.7.16/guide/ "backup/2025.7.16/guide")
 
-挑战1-添加标题
-[backup/2025.5.23/1](backup/2025.5.23/1/ "backup/2025.5.23/1")
-
-挑战2-添加内容
-[backup/2025.5.23/2](backup/2025.5.23/2/ "backup/2025.5.23/2")
-
-挑战 3-添加图片
-[backup/2025.5.23/3](backup/2025.5.23/3/ "backup/2025.5.23/3")
-
-初识 HTML-完成
-[over/2025.5.23/index.html](over/2025.5.23/index.html "over/2025.5.23")
-
-## 2025.5.30
-Guide
-[backup/2025.5.30/guide](backup/2025.5.30/guide/ "backup/2025.5.30/guide")
-
-挑战1-显示古诗
-[backup/2025.5.30/1](backup/2025.5.30/1/ "backup/2025.5.30/1")
-
-挑战 2-字体颜色
-[backup/2025.5.30/2](backup/2025.5.30/2/ "backup/2025.5.30/2")
-
-挑战 3-标签属性
-[backup/2025.5.30/3](backup/2025.5.30/3/ "backup/2025.5.30/3")
-
-挑战 4-文本居中
-[backup/2025.5.30/4](backup/2025.5.30/4/ "backup/2025.5.30/4")
-
-让网页变漂亮CSS
-[over/2025.5.30/index.html](over/2025.5.30/index.html "over/2025.5.30/index.html")
-
-## 2025.6.6
-Guide
-[backup/2025.6.6/guide](backup/2025.6.6/guide/ "backup/2025.6.6/guide") 
-
-挑战 1-添加音乐
-[backup/2025.6.6/1](backup/2025.6.6/1/ "backup/2025.6.6/1")
-
-挑战 2-添加背景
-[backup/2025.6.6/2](backup/2025.6.6/2/ "backup/2025.6.6/2")
-
-挑战3-设置div
-[backup/2025.6.6/3](backup/2025.6.6/3/ "backup/2025.6.6/3")
-
-挑战4-调整边距
-[backup/2025.6.6/4](backup/2025.6.6/4/ "backup/2025.6.6/4")
-
-初识 div
-[over/2025.6.6/index.html](over/2025.6.6/index.html "over/2025.6.6/index.html")
-
-## 2025.6.13
-Guide
-[backup/2025.6.13/guide](backup/2025.6.13/guide/ "backup/2025.6.13/guide")
-
-挑战1-添加区域
-[backup/2025.6.13/1](backup/2025.6.13/1/ "backup/2025.6.13/1")
-
-挑战2-图片居中
-[backup/2025.6.13/2](backup/2025.6.13/2/ "backup/2025.6.13/2")
-
-挑战3-添加图片
-[backup/2025.6.13/3](backup/2025.6.13/3/ "backup/2025.6.13/3")
-
-类选择器
-[over/2025.6.13/index.html](over/2025.6.13/index.html "over/2025.6.13/index.html")
-
-## 2025.6.20
-Guide
-[backup/2025.6.20/guide](backup/2025.6.20/guide/ "backup/2025.6.20/guide")
-
-挑战1-调图片位置
-[backup/2025.6.20/1](backup/2025.6.20/1/ "backup/2025.6.20/1")
-
-挑战2-绝对定位
-[backup/2025.6.20/2](backup/2025.6.20/2/ "backup/2025.6.20/2")
-
-挑战3-调介绍位置
-[backup/2025.6.20/3](backup/2025.6.20/3/ "backup/2025.6.20/3")
-
-挑战4-调按钮位置
-[backup/2025.6.20/4](backup/2025.6.20/4/ "backup/2025.6.20/4")
-
-绝对定位
-[over/2025.6.20/index.html](over/2025.6.20/index.html "over/2025.6.20/index.html")
-
-## 2025.6.27
-Guide
-[backup/2025.6.27/guide](backup/2025.6.27/guide/ "backup/2025.6.27/guide")
-
-挑战1-添加选择器
-[backup/2025.6.27/1](backup/2025.6.27/1/ "backup/2025.6.27/1")
+挑战1-创建导航栏
+[backup/2025.7.16/1](backup/2025.7.16/1 "backup/2025.7.16/1")
 
 挑战2-调整布局
-[backup/2025.6.27/2](backup/2025.6.27/2/ "backup/2025.6.27/2")
+[backup/2025.7.16/2](backup/2025.7.16/2 "backup/2025.7.16/2")
 
-挑战3-添加目录
-[backup/2025.6.27/3](backup/2025.6.27/3/ "backup/2025.6.27/3")
+挑战3-调整图片
+[backup/2025.7.16/3](backup/2025.7.16/3 "backup/2025.7.16/3")
 
 挑战4-跳转功能
-[backup/2025.6.27/4](backup/2025.6.27/4/ "backup/2025.6.27/4")
+[backup/2025.7.16/4](backup/2025.7.16/4 "backup/2025.7.16/4")
 
-挑战5-完善导航栏
-[backup/2025.6.27/5](backup/2025.6.27/5/ "backup/2025.6.27/5")
+挑战5-制作导航栏
+[backup/2025.7.16/5](backup/2025.7.16/5 "backup/2025.7.16/5")
 
-网页导航栏
-[over/2025.6.27/index.html](over/2025.6.27/index.html "over/2025.6.27/index.html")
+## 2025.7.13
+Guide
+[backup/2025.7.13/guide](backup/2025.7.13/guide/ "backup/2025.7.13/guide")
+
+挑战1：背景框效果
+[backup/2025.7.13/1](backup/2025.7.13/1 "backup/2025.7.13/1")
+
+挑战2：文字的效果
+[backup/2025.7.13/2](backup/2025.7.13/2 "backup/2025.7.13/2")
+
+挑战3：同步出现
+[backup/2025.7.13/3](backup/2025.7.13/3 "backup/2025.7.13/3")
+
+挑战4：图片的移动
+[backup/2025.7.13/4](backup/2025.7.13/4 "backup/2025.7.13/4")
+
+伪类选择器
+[over/2025.7.13/index.html](over/2025.7.13/index.html "over/2025.7.13/index.html")
 
 ## 2025.7.9
 Guide
@@ -158,37 +85,113 @@ Guide
 跳转页面
 [over/2025.7.9/index.html](over/2025.7.9/index.html "over/2025.7.9/index.html")
 
-## 2025.7.13
+## 2025.6.27
 Guide
-[backup/2025.7.13/guide](backup/2025.7.13/guide/ "backup/2025.7.13/guide")
+[backup/2025.6.27/guide](backup/2025.6.27/guide/ "backup/2025.6.27/guide")
 
-挑战1：背景框效果
-[backup/2025.7.13/1](backup/2025.7.13/1 "backup/2025.7.13/1")
-
-挑战2：文字的效果
-[backup/2025.7.13/2](backup/2025.7.13/2 "backup/2025.7.13/2")
-
-挑战3：同步出现
-[backup/2025.7.13/3](backup/2025.7.13/3 "backup/2025.7.13/3")
-
-挑战4：图片的移动
-[backup/2025.7.13/4](backup/2025.7.13/4 "backup/2025.7.13/4")
-
-伪类选择器
-[over/2025.7.13/index.html](over/2025.7.13/index.html "over/2025.7.13/index.html")
-
-## 2025.7.16
-Guide
-[backup/2025.7.16/guide](backup/2025.7.16/guide/ "backup/2025.7.16/guide")
-
-挑战1-创建导航栏
-[backup/2025.7.16/1](backup/2025.7.16/1 "backup/2025.7.16/1")
+挑战1-添加选择器
+[backup/2025.6.27/1](backup/2025.6.27/1/ "backup/2025.6.27/1")
 
 挑战2-调整布局
-[backup/2025.7.16/2](backup/2025.7.16/2 "backup/2025.7.16/2")
+[backup/2025.6.27/2](backup/2025.6.27/2/ "backup/2025.6.27/2")
 
-挑战3-调整图片
-[backup/2025.7.16/3](backup/2025.7.16/3 "backup/2025.7.16/3")
+挑战3-添加目录
+[backup/2025.6.27/3](backup/2025.6.27/3/ "backup/2025.6.27/3")
 
 挑战4-跳转功能
-[backup/2025.7.16/4](backup/2025.7.16/4 "backup/2025.7.16/4")
+[backup/2025.6.27/4](backup/2025.6.27/4/ "backup/2025.6.27/4")
+
+挑战5-完善导航栏
+[backup/2025.6.27/5](backup/2025.6.27/5/ "backup/2025.6.27/5")
+
+网页导航栏
+[over/2025.6.27/index.html](over/2025.6.27/index.html "over/2025.6.27/index.html")
+
+## 2025.6.20
+Guide
+[backup/2025.6.20/guide](backup/2025.6.20/guide/ "backup/2025.6.20/guide")
+
+挑战1-调图片位置
+[backup/2025.6.20/1](backup/2025.6.20/1/ "backup/2025.6.20/1")
+
+挑战2-绝对定位
+[backup/2025.6.20/2](backup/2025.6.20/2/ "backup/2025.6.20/2")
+
+挑战3-调介绍位置
+[backup/2025.6.20/3](backup/2025.6.20/3/ "backup/2025.6.20/3")
+
+挑战4-调按钮位置
+[backup/2025.6.20/4](backup/2025.6.20/4/ "backup/2025.6.20/4")
+
+绝对定位
+[over/2025.6.20/index.html](over/2025.6.20/index.html "over/2025.6.20/index.html")
+
+## 2025.6.13
+Guide
+[backup/2025.6.13/guide](backup/2025.6.13/guide/ "backup/2025.6.13/guide")
+
+挑战1-添加区域
+[backup/2025.6.13/1](backup/2025.6.13/1/ "backup/2025.6.13/1")
+
+挑战2-图片居中
+[backup/2025.6.13/2](backup/2025.6.13/2/ "backup/2025.6.13/2")
+
+挑战3-添加图片
+[backup/2025.6.13/3](backup/2025.6.13/3/ "backup/2025.6.13/3")
+
+类选择器
+[over/2025.6.13/index.html](over/2025.6.13/index.html "over/2025.6.13/index.html")
+
+## 2025.6.6
+Guide
+[backup/2025.6.6/guide](backup/2025.6.6/guide/ "backup/2025.6.6/guide") 
+
+挑战 1-添加音乐
+[backup/2025.6.6/1](backup/2025.6.6/1/ "backup/2025.6.6/1")
+
+挑战 2-添加背景
+[backup/2025.6.6/2](backup/2025.6.6/2/ "backup/2025.6.6/2")
+
+挑战3-设置div
+[backup/2025.6.6/3](backup/2025.6.6/3/ "backup/2025.6.6/3")
+
+挑战4-调整边距
+[backup/2025.6.6/4](backup/2025.6.6/4/ "backup/2025.6.6/4")
+
+初识 div
+[over/2025.6.6/index.html](over/2025.6.6/index.html "over/2025.6.6/index.html")
+
+## 2025.5.30
+Guide
+[backup/2025.5.30/guide](backup/2025.5.30/guide/ "backup/2025.5.30/guide")
+
+挑战1-显示古诗
+[backup/2025.5.30/1](backup/2025.5.30/1/ "backup/2025.5.30/1")
+
+挑战 2-字体颜色
+[backup/2025.5.30/2](backup/2025.5.30/2/ "backup/2025.5.30/2")
+
+挑战 3-标签属性
+[backup/2025.5.30/3](backup/2025.5.30/3/ "backup/2025.5.30/3")
+
+挑战 4-文本居中
+[backup/2025.5.30/4](backup/2025.5.30/4/ "backup/2025.5.30/4")
+
+让网页变漂亮CSS
+[over/2025.5.30/index.html](over/2025.5.30/index.html "over/2025.5.30/index.html")
+
+## 2025.5.23
+Guide
+[backup/2025.5.23/guide](backup/2025.5.23/guide/ "backup/2025.5.23/guide") 
+
+挑战1-添加标题
+[backup/2025.5.23/1](backup/2025.5.23/1/ "backup/2025.5.23/1")
+
+挑战2-添加内容
+[backup/2025.5.23/2](backup/2025.5.23/2/ "backup/2025.5.23/2")
+
+挑战 3-添加图片
+[backup/2025.5.23/3](backup/2025.5.23/3/ "backup/2025.5.23/3")
+
+初识 HTML-完成
+[over/2025.5.23/index.html](over/2025.5.23/index.html "over/2025.5.23")
