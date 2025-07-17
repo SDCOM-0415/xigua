@@ -49,7 +49,9 @@ main:
             force: true
             branch: main
         - name: 删除原文件，替换备案域名专用文件
-          script: rm ./index.html && cp ./index_zh-cn.html ./index.html 
+          script: rm ./index.html && cp ./index_zh-cn.html ./index.html
+        - name: 删除超限制文件
+          script: rm ./public/music/C418\ -\ Taswell.flac && rm ./public/music/North\ Yankton\ Memories.mp3
         - name: 部署我的 eo pages 正式环境
           imports:
             - https://cnb.cool/BlueScreen-Studio/Tech/secrets/-/blob/sdcom/eopages.yml
