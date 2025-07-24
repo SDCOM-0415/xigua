@@ -35,6 +35,12 @@ Guide
 挑战 2
 [backup/2025.7.24/2](backup/2025.7.24/2 "backup/2025.7.24/2")
 
+挑战 3
+[backup/2025.7.24/3](backup/2025.7.24/3 "backup/2025.7.24/3")
+
+挑战 4
+[backup/2025.7.24/4](backup/2025.7.24/4 "backup/2025.7.24/4")
+
 ## 2025.7.16
 Guide
 [backup/2025.7.16/guide](backup/2025.7.16/guide/ "backup/2025.7.16/guide")
