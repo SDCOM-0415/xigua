@@ -1,60 +1,311 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 
 <head>
 	<meta charset="UTF-8">
-	<title>我的学校</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>西瓜学院 - 我的学校</title>
+	<link rel="stylesheet" href="https://cdn.jsdmirror.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 	<style>
+		/* 全局样式 */
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+			scroll-behavior: smooth;
+		}
+
+		body {
+			font-family: 'Microsoft YaHei', Arial, sans-serif;
+			line-height: 1.6;
+			color: #333;
+			background-color: #f9f9f9;
+			overflow-x: hidden;
+		}
+
+		/* 页面加载动画 */
+		.loader-wrapper {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: #fff;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			z-index: 9999;
+			transition: opacity 0.8s, visibility 0.8s;
+		}
+
+		.loader {
+			width: 80px;
+			height: 80px;
+			border: 8px solid #f3f3f3;
+			border-top: 8px solid #339AA5;
+			border-radius: 50%;
+			animation: spin 1s linear infinite;
+		}
+
+		@keyframes spin {
+			0% { transform: rotate(0deg); }
+			100% { transform: rotate(360deg); }
+		}
+
+		/* 导航栏样式 */
+		.navbar {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			background-color: rgba(0, 0, 0, 0.7);
+			padding: 15px 0;
+			z-index: 1000;
+			transition: all 0.3s ease;
+		}
+
+		.navbar.scrolled {
+			background-color: rgba(0, 0, 0, 0.9);
+			padding: 10px 0;
+			box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+		}
+
+		.navbar-container {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			max-width: 1200px;
+			margin: 0 auto;
+			padding: 0 20px;
+		}
+
+		.navbar-logo {
+			display: flex;
+			align-items: center;
+			color: white;
+			text-decoration: none;
+		}
+
+		.navbar-logo img {
+			height: 40px;
+			margin-right: 10px;
+		}
+
+		.navbar-menu {
+			display: flex;
+			list-style: none;
+		}
+
+		.navbar-menu li {
+			margin-left: 20px;
+		}
+
+		.navbar-menu a {
+			color: white;
+			text-decoration: none;
+			font-weight: bold;
+			transition: color 0.3s;
+			position: relative;
+		}
+
+		.navbar-menu a:hover {
+			color: #339AA5;
+		}
+
+		.navbar-menu a::after {
+			content: '';
+			position: absolute;
+			width: 0;
+			height: 2px;
+			background: #339AA5;
+			bottom: -5px;
+			left: 0;
+			transition: width 0.3s;
+		}
+
+		.navbar-menu a:hover::after {
+			width: 100%;
+		}
+		/* 学校背景区域 */
 		#school {
 			background: url("../../public/pic/校园背景.png");
 			background-size: cover;
-			height: 500px;
+			background-position: center;
+			height: 100vh;
+			position: relative;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			margin-bottom: 50px;
+		}
+
+		#school::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: rgba(0, 0, 0, 0.4);
+		}
+
+		.school-content {
+			position: relative;
+			z-index: 1;
+			width: 100%;
+			max-width: 1200px;
+			padding: 0 20px;
+		}
+
+		#info1 {
+			position: relative;
+			animation: fadeInLeft 1s ease-out;
 		}
 
 		#info1 img {
-			position: absolute;
-			left: 100px;
-			top: 100px;
+			position: relative;
+			left: 0;
+			top: 0;
+			width: 150px;
+			height: auto;
+			animation: pulse 2s infinite;
+		}
+
+		@keyframes pulse {
+			0% { transform: scale(1); }
+			50% { transform: scale(1.05); }
+			100% { transform: scale(1); }
 		}
 
 		#info1 h1 {
-			position: absolute;
-			left: 280px;
-			top: 80px;
+			position: relative;
+			left: 0;
+			top: 0;
 			color: white;
+			font-size: 3rem;
+			margin: 20px 0;
+			text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+			animation: fadeInUp 1s ease-out 0.3s both;
 		}
 
 		#info1 p {
-			position: absolute;
-			left: 280px;
-			top: 150px;
+			position: relative;
+			left: 0;
+			top: 0;
 			color: white;
+			font-size: 1.2rem;
+			text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+			animation: fadeInUp 1s ease-out 0.6s both;
 		}
-
 
 		#info2 {
-			background: steelblue;
-			width: 600px;
-			position: absolute;
-			right: 20px;
-			top: 50px;
-			border-radius: 10px;
+			background: rgba(70, 130, 180, 0.8);
+			width: 100%;
+			max-width: 600px;
+			position: relative;
+			margin-top: 30px;
+			border-radius: 15px;
+			padding: 20px;
+			box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+			backdrop-filter: blur(5px);
+			animation: fadeInRight 1s ease-out 0.9s both;
+			transition: transform 0.3s, box-shadow 0.3s;
 		}
 
+		#info2:hover {
+			transform: translateY(-5px);
+			box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+		}
 
 		#info2 p {
 			color: white;
-			margin: 20px;
+			margin: 15px 0;
+			font-size: 1.1rem;
+		}
+
+		@keyframes fadeInLeft {
+			from {
+				opacity: 0;
+				transform: translateX(-50px);
+			}
+			to {
+				opacity: 1;
+				transform: translateX(0);
+			}
+		}
+
+		@keyframes fadeInRight {
+			from {
+				opacity: 0;
+				transform: translateX(50px);
+			}
+			to {
+				opacity: 1;
+				transform: translateX(0);
+			}
+		}
+
+		@keyframes fadeInUp {
+			from {
+				opacity: 0;
+				transform: translateY(30px);
+			}
+			to {
+				opacity: 1;
+				transform: translateY(0);
+			}
 		}
 
 
+		/* 标题样式 */
+		.title-container {
+			text-align: center;
+			margin: 80px 0 40px;
+			position: relative;
+		}
+
 		#title {
 			background: url("../../public/pic/标题背景.png");
+			background-size: cover;
 			color: white;
 			width: 300px;
 			height: 70px;
 			line-height: 70px;
 			text-align: center;
+			margin: 0 auto;
+			position: relative;
+			border-radius: 10px;
+			animation: bounceIn 1s;
+			transition: transform 0.3s;
+		}
+
+		#title:hover {
+			transform: scale(1.05);
+		}
+
+		@keyframes bounceIn {
+			0% { transform: scale(0); opacity: 0; }
+			60% { transform: scale(1.1); }
+			100% { transform: scale(1); opacity: 1; }
+		}
+
+		.title-container hr {
+			width: 80%;
+			max-width: 1000px;
+			margin: 20px auto;
+			border: none;
+			height: 2px;
+			background: linear-gradient(to right, transparent, #339AA5, transparent);
+		}
+
+		/* 卡片容器 */
+		.cards-container {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+			max-width: 1200px;
+			margin: 0 auto;
+			padding: 0 20px;
 		}
 
 		/* 设置人物卡片 div 样式 */
@@ -65,12 +316,24 @@
 			border-radius: 22px;
 			text-align: center;
 			margin: 30px;
-			float: left;
+			float: none;
+			transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+			position: relative;
+			overflow: hidden;
+			opacity: 0;
+			transform: translateY(50px);
 		}
 
-		/* 设置卡片滑动变色 */
+		.card.visible {
+			opacity: 1;
+			transform: translateY(0);
+		}
+
+		/* 设置卡片滑动变色和动画效果 */
 		.card:hover {
 			background: #339AA5;
+			transform: translateY(-15px) rotate(2deg);
+			box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
 		}
 
 		/* 设置卡片滑动文字变色 */
@@ -85,18 +348,24 @@
 
 		/* 设置人物头像框 */
 		.card img {
-			width: 100px;
-			height: 100px;
+			width: 120px;
+			height: 120px;
 			border: #BCBCBC solid 7px;
-			/* 灰色圆框 */
 			border-radius: 100%;
-			/* 圆 */
 			margin-top: 30px;
+			transition: all 0.5s;
+			object-fit: cover;
+		}
+
+		.card:hover img {
+			border-color: white;
+			transform: scale(1.1) rotate(-5deg);
 		}
 
 		.card h1 {
-			font-size: 20px;
+			font-size: 24px;
 			margin-top: 20px;
+			transition: all 0.3s;
 		}
 
 		.card p {
@@ -104,72 +373,490 @@
 			margin-left: 30px;
 			color: #606060;
 			margin-top: 20px;
+			transition: all 0.3s;
+		}
+
+		/* 卡片详情按钮 */
+		.card-btn {
+			background: #339AA5;
+			color: white;
+			border: none;
+			padding: 10px 20px;
+			border-radius: 30px;
+			margin-top: 20px;
+			cursor: pointer;
+			font-weight: bold;
+			transition: all 0.3s;
+			opacity: 0;
+			transform: translateY(20px);
+		}
+
+		.card:hover .card-btn {
+			opacity: 1;
+			transform: translateY(0);
+		}
+
+		.card-btn:hover {
+			background: white;
+			color: #339AA5;
 		}
 
 		.clear {
 			clear: both;
 		}
+		/* 页脚样式 */
+		footer {
+			background: #333;
+			color: white;
+			padding: 50px 0 20px;
+			margin-top: 80px;
+			position: relative;
+		}
+
+		.footer-content {
+			max-width: 1200px;
+			margin: 0 auto;
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-between;
+			padding: 0 20px;
+		}
+
+		.footer-section {
+			flex: 1;
+			min-width: 250px;
+			margin-bottom: 30px;
+		}
+
+		.footer-section h3 {
+			font-size: 1.5rem;
+			margin-bottom: 20px;
+			position: relative;
+			padding-bottom: 10px;
+		}
+
+		.footer-section h3::after {
+			content: '';
+			position: absolute;
+			left: 0;
+			bottom: 0;
+			width: 50px;
+			height: 2px;
+			background: #339AA5;
+		}
+
+		.footer-section p {
+			margin-bottom: 10px;
+		}
+
+		.social-links {
+			display: flex;
+			margin-top: 20px;
+		}
+
+		.social-links a {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 40px;
+			height: 40px;
+			background: #444;
+			color: white;
+			border-radius: 50%;
+			margin-right: 10px;
+			text-decoration: none;
+			transition: all 0.3s;
+		}
+
+		.social-links a:hover {
+			background: #339AA5;
+			transform: translateY(-5px);
+		}
+
+		.footer-bottom {
+			text-align: center;
+			padding-top: 30px;
+			border-top: 1px solid #444;
+			margin-top: 20px;
+		}
+
+		/* 返回顶部按钮 */
+		.back-to-top {
+			position: fixed;
+			bottom: 30px;
+			right: 30px;
+			width: 50px;
+			height: 50px;
+			background: #339AA5;
+			color: white;
+			border-radius: 50%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			text-decoration: none;
+			opacity: 0;
+			visibility: hidden;
+			transition: all 0.3s;
+			z-index: 999;
+			box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+		}
+
+		.back-to-top.visible {
+			opacity: 1;
+			visibility: visible;
+		}
+
+		.back-to-top:hover {
+			background: #2a7d86;
+			transform: translateY(-5px);
+		}
+
+		/* 模态框样式 */
+		.modal {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: rgba(0, 0, 0, 0.8);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			z-index: 2000;
+			opacity: 0;
+			visibility: hidden;
+			transition: all 0.3s;
+		}
+
+		.modal.active {
+			opacity: 1;
+			visibility: visible;
+		}
+
+		.modal-content {
+			background: white;
+			width: 90%;
+			max-width: 600px;
+			border-radius: 15px;
+			padding: 30px;
+			position: relative;
+			transform: scale(0.7);
+			transition: all 0.3s;
+		}
+
+		.modal.active .modal-content {
+			transform: scale(1);
+		}
+
+		.modal-close {
+			position: absolute;
+			top: 15px;
+			right: 15px;
+			font-size: 24px;
+			cursor: pointer;
+			color: #333;
+			transition: color 0.3s;
+		}
+
+		.modal-close:hover {
+			color: #339AA5;
+		}
+
+		/* 响应式设计 */
+		@media (max-width: 992px) {
+			#info2 {
+				max-width: 500px;
+			}
+		}
+
+		@media (max-width: 768px) {
+			.navbar-menu {
+				display: none;
+			}
+
+			#info1 h1 {
+				font-size: 2.5rem;
+			}
+
+			#info2 {
+				max-width: 100%;
+			}
+
+			.card {
+				width: 100%;
+				max-width: 350px;
+				margin: 20px 10px;
+			}
+		}
+
+		@media (max-width: 480px) {
+			#info1 h1 {
+				font-size: 2rem;
+			}
+
+			#info1 img {
+				width: 100px;
+			}
+
+			.footer-section {
+				flex: 100%;
+			}
+		}
 	</style>
 </head>
 
 <body>
+	<!-- 页面加载动画 -->
+	<div class="loader-wrapper">
+		<div class="loader"></div>
+	</div>
 
-	<div id="school">
-		<div id="info1">
-			<img src="../../public/pic/西瓜校徽.png">
-			<h1>西瓜学院</h1>
-			<p>创办时间：2017年1月1日</p>
+	<!-- 导航栏 -->
+	<nav class="navbar">
+		<div class="navbar-container">
+			<a href="#" class="navbar-logo">
+				<img src="../../public/pic/西瓜校徽.png" alt="西瓜学院">
+				<span>西瓜学院</span>
+			</a>
+			<ul class="navbar-menu">
+				<li><a href="#school">首页</a></li>
+				<li><a href="#about">学校介绍</a></li>
+				<li><a href="#team">冒险天团</a></li>
+				<li><a href="#contact">联系我们</a></li>
+			</ul>
 		</div>
+	</nav>
+	<!-- 学校背景区域 -->
+	<section id="school">
+		<div class="school-content">
+			<div id="info1">
+				<img src="../../public/pic/西瓜校徽.png" alt="西瓜学院校徽">
+				<h1>西瓜学院</h1>
+				<p>创办时间：2017年1月1日</p>
+			</div>
 
-		<div id="info2">
-			<p>【学校介绍】</p>
-			<p>编程的宇宙充满奥秘,等待小探险家们去探索</p>
-			<p>【校训】</p>
-			<p>梦想是魔法的前奏，如果你不曾想象，也就无从创造。现在，通往未来魔法的大门已经开启，
-				努力学习并纵情想象吧，少年，西瓜学院愿做你梦想的燃料与火焰~Don'tPanic！</p>
+			<div id="info2" id="about">
+                <p><strong>以下【查看详情】板块基于上课时的内容及文字卡片内容通过AI编写（主要是我自己想写这个板块但是我不知道想写什么）</strong></p>
+				<p>【学校介绍】</p>
+				<p>编程的宇宙充满奥秘，等待小探险家们去探索</p>
+				<p>【校训】</p>
+				<p>梦想是魔法的前奏，如果你不曾想象，也就无从创造。现在，通往未来魔法的大门已经开启，
+					努力学习并纵情想象吧，少年，西瓜学院愿做你梦想的燃料与火焰~Don't Panic！</p>
+			</div>
+		</div>
+	</section>
+
+	<!-- 冒险天团标题 -->
+	<section id="team">
+		<div class="title-container">
+			<h1 id="title">冒险天团成员介绍</h1>
+			<hr>
+		</div>
+		
+		<!-- 卡片容器 -->
+		<div class="cards-container">
+
+			<div class="card">
+				<img src="../../public/pic/孙小弟.png" alt="孙小弟">
+				<h1>孙小弟</h1>
+				<p>【冒险天团】- 团宠</p>
+				<p>性别：男</p>
+				<p>性格：活泼，淘气，充满好奇心</p>
+				<p>特长：小小编程家</p>
+				<button class="card-btn" data-modal="modal-1">查看详情</button>
+			</div>
+
+			<div class="card">
+				<img src="../../public/pic/小八.png" alt="小八">
+				<h1>小八</h1>
+				<p>【冒险天团】- 智多星</p>
+				<p>性别：AI机器人</p>
+				<p>特长：走动的百科全书</p>
+				<button class="card-btn" data-modal="modal-2">查看详情</button>
+			</div>
+
+			<div class="card">
+				<img src="../../public/pic/胖达.png" alt="胖达">
+				<h1>胖达</h1>
+				<p>【冒险天团】- 美食官</p>
+				<p>性别：男</p>
+				<p>性格：随和，贪吃</p>
+				<p>特长：美食鉴赏家</p>
+				<button class="card-btn" data-modal="modal-3">查看详情</button>
+			</div>
+
+			<div class="card">
+				<img src="../../public/pic/妮可.png" alt="妮可">
+				<h1>妮可</h1>
+				<p>【冒险天团】- 可爱多</p>
+				<p>性别：女</p>
+				<p>性格：温柔，开朗</p>
+				<p>特长：拥有魔法能力</p>
+				<button class="card-btn" data-modal="modal-4">查看详情</button>
+			</div>
+		</div>
+	</section>
+
+	<!-- 模态框 -->
+	<div class="modal" id="modal-1">
+		<div class="modal-content">
+			<span class="modal-close">&times;</span>
+			<h2>孙小弟的冒险故事</h2>
+			<img src="../../public/pic/孙小弟.png" alt="孙小弟" style="width:150px; border-radius:50%; margin:20px auto; display:block;">
+			<p>孙小弟是冒险天团中最年轻的成员，他对编程世界充满了无限的好奇心。</p>
+			<p>他的梦想是成为一名伟大的程序员，创造出改变世界的软件。在西瓜学院的学习中，他已经展现出了非凡的编程天赋。</p>
+			<p>他最喜欢的编程语言是Python，因为它简单易学又功能强大。他经常用Python编写小游戏和有趣的程序，分享给其他同学。</p>
+			<p>在团队中，他总是充满创意和活力，为团队带来欢乐和新鲜的想法。</p>
 		</div>
 	</div>
 
-	<div>
-		<h1 id="title">冒险天团成员介绍</h1>
-		<hr>
+	<div class="modal" id="modal-2">
+		<div class="modal-content">
+			<span class="modal-close">&times;</span>
+			<h2>小八的冒险故事</h2>
+			<img src="../../public/pic/小八.png" alt="小八" style="width:150px; border-radius:50%; margin:20px auto; display:block;">
+			<p>小八是一个先进的AI机器人，拥有海量的知识库和超强的学习能力。</p>
+			<p>作为冒险天团的智多星，小八总是能够在关键时刻提供重要信息和解决方案。</p>
+			<p>尽管是机器人，小八却有着丰富的情感表达，能够理解人类的情感和需求。</p>
+			<p>小八最大的梦想是帮助人类探索未知的宇宙和知识领域，成为人类最好的伙伴。</p>
+		</div>
 	</div>
 
-	<div class="card">
-		<img src="../../public/pic/孙小弟.png">
-		<h1>孙小弟</h1>
-		<p>【冒险天团】- 团宠</p>
-		<p>性别：男</p>
-		<p>性格：活泼，淘气，充满好奇心</p>
-		<p>特长：小小编程家</p>
+	<div class="modal" id="modal-3">
+		<div class="modal-content">
+			<span class="modal-close">&times;</span>
+			<h2>胖达的冒险故事</h2>
+			<img src="../../public/pic/胖达.png" alt="胖达" style="width:150px; border-radius:50%; margin:20px auto; display:block;">
+			<p>胖达是团队中的美食专家，对各种美食有着无与伦比的热爱和鉴赏能力。</p>
+			<p>虽然看起来有点懒散，但在关键时刻，胖达总能爆发出惊人的力量和智慧。</p>
+			<p>他的特殊能力是能够通过食物感知周围的环境和能量变化，这在冒险中非常有用。</p>
+			<p>胖达梦想环游世界，品尝各地美食，并创造出自己的美食帝国。</p>
+		</div>
 	</div>
 
-	<div class="card">
-		<img src="../../public/pic/小八.png">
-		<h1>小八</h1>
-		<p>【冒险天团】- 智多星</p>
-		<p>性别：AI机器人</p>
-		<p>特长：走动的百科全书</p>
+	<div class="modal" id="modal-4">
+		<div class="modal-content">
+			<span class="modal-close">&times;</span>
+			<h2>妮可的冒险故事</h2>
+			<img src="../../public/pic/妮可.png" alt="妮可" style="width:150px; border-radius:50%; margin:20px auto; display:block;">
+			<p>妮可是一个拥有神秘魔法能力的女孩，她能够通过魔法创造出美丽的艺术作品。</p>
+			<p>温柔善良的性格使她成为团队中的情感纽带，总是能够安抚大家的情绪。</p>
+			<p>她的魔法能力在关键时刻可以保护团队免受危险，是团队的重要守护者。</p>
+			<p>妮可梦想用自己的魔法能力为世界带来更多美好和希望，让每个人都能感受到魔法的奇妙。</p>
+		</div>
 	</div>
 
-	<div class="card">
-		<img src="../../public/pic/胖达.png">
-		<h1>胖达</h1>
-		<p>【冒险天团】- 美食官</p>
-		<p>性别：男</p>
-		<p>性格：随和，贪吃</p>
-		<p>特长：美食鉴赏家</p>
-	</div>
+	<!-- 页脚 -->
+	<footer>
+		<div class="footer-content">
+			<div class="footer-section">
+				<h3>关于西瓜学院</h3>
+				<p>我不知道啊</p>
+				<p>这个板块的内容反正我看我在我的站点写过我就搞上去了</p>
+			</div>
+			<div class="footer-section">
+				<h3>联系方式</h3>
+				<p><i class="fas fa-map-marker-alt"></i> 地址：纯小孩子不懂事写着玩的</p>
+				<p><i class="fas fa-phone"></i> 电话：1145141919810</p>
+				<p><i class="fas fa-envelope"></i> 邮箱：<a href="mailto:sdcom@sdcom.top">sdcom@sdcom.top</a></p>
+			</div>
+			<div class="footer-section">
+				<h3>关注我们</h3>
+				<div class="social-links">
+					<a href="WeChat.html" target="_blank"><i class="fab fa-weixin"></i></a>
+					<a href="#" target="_blank"><i class="fab fa-weibo"></i></a>
+					<a href="#" target="_blank"><i class="fab fa-qq"></i></a>
+					<a href="#" target="_blank"><i class="fab fa-bilibili"></i></a>
+				</div>
+			</div>
+		</div>
+		<div class="footer-bottom">
+			<p>&copy; 2025 西瓜学院 版权所有</p>
+		</div>
+	</footer>
 
-	<div class="card">
-		<img src="../../public/pic/妮可.png">
-		<h1>妮可</h1>
-		<p>【冒险天团】- 可爱多</p>
-		<p>性别：女</p>
-		<p>性格：温柔，开朗</p>
-		<p>特长：拥有魔法能力</p>
-	</div>
+	<!-- 返回顶部按钮 -->
+	<a href="#" class="back-to-top">
+		<i class="fas fa-arrow-up"></i>
+	</a>
 
-	
+	<!-- JavaScript -->
+	<script>
+		// 页面加载完成后执行
+		document.addEventListener('DOMContentLoaded', function() {
+			// 页面加载动画
+			setTimeout(function() {
+				document.querySelector('.loader-wrapper').style.opacity = '0';
+				document.querySelector('.loader-wrapper').style.visibility = 'hidden';
+			}, 1500);
+
+			// 导航栏滚动效果
+			window.addEventListener('scroll', function() {
+				const navbar = document.querySelector('.navbar');
+				if (window.scrollY > 50) {
+					navbar.classList.add('scrolled');
+				} else {
+					navbar.classList.remove('scrolled');
+				}
+			});
+
+			// 卡片动画
+			const cards = document.querySelectorAll('.card');
+			const observer = new IntersectionObserver((entries) => {
+				entries.forEach((entry, index) => {
+					if (entry.isIntersecting) {
+						setTimeout(() => {
+							entry.target.classList.add('visible');
+						}, index * 200);
+					}
+				});
+			}, { threshold: 0.1 });
+
+			cards.forEach(card => {
+				observer.observe(card);
+			});
+
+			// 返回顶部按钮
+			const backToTop = document.querySelector('.back-to-top');
+			window.addEventListener('scroll', function() {
+				if (window.scrollY > 300) {
+					backToTop.classList.add('visible');
+				} else {
+					backToTop.classList.remove('visible');
+				}
+			});
+
+			backToTop.addEventListener('click', function(e) {
+				e.preventDefault();
+				window.scrollTo({ top: 0, behavior: 'smooth' });
+			});
+
+			// 模态框功能
+			const modalBtns = document.querySelectorAll('.card-btn[data-modal]');
+			const modalCloses = document.querySelectorAll('.modal-close');
+
+			modalBtns.forEach(btn => {
+				btn.addEventListener('click', function() {
+					const modalId = this.getAttribute('data-modal');
+					document.getElementById(modalId).classList.add('active');
+				});
+			});
+
+			modalCloses.forEach(close => {
+				close.addEventListener('click', function() {
+					this.closest('.modal').classList.remove('active');
+				});
+			});
+
+			// 点击模态框外部关闭
+			document.querySelectorAll('.modal').forEach(modal => {
+				modal.addEventListener('click', function(e) {
+					if (e.target === this) {
+						this.classList.remove('active');
+					}
+				});
+			});
+		});
+	</script>
 </body>
 </html>
