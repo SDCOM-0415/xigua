@@ -47,6 +47,9 @@ Guide
 挑战 6
 [backup/2025.7.24/6](backup/2025.7.24/6 "backup/2025.7.24/6")
 
+派生选择器
+[over/2025.7.24/index.html](over/2025.7.24/index.html "over/2025.7.24/index.html")
+
 ## 2025.7.16
 Guide
 [backup/2025.7.16/guide](backup/2025.7.16/guide/ "backup/2025.7.16/guide")
