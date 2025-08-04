@@ -236,46 +236,67 @@
 
         .card {
             width: 280px;
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(51, 154, 165, 0.2);
-        }
-
-        .card-header {
-            background: linear-gradient(135deg, #339AA5, #2C7D86);
-            padding: 30px 0;
+            height: 500px;
+            background: #F3F3F3;
+            border-radius: 22px;
             text-align: center;
+            margin: 30px;
+            float: none;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(50px);
         }
 
-        .card-header img {
+        .card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* 设置卡片滑动变色和动画效果 */
+        .card:hover {
+            background: #339AA5;
+            transform: translateY(-15px) rotate(2deg);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        /* 设置卡片滑动文字变色 */
+        .card:hover h3 {
+            color: white;
+        }
+
+        /* 设置卡片滑动文字变色 */
+        .card:hover p {
+            color: white;
+        }
+
+        /* 设置人物头像框 */
+        .card img {
             width: 120px;
             height: 120px;
-            border-radius: 50%;
-            border: 5px solid white;
+            border: #BCBCBC solid 7px;
+            border-radius: 100%;
+            margin-top: 30px;
+            transition: all 0.5s;
             object-fit: cover;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
 
-        .card-body {
-            padding: 25px;
+        .card:hover img {
+            border-color: white;
+            transform: scale(1.1) rotate(-5deg);
         }
 
-        .card-body h3 {
-            font-size: 1.5rem;
+        .card h3 {
+            font-size: 24px;
+            margin-top: 20px;
+            transition: all 0.3s;
             color: #339AA5;
-            margin-bottom: 10px;
             text-align: center;
             font-family: 'Noto Sans SC', sans-serif;
         }
 
-        .card-body .role {
+        .card .role {
             color: #339AA5;
             font-weight: bold;
             text-align: center;
@@ -283,9 +304,88 @@
             font-size: 1.1rem;
         }
 
-        .card-body p {
-            color: #666;
-            margin-bottom: 10px;
+        .card p {
+            text-align: left;
+            margin-left: 30px;
+            color: #606060;
+            margin-top: 20px;
+            transition: all 0.3s;
+        }
+
+        /* 卡片详情按钮 */
+        .card-btn {
+            background: #339AA5;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 30px;
+            margin-top: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .card:hover .card-btn {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .card-btn:hover {
+            background: white;
+            color: #339AA5;
+        }
+
+        /* 模态框样式 */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+        }
+
+        .modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background: white;
+            width: 90%;
+            max-width: 600px;
+            border-radius: 15px;
+            padding: 30px;
+            position: relative;
+            transform: scale(0.7);
+            transition: all 0.3s;
+        }
+
+        .modal.active .modal-content {
+            transform: scale(1);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 24px;
+            cursor: pointer;
+            color: #333;
+            transition: color 0.3s;
+        }
+
+        .modal-close:hover {
+            color: #339AA5;
         }
 
         /* 照片墙 */
@@ -553,6 +653,57 @@
         cursor: pointer;
     }
     
+    /* 模态框样式 */
+    .modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.8);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 2000;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s;
+    }
+
+    .modal.active {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .modal-content {
+        background: white;
+        width: 90%;
+        max-width: 600px;
+        border-radius: 15px;
+        padding: 30px;
+        position: relative;
+        transform: scale(0.7);
+        transition: all 0.3s;
+    }
+
+    .modal.active .modal-content {
+        transform: scale(1);
+    }
+
+    .modal-close {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        font-size: 24px;
+        cursor: pointer;
+        color: #333;
+        transition: color 0.3s;
+    }
+
+    .modal-close:hover {
+        color: #339AA5;
+    }
+    
     .back-to-top.show {
         opacity: 1;
         visibility: visible;
@@ -813,5 +964,74 @@
                 top: 0,
                 behavior: 'smooth'
             });
+        });
+
+        // 模态框功能
+        document.addEventListener('DOMContentLoaded', function() {
+            // 获取所有卡片按钮
+            const cardButtons = document.querySelectorAll('.card-btn');
+            // 获取所有模态框
+            const modals = document.querySelectorAll('.modal');
+            // 获取所有关闭按钮
+            const closeButtons = document.querySelectorAll('.modal-close');
+            
+            // 为每个卡片按钮添加点击事件
+            cardButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // 获取按钮对应的模态框ID
+                    const modalId = this.getAttribute('data-modal');
+                    // 显示对应的模态框
+                    document.getElementById(modalId).classList.add('active');
+                    document.getElementById(modalId).classList.add('active');
+                    // 防止页面滚动
+                    document.body.style.overflow = 'hidden';
+                });
+            });
+            
+            // 为每个关闭按钮添加点击事件
+            closeButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // 获取当前模态框
+                    const modal = this.closest('.modal');
+                    // 隐藏模态框
+                    modal.classList.remove('active');
+                    // 恢复页面滚动
+                    document.body.style.overflow = 'auto';
+                });
+            });
+            
+            // 点击模态框外部关闭模态框
+            modals.forEach(modal => {
+                modal.addEventListener('click', function(e) {
+                    // 如果点击的是模态框本身而不是内容部分
+                    if (e.target === this) {
+                        // 隐藏模态框
+                        this.classList.remove('active');
+                        // 恢复页面滚动
+                        document.body.style.overflow = 'auto';
+                    }
+                });
+            });
+            
+            // 为卡片添加可见性动画
+            const cards = document.querySelectorAll('.card');
+            
+            // 检查卡片是否在视口中
+            function checkCards() {
+                cards.forEach(card => {
+                    const cardTop = card.getBoundingClientRect().top;
+                    const windowHeight = window.innerHeight;
+                    
+                    if (cardTop < windowHeight - 100) {
+                        card.classList.add('visible');
+                    }
+                });
+            }
+            
+            // 初始检查
+            checkCards();
+            
+            // 滚动时检查
+            window.addEventListener('scroll', checkCards);
         });
     </script>
