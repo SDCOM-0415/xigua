@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>公告栏</title>
+    <style>
+        body {
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+        
+        .notice-board {
+            width: 80%;
+            max-width: 600px;
+            background-color: #1e88e5; /* 蓝色背景 */
+            border-radius: 15px; /* 圆角处理 */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            padding: 20px;
+            box-sizing: border-box;
+            border: 2px solid #0d47a1;
+        }
+        
+        .content-area {
+            background-color: white;
+            border-radius: 10px; /* 内容区域也使用圆角 */
+            min-height: 200px;
+            padding: 20px;
+            margin: 15px 0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        h2 {
+            color: white;
+            text-align: center;
+            margin-top: 0;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+            font-size: 24px;
+        }
+        
+        .content-area p {
+            margin: 10px 0;
+            line-height: 1.6;
+        }
+        
+        .content-area img {
+            max-width: 100%; /* 确保图片不超出内容区域 */
+            height: auto; /* 保持图片比例 */
+            display: block; /* 块级显示 */
+            margin: 15px auto; /* 上下间距15px，左右居中 */
+            border-radius: 8px; /* 轻微圆角 */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 轻微阴影 */
+        }
+        
+        .date {
+            color: white;
+            text-align: right;
+            font-size: 0.9em;
+            margin-top: 15px;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="notice-board">
+        <h2>公告栏</h2>
+        <div class="content-area">
+            <!-- 公告内容区域 -->
+            <p><strong>恭喜你发现了这个页面</strong></p>
+            <p>但是这里不会有我的个人QQ，因为这是一个同时在CNB和GitHub开源的公开项目。</p>
+            <p>主要是同一个QQ号被多个人同时添加会被封号的！！</p>
+            <p>并且更加常用的互联QQ连接也禁止了个人QQ的使用，所以，你在这里什么都找不到</p>
+            <p><a href="index.html">回到首页</a></p>
+        </div>
+        <div class="date">
+            发布日期：2025年7月24日
+        </div>
+    </div>
+</body>
+</html>

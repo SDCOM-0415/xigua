@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>页面跳转中...</title>
+    <style>
+        body {
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .redirect-container {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 100%;
+        }
+        
+        h1 {
+            color: #333;
+            margin-top: 0;
+        }
+        
+        .countdown {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #1e88e5;
+            margin: 20px 0;
+        }
+        
+        .message {
+            margin-bottom: 20px;
+            color: #666;
+        }
+        
+        .loading-bar {
+            height: 6px;
+            background-color: #e0e0e0;
+            border-radius: 3px;
+            overflow: hidden;
+            margin: 20px 0;
+        }
+        
+        .loading-progress {
+            height: 100%;
+            background-color: #1e88e5;
+            width: 0%;
+            border-radius: 3px;
+            transition: width 5s linear;
+        }
+        
+        .manual-link {
+            display: inline-block;
+            margin-top: 15px;
+            color: #1e88e5;
+            text-decoration: none;
+        }
+        
+        .manual-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="redirect-container">
+        <h1>页面跳转中</h1>
+        <p class="message">系统将在<span id="countdown">5</span>秒后自动跳转到SDCOM的微博主页</p>
+        
+        <div class="loading-bar">
+            <div class="loading-progress" id="progress"></div>
+        </div>
+        
+        <p>如果页面没有自动跳转，请点击下方链接</p>
+        <a href="https://weibo.com/u/7845597159" class="manual-link" id="target-link">立即前往</a>
+    </div>
+
+    <script>
+        // 设置目标URL（可以根据需要修改）
+        const targetUrl = "https://weibo.com/u/7845597159";
+        
+        // 更新链接的href属性
+        document.getElementById("target-link").href = targetUrl;
+        
+        // 启动进度条动画
+        setTimeout(function() {
+            document.getElementById("progress").style.width = "100%";
+        }, 50);
+        
+        // 倒计时和跳转功能
+        let secondsLeft = 5;
+        const countdownElement = document.getElementById("countdown");
+        
+        const countdownInterval = setInterval(function() {
+            secondsLeft--;
+            countdownElement.textContent = secondsLeft;
+            
+            if (secondsLeft <= 0) {
+                clearInterval(countdownInterval);
+                window.location.href = targetUrl;
+            }
+        }, 1000);
+    </script>
+</body>
+</html>

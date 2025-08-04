@@ -1,236 +1,727 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 
 <head>
-	<meta charset="UTF-8">
-	<title>我的学校</title>
-	<style>
-		#school {
-			background: url('../../public/pic/校园背景.png');
-			background-size: cover;
-			height: 500px;
-		}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>西瓜学院 - 编程的魔法世界</title>
+    <!-- 使用Apple免费商用字体 -->
+    <style>
+        /* 引入Apple字体 */
+        @font-face {
+            font-family: 'SF Pro Display';
+            src: local('SF Pro Display');
+            font-weight: normal;
+            font-style: normal;
+        }
+        
+        @font-face {
+            font-family: 'SF Pro Text';
+            src: local('SF Pro Text');
+            font-weight: normal;
+            font-style: normal;
+        }
+        
+        @font-face {
+            font-family: 'PingFang SC';
+            src: local('PingFang SC');
+            font-weight: normal;
+            font-style: normal;
+        }
+        
+        @font-face {
+            font-family: 'New York';
+            src: local('New York');
+            font-weight: normal;
+            font-style: normal;
+        }
+    </style>
+    <!-- 引入Font Awesome图标 -->
+    <link rel="stylesheet" href="https://cdn.jsdmirror.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* 全局样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+        }
 
-		#info1 img {
-			position: absolute;
-			left: 100px;
-			top: 100px;
-		}
+        html {
+            scroll-behavior: smooth;
+        }
 
-		#info1 h1 {
-			position: absolute;
-			left: 280px;
-			top: 80px;
-			color: white;
-		}
+        body {
+            font-family: 'PingFang SC', 'SF Pro Text', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
 
-		#info1 p {
-			position: absolute;
-			left: 280px;
-			top: 150px;
-			color: white;
-		}
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
 
+        section {
+            padding: 60px 0;
+        }
 
-		#info2 {
-			background: steelblue;
-			width: 600px;
-			position: absolute;
-			right: 20px;
-			top: 50px;
+        /* 导航栏 */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            padding: 15px 0;
+        }
 
-			border-radius: 10px;
-		}
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
+        .logo {
+            display: flex;
+            align-items: center;
+        }
 
-		#info2 p {
-			color: white;
-			margin: 20px;
-		}
+        .logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
 
+        .logo h2 {
+            font-family: 'New York', 'SF Pro Display', -apple-system, serif;
+            color: #339AA5;
+            font-size: 24px;
+        }
 
-		#title {
-			background: url('../../public/pic/标题背景1.png');
-			color: white;
-			width: 300px;
-			height: 70px;
-			line-height: 70px;
-			text-align: center;
-		}
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
 
-		.card {
-			width: 280px;
-			height: 500px;
-			background: #F3F3F3;
-			border-radius: 22px;
-			text-align: center;
-			margin: 30px;
-			float: left;
-		}
+        .nav-links li {
+            margin-left: 30px;
+        }
 
-		.card:hover {
-			background: #339AA5;
-		}
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            position: relative;
+        }
 
-		.card:hover h1 {
-			color: white;
-		}
+        .nav-links a:hover {
+            color: #339AA5;
+        }
 
-		.card:hover p {
-			color: white;
-		}
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: #339AA5;
+            transition: width 0.3s;
+        }
 
-		.card img {
-			width: 100px;
-			height: 100px;
-			border: #BCBCBC solid 7px;
-			border-radius: 100%;
-			margin-top: 30px;
-		}
+        .nav-links a:hover::after {
+            width: 100%;
+        }
 
-		.card h1 {
-			font-size: 20px;
-			margin-top: 20px;
-		}
+        /* 顶部横幅 */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../../public/pic/校园背景.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            color: white;
+            position: relative;
+        }
 
-		.card p {
-			text-align: left;
-			margin-left: 30px;
-			color: #606060;
-			margin-top: 20px;
-		}
+        .hero-content {
+            max-width: 800px;
+            margin-left: 10%;
+            animation: fadeIn 1s ease-in-out;
+        }
 
-		.clear {
-			clear: both;
-		}
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            font-family: 'New York', 'SF Pro Display', -apple-system, serif;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
 
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            max-width: 600px;
+            line-height: 1.8;
+        }
 
-		.photo {
-			width: 30%;
-			float: left;
-			margin-left: 2.5%;
-		}
+        .school-info {
+            position: absolute;
+            right: 5%;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(51, 154, 165, 0.9);
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 500px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            animation: slideIn 1s ease-in-out;
+        }
 
-		.photo img {
-			width: 100%;
-			height: 300px;
-			border-radius: 10px;
-		}
+        .school-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: white;
+            font-family: 'New York', 'SF Pro Display', -apple-system, serif;
+        }
 
-		.photo h1 {
-			background: rgb(100, 100, 100, 0.5);
-			text-align: center;
-			line-height: 80px;
-			position: relative;
-			bottom: 100px;
-			color: white;
-			font-size: 20px;
-			/* 隐藏 h1 标签 */
-			opacity: 0;
-		}
+        .school-info p {
+            color: white;
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
 
-		.photo:hover h1 {
-			/* 显示 h1 标签 */
-			opacity: 1;
-		}
-	</style>
+        /* 标题样式 */
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: #339AA5;
+            font-family: 'New York', 'SF Pro Display', -apple-system, serif;
+            display: inline-block;
+            padding: 0 20px;
+            background: #f9f9f9;
+            position: relative;
+            z-index: 1;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: #ddd;
+            z-index: 0;
+        }
+
+        /* 团队成员卡片 */
+        .team-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .card {
+            width: 280px;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(51, 154, 165, 0.2);
+        }
+
+        .card-header {
+            background: linear-gradient(135deg, #339AA5, #2C7D86);
+            padding: 30px 0;
+            text-align: center;
+        }
+
+        .card-header img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 5px solid white;
+            object-fit: cover;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .card-body {
+            padding: 25px;
+        }
+
+        .card-body h3 {
+            font-size: 1.5rem;
+            color: #339AA5;
+            margin-bottom: 10px;
+            text-align: center;
+            font-family: 'New York', 'SF Pro Display', -apple-system, serif;
+        }
+
+        .card-body .role {
+            color: #339AA5;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .card-body p {
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        /* 照片墙 */
+        .gallery {
+            background-color: #f0f0f0;
+        }
+
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            height: 250px;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(51, 154, 165, 0.9);
+            color: white;
+            padding: 15px;
+            transform: translateY(100%);
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+
+        .gallery-caption h3 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+            font-family: 'New York', 'SF Pro Display', -apple-system, serif;
+        }
+
+        /* 按钮样式 */
+        .btn-explore {
+            display: inline-block;
+            background: #339AA5;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 20px;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-explore:hover {
+            background: #2C7D86;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-explore i {
+            margin-left: 8px;
+            transition: transform 0.3s;
+        }
+
+        .btn-explore:hover i {
+            transform: translateX(5px);
+        }
+
+        /* 页脚 */
+        footer {
+            background: #333;
+            color: white;
+            padding: 50px 0 20px;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 30px;
+        }
+
+        .footer-section h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            font-family: 'New York', 'SF Pro Display', -apple-system, serif;
+            color: #339AA5;
+        }
+
+        .footer-section p {
+            margin-bottom: 10px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: #444;
+            color: white;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+
+        .social-links a:hover {
+            background: #339AA5;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+        }
+
+        /* 动画 */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(-50%) translateX(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(-50%) translateX(0);
+                opacity: 1;
+            }
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 992px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .school-info {
+                position: relative;
+                right: auto;
+                top: auto;
+                transform: none;
+                margin-top: 30px;
+                max-width: 100%;
+            }
+
+            .hero {
+                height: auto;
+                padding: 100px 0;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .hero-content {
+                margin: 0 auto;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .gallery-container {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
 </head>
 
 <body>
-	<div id="school">
-		<div id="info1">
-			<img src="../../public/pic/西瓜校徽.png">
-			<h1>西瓜学院</h1>
-			<p>创办时间：2017年1月1日</p>
-		</div>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <div class="logo">
+                <img src="../../public/pic/西瓜校徽.png" alt="西瓜学院校徽">
+                <h2>西瓜学院</h2>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">首页</a></li>
+                <li><a href="#about">学校介绍</a></li>
+                <li><a href="#team">冒险天团</a></li>
+                <li><a href="#gallery">照片墙</a></li>
+                <li><a href="#contact">联系我们</a></li>
+            </ul>
+        </div>
+    </nav>
 
-		<div id="info2">
-			<p>【学校介绍】</p>
-			<p>编程的宇宙充满奥秘,等待小探险家们去探索</p>
-			<p>【校训】</p>
-			<p>梦想是魔法的前奏，如果你不曾想象，也就无从创造。现在，通往未来魔法的大门已经开启，
-				努力学习并纵情想象吧，少年，西瓜学院愿做你梦想的燃料与火焰~Don'tPanic！</p>
-		</div>
-	</div>
+    <!-- 顶部横幅 -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>欢迎来到西瓜学院</h1>
+            <p>编程的宇宙充满奥秘，等待小探险家们去探索。在这里，我们将点燃你的创造力，开启编程魔法之旅。</p>
+            <a href="#about" class="btn-explore">探索更多 <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="school-info">
+            <h3>学校简介</h3>
+            <p><i class="fas fa-calendar-alt"></i> 创办时间：2017年1月1日</p>
+            <p><i class="fas fa-quote-left"></i> 校训：梦想是魔法的前奏，如果你不曾想象，也就无从创造。现在，通往未来魔法的大门已经开启，努力学习并纵情想象吧，少年，西瓜学院愿做你梦想的燃料与火焰~Don't Panic！</p>
+        </div>
+    </section>
 
-	<div>
-		<h1 id="title">冒险天团成员介绍</h1>
-		<hr>
-	</div>
+    <!-- 学校介绍 -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>关于西瓜学院</h2>
+            </div>
+            <div class="about-content">
+                <p>西瓜学院是一所专注于培养青少年编程能力和创造力的现代化教育机构。我们相信，编程不仅仅是一项技能，更是一种思维方式，一种解决问题的能力。在这里，我们通过有趣的项目和实践活动，激发学生的学习兴趣，培养他们的逻辑思维和创新精神。</p>
+                <p>我们的教学理念是"寓教于乐"，让学生在快乐中学习，在实践中成长。我们的课程涵盖了从基础编程到高级算法，从网页设计到人工智能等多个领域，满足不同年龄段学生的学习需求。</p>
+                <p>在西瓜学院，每个学生都是一个小小的创造者，我们期待看到他们用编程的魔法，创造出属于自己的精彩世界。</p>
+            </div>
+        </div>
+    </section>
 
-	<div class="card">
-		<img src="../../public/pic/孙小弟.png">
-		<h1>孙小弟</h1>
-		<p>【冒险天团】- 团宠</p>
-		<p>性别：男</p>
-		<p>性格：活泼，淘气，充满好奇心</p>
-		<p>特长：小小编程家</p>
-	</div>
+    <!-- 冒险天团成员介绍 -->
+    <section id="team" class="team">
+        <div class="container">
+            <div class="section-title">
+                <h2>冒险天团成员介绍</h2>
+            </div>
+            <div class="team-container">
+                <!-- 孙小弟 -->
+                <div class="card" data-aos="fade-up">
+                    <div class="card-header">
+                        <img src="../../public/pic/孙小弟.png" alt="孙小弟">
+                    </div>
+                    <div class="card-body">
+                        <h3>孙小弟</h3>
+                        <div class="role">【冒险天团】- 团宠</div>
+                        <p><strong>性别：</strong>男</p>
+                        <p><strong>性格：</strong>活泼，淘气，充满好奇心</p>
+                        <p><strong>特长：</strong>小小编程家</p>
+                    </div>
+                </div>
 
-	<div class="card">
-		<img src="../../public/pic/小八.png">
-		<h1>小八</h1>
-		<p>【冒险天团】- 智多星</p>
-		<p>性别：AI机器人</p>
-		<p>特长：走动的百科全书</p>
-	</div>
+                <!-- 小八 -->
+                <div class="card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card-header">
+                        <img src="../../public/pic/小八.png" alt="小八">
+                    </div>
+                    <div class="card-body">
+                        <h3>小八</h3>
+                        <div class="role">【冒险天团】- 智多星</div>
+                        <p><strong>性别：</strong>AI机器人</p>
+                        <p><strong>特长：</strong>走动的百科全书</p>
+                        <p><strong>爱好：</strong>解答各种奇怪的问题</p>
+                    </div>
+                </div>
 
-	<div class="card">
-		<img src="../../public/pic/胖达.png">
-		<h1>胖达</h1>
-		<p>【冒险天团】- 美食官</p>
-		<p>性别：男</p>
-		<p>性格：随和，贪吃</p>
-		<p>特长：美食鉴赏家</p>
-	</div>
+                <!-- 胖达 -->
+                <div class="card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card-header">
+                        <img src="../../public/pic/胖达.png" alt="胖达">
+                    </div>
+                    <div class="card-body">
+                        <h3>胖达</h3>
+                        <div class="role">【冒险天团】- 美食官</div>
+                        <p><strong>性别：</strong>男</p>
+                        <p><strong>性格：</strong>随和，贪吃</p>
+                        <p><strong>特长：</strong>美食鉴赏家</p>
+                    </div>
+                </div>
 
-	<div class="card">
-		<img src="../../public/pic/妮可.png">
-		<h1>妮可</h1>
-		<p>【冒险天团】- 可爱多</p>
-		<p>性别：女</p>
-		<p>性格：温柔，开朗</p>
-		<p>特长：拥有魔法能力</p>
-	</div>
+                <!-- 妮可 -->
+                <div class="card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card-header">
+                        <img src="../../public/pic/妮可.png" alt="妮可">
+                    </div>
+                    <div class="card-body">
+                        <h3>妮可</h3>
+                        <div class="role">【冒险天团】- 可爱多</div>
+                        <p><strong>性别：</strong>女</p>
+                        <p><strong>性格：</strong>温柔，开朗</p>
+                        <p><strong>特长：</strong>拥有魔法能力</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-	<div class="clear"></div>
+    <!-- 照片墙 -->
+    <section id="gallery" class="gallery">
+        <div class="container">
+            <div class="section-title">
+                <h2>照片墙</h2>
+            </div>
+            <div class="gallery-container">
+                <!-- 照片1 -->
+                <div class="gallery-item">
+                    <img src="../../public/pic/校园无人机.png" alt="校园无人机">
+                    <div class="gallery-caption">
+                        <h3>校园无人机</h3>
+                        <p>学生们在操控无人机，探索科技的奥秘</p>
+                    </div>
+                </div>
 
+                <!-- 照片2 -->
+                <div class="gallery-item">
+                    <img src="../../public/pic/西瓜开放日.png" alt="西瓜学院开放交流活动">
+                    <div class="gallery-caption">
+                        <h3>西瓜学院开放交流活动</h3>
+                        <p>学生们展示自己的编程作品，分享创意</p>
+                    </div>
+                </div>
 
-	<div>
-		<h1 id="title">照片墙</h1>
-		<hr>
-	</div>
+                <!-- 照片3 -->
+                <div class="gallery-item">
+                    <img src="../../public/pic/魔法营.png" alt="魔法营编程训练">
+                    <div class="gallery-caption">
+                        <h3>魔法营编程训练</h3>
+                        <p>学生们在魔法营中学习编程技能</p>
+                    </div>
+                </div>
 
-	<!-- 添加照片墙 -->
-	<div class="photo">
-		<img src="../../public/pic/校园无人机.png">
-		<h1>校园无人机</h1>
-	</div>
+                <!-- 照片4 -->
+                <div class="gallery-item">
+                    <img src="../../public/pic/兴隆湖.png" alt="西瓜学院——兴隆湖分院">
+                    <div class="gallery-caption">
+                        <h3>西瓜学院——兴隆湖分院</h3>
+                        <p>美丽的兴隆湖分院校区风光</p>
+                    </div>
+                </div>
 
-	<div class="photo">
-		<img src="../../public/pic/西瓜开放日.png">
-		<h1>西瓜学院开放交流活动</h1>
-	</div>
+                <!-- 照片5 -->
+                <div class="gallery-item">
+                    <img src="../../public/pic/2019优秀选手.png" alt="2019下线Workshop优秀选手合照">
+                    <div class="gallery-caption">
+                        <h3>2019下线Workshop优秀选手合照</h3>
+                        <p>优秀学员们的合影留念</p>
+                    </div>
+                </div>
 
-	<div class="photo">
-		<img src="../../public/pic/魔法营.png">
-		<h1>魔法营编程训练</h1>
-	</div>
+                <!-- 照片6 -->
+                <div class="gallery-item">
+                    <img src="../../public/pic/蔚来x西瓜Seeds演讲.png" alt="蔚来x西瓜Seeds演讲">
+                    <div class="gallery-caption">
+                        <h3>蔚来x西瓜Seeds演讲</h3>
+                        <p>与企业合作的创新项目展示</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-	<div class="photo">
-		<img src="../../public/pic/兴隆湖.png">
-		<h1>西瓜学院——兴隆湖分院</h1>
-	</div>
+    <!-- 页脚 -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>关于我们</h3>
+                    <p>尽可能的瞎说一些</p>
+                </div>
+                <div class="footer-section">
+                    <h3>联系方式</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 地址：四川成都</p>
+                    <p><i class="fas fa-phone"></i> 电话：1145141919810</p>
+                    <p><i class="fas fa-envelope"></i> 邮箱：<a href="mailto:sdcom@sdcom.top">sdcom@sdcom.top</a></p>
+                </div>
+                <div class="footer-section">
+                    <h3>关注我们</h3>
+                    <p>关注我们的社交媒体，了解最新动态和活动信息。</p>
+                    <div class="social-links">
+                        <a href="WeChat.html" target="_blank"><i class="fab fa-weixin"></i></a>
+                        <a href="WeiBo.html" target="_blank"><i class="fab fa-weibo"></i></a>
+                        <a href="QQ.html" target="_blank"><i class="fab fa-qq"></i></a>
+                        <a href="Bilibili.html" target="_blank"><i class="fab fa-bilibili"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 SDCOM. 保留所有权利。</p>
+            </div>
+        </div>
+    </footer>
 
-	<div class="photo">
-		<img src="../../public/pic/2019优秀选手.png">
-		<h1>2019下线Workshop优秀选手合照</h1>
-	</div>
+    <!-- 添加一些简单的JavaScript效果 -->
+    <script>
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
 
-	<div class="photo">
-		<img src="../../public/pic/蔚来x西瓜Seeds演讲.png">
-		<h1>蔚来x西瓜Seeds演讲</h1>
-	</div>
-	
-</body>
-</html>
+        // 导航栏滚动效果
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.padding = '10px 0';
+                navbar.style.backgroundColor = 'rgba(255, 255, 255, 0.98)';
+            } else {
+                navbar.style.padding = '15px 0';
+                navbar.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
+            }
+        });
+    </script>
