@@ -35,6 +35,21 @@ Guide
 挑战2
 [backup/2025.8.4/2](backup/2025.8.4/2 "backup/2025.8.4/2")
 
+挑战3
+[backup/2025.8.4/3](backup/2025.8.4/3 "backup/2025.8.4/3")
+
+挑战4
+[backup/2025.8.4/4](backup/2025.8.4/4 "backup/2025.8.4/4")
+
+挑战5
+[backup/2025.8.4/5](backup/2025.8.4/5 "backup/2025.8.4/5")
+
+挑战6
+[backup/2025.8.4/6](backup/2025.8.4/6 "backup/2025.8.4/6")
+
+浮动样式
+[over/2025.8.4/index.html](over/2025.8.4/index.html "over/2025.8.4/index.html")
+
 ## 2025.7.24
 Guide
 [backup/2025.7.24/guide](backup/2025.7.24/guide/ "backup/2025.7.24/guide")
