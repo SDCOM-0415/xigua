@@ -129,6 +129,27 @@
             margin-left: 10%;
             animation: fadeIn 1s ease-in-out;
         }
+        
+        .hero-logo {
+            text-align: center;
+            margin-bottom: 30px;
+            animation: fadeInDown 1s ease-in-out;
+        }
+        
+        .hero-logo img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 5px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 10px;
+            transition: transform 0.3s ease;
+        }
+        
+        .hero-logo img:hover {
+            transform: scale(1.05);
+        }
 
         .hero-content h1 {
             font-size: 3.5rem;
@@ -411,6 +432,17 @@
                 opacity: 1;
             }
         }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
         @keyframes slideIn {
             from {
@@ -523,6 +555,9 @@
     <!-- 顶部横幅 -->
     <section id="home" class="hero">
         <div class="hero-content">
+            <div class="hero-logo">
+                <img src="../../public/pic/西瓜校徽.png" alt="西瓜学院校徽">
+            </div>
             <h1>欢迎来到西瓜学院</h1>
             <p>编程的宇宙充满奥秘，等待小探险家们去探索。在这里，我们将点燃你的创造力，开启编程魔法之旅。</p>
             <a href="#about" class="btn-explore">探索更多 <i class="fas fa-arrow-right"></i></a>
