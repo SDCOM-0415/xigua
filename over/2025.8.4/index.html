@@ -464,6 +464,42 @@
                 font-size: 2rem;
             }
         }
+    /* 返回顶部按钮 */
+    .back-to-top {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        width: 50px;
+        height: 50px;
+        background-color: #339AA5;
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-decoration: none;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+        z-index: 999;
+        cursor: pointer;
+    }
+    
+    .back-to-top.show {
+        opacity: 1;
+        visibility: visible;
+    }
+    
+    .back-to-top:hover {
+        background-color: #2C7D86;
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+    
+    .back-to-top i {
+        font-size: 20px;
+    }
     </style>
 </head>
 
@@ -477,7 +513,6 @@
             </div>
             <ul class="nav-links">
                 <li><a href="#home">首页</a></li>
-                <li><a href="#about">学校介绍</a></li>
                 <li><a href="#team">冒险天团</a></li>
                 <li><a href="#gallery">照片墙</a></li>
                 <li><a href="#contact">联系我们</a></li>
@@ -496,20 +531,6 @@
             <h3>学校简介</h3>
             <p><i class="fas fa-calendar-alt"></i> 创办时间：2017年1月1日</p>
             <p><i class="fas fa-quote-left"></i> 校训：梦想是魔法的前奏，如果你不曾想象，也就无从创造。现在，通往未来魔法的大门已经开启，努力学习并纵情想象吧，少年，西瓜学院愿做你梦想的燃料与火焰~Don't Panic！</p>
-        </div>
-    </section>
-
-    <!-- 学校介绍 -->
-    <section id="about" class="about">
-        <div class="container">
-            <div class="section-title">
-                <h2>关于西瓜学院</h2>
-            </div>
-            <div class="about-content">
-                <p>西瓜学院是一所专注于培养青少年编程能力和创造力的现代化教育机构。我们相信，编程不仅仅是一项技能，更是一种思维方式，一种解决问题的能力。在这里，我们通过有趣的项目和实践活动，激发学生的学习兴趣，培养他们的逻辑思维和创新精神。</p>
-                <p>我们的教学理念是"寓教于乐"，让学生在快乐中学习，在实践中成长。我们的课程涵盖了从基础编程到高级算法，从网页设计到人工智能等多个领域，满足不同年龄段学生的学习需求。</p>
-                <p>在西瓜学院，每个学生都是一个小小的创造者，我们期待看到他们用编程的魔法，创造出属于自己的精彩世界。</p>
-            </div>
         </div>
     </section>
 
@@ -674,6 +695,11 @@
         </div>
     </footer>
 
+    <!-- 返回顶部按钮 -->
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
     <!-- 添加一些简单的JavaScript效果 -->
     <script>
         // 平滑滚动
@@ -696,5 +722,26 @@
                 navbar.style.padding = '15px 0';
                 navbar.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
             }
+        });
+
+        // 返回顶部按钮功能
+        const backToTopButton = document.getElementById('backToTop');
+        
+        // 监听滚动事件
+        window.addEventListener('scroll', () => {
+            // 当页面滚动超过300px时显示按钮
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('show');
+            } else {
+                backToTopButton.classList.remove('show');
+            }
+        });
+        
+        // 点击按钮返回顶部
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
         });
     </script>
