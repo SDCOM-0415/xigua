@@ -25,15 +25,15 @@
 4. 保存文件，刷新页面即可看到更新
 
 ## 内容
-## 2025.8.3
+## 2025.8.4
 Guide
-[backup/2025.8.3/guide](backup/2025.8.3/guide/ "backup/2025.8.3/guide")
+[backup/2025.8.4/guide](backup/2025.8.4/guide/ "backup/2025.8.4/guide")
 
 挑战1
-[backup/2025.8.3/1](backup/2025.8.3/1 "backup/2025.8.3/1")
+[backup/2025.8.4/1](backup/2025.8.4/1 "backup/2025.8.4/1")
 
 挑战2
-[backup/2025.8.3/2](backup/2025.8.3/2 "backup/2025.8.3/2")
+[backup/2025.8.4/2](backup/2025.8.4/2 "backup/2025.8.4/2")
 
 ## 2025.7.24
 Guide
