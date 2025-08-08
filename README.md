@@ -10,7 +10,7 @@
 本页面访问地址：</p>
 [https://xigua.sdcom.top/](https://xigua.sdcom.top/ "https://xigua.sdcom.top/")</p>
 [https://xigua.sdcom.asia/](https://xigua.sdcom.asia/ "https://xigua.sdcom.asia/")</p>
-[https://xg9.cn/my/2VlKjQ](https://xg9.cn/my/2VlKjQ "https://xg9.cn/my/2VlKjQ")
+[https://xg9.cn/my/w72byk](https://xg9.cn/my/w72byk "https://xg9.cn/my/w72byk")
 
 ### 引导页主要特点
 - 🎨 优雅的设计风格
@@ -25,6 +25,16 @@
 4. 保存文件，刷新页面即可看到更新
 
 ## 内容
+## 2025.8.8
+Guide
+[backup/2025.8.8/guide](backup/2025.8.8/guide/ "backup/2025.8.8/guide")
+
+挑战1
+[backup/2025.8.8/1](backup/2025.8.8/1 "backup/2025.8.8/1")
+
+挑战2
+[backup/2025.8.8/2](backup/2025.8.8/2 "backup/2025.8.8/2")
+
 ## 2025.8.4
 Guide
 [backup/2025.8.4/guide](backup/2025.8.4/guide/ "backup/2025.8.4/guide")
