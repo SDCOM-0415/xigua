@@ -41,6 +41,11 @@ Guide
 挑战4
 [backup/2025.8.8/4](backup/2025.8.8/4 "backup/2025.8.8/4")
 
+挑战5
+[backup/2025.8.8/5](backup/2025.8.8/5 "backup/2025.8.8/5")
+
+搭建主页
+[over/2025.8.8/index.html](over/2025.8.8/index.html "over/2025.8.8/index.html")
 
 ## 2025.8.4
 Guide

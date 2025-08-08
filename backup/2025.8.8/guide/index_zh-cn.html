@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="欢迎使用来到 SDCOM 的 Xigua_Web">
+    <meta name="keywords" content="文档,教程,Linux,macOS,技术指南,SDCOM,SDCOM's BLOG,Xigua_Web,xigua,西瓜创客,xiguacity.cn,xiguacity,xigua.pro">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../../../public/pic/tubiao.jpg">
+    <link rel="shortcut icon" href="../../../public/pic/tubiao.jpg">
+    <title>Xigua_Web引导页</title>
+    <link rel="stylesheet" href="../../../public/css/style.css">
+    <!-- 引入marked.js用于解析Markdown -->
+    <script src="//cdn.jsdmirror.com/npm/marked/marked.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <span class="logo-text">Guide</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active">首页</a></li>
+                    <li><a href="#">文档</a></li>
+                    <li><a href="#heading-1">关于</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <div class="sidebar">
+                <div class="sidebar-header">目录</div>
+                <div id="toc"></div>
+            </div>
+            <div class="content" id="content">
+                <div class="loading">
+                    <div class="spinner"></div>
+                    <p>加载中...</p>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; 2025 <a href="https://www.sdcom.top/" target="_blank">SDCOM</a> | 使用 <a href="https://github.com/markedjs/marked" target="_blank">marked.js</a> 构建</p>
+            <p><a href="https://beian.miit.gov.cn/" target="_blank">赣ICP备2023009313号-3</a></p>
+        </footer>+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 加载Markdown文件
+            fetch('README.md')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('无法加载Markdown文件');
+                    }
+                    return response.text();
+                })
+                .then(markdown => {
+                    // 解析Markdown
+                    const contentElement = document.getElementById('content');
+                    contentElement.innerHTML = marked.parse(markdown);
+                    
+                    // 生成目录
+                    generateTOC();
+                    
+                    // 添加语法高亮
+                    highlightCode();
+                })
+                .catch(error => {
+                    document.getElementById('content').innerHTML = `
+                        <div class="error">
+                            <h2>加载失败</h2>
+                            <p>${error.message}</p>
+                            <p>请确保 README.md 文件存在于正确的位置。</p>
+                        </div>
+                    `;
+                });
+        });
+
+        // 生成目录
+        function generateTOC() {
+            const headings = document.querySelectorAll('#content h1, #content h2, #content h3');
+            const toc = document.getElementById('toc');
+            
+            if (headings.length === 0) {
+                toc.innerHTML = '<p>没有找到标题</p>';
+                return;
+            }
+            
+            const tocList = document.createElement('ul');
+            
+            headings.forEach((heading, index) => {
+                // 为每个标题添加ID，以便链接
+                const id = `heading-${index}`;
+                heading.id = id;
+                
+                const listItem = document.createElement('li');
+                listItem.className = `toc-${heading.tagName.toLowerCase()}`;
+                
+                const link = document.createElement('a');
+                link.href = `#${id}`;
+                link.textContent = heading.textContent;
+                
+                listItem.appendChild(link);
+                tocList.appendChild(listItem);
+                
+                // 点击目录项时滚动到对应位置
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    document.querySelector(`#${id}`).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+            
+            toc.appendChild(tocList);
+        }
+
+        // 为代码块添加语法高亮
+        function highlightCode() {
+            const codeBlocks = document.querySelectorAll('pre code');
+            if (codeBlocks.length > 0) {
+                // 如果有代码块，动态加载highlight.js
+                const link = document.createElement('link');
+                link.rel = 'stylesheet';
+                link.href = '//cdn.jsd.hydun.com/npm/highlight.js/styles/github.min.css';
+                document.head.appendChild(link);
+                
+                const script = document.createElement('script');
+                script.src = '//cdn.jsd.hydun.com/npm/highlight.js/highlight.min.js';
+                script.onload = function() {
+                    hljs.highlightAll();
+                };
+                document.head.appendChild(script);
+            }
+        }
+    </script>
+</body>
+</html>
