@@ -35,6 +35,13 @@ Guide
 挑战2
 [backup/2025.8.8/2](backup/2025.8.8/2 "backup/2025.8.8/2")
 
+挑战3
+[backup/2025.8.8/3](backup/2025.8.8/3 "backup/2025.8.8/3")
+
+挑战4
+[backup/2025.8.8/4](backup/2025.8.8/4 "backup/2025.8.8/4")
+
+
 ## 2025.8.4
 Guide
 [backup/2025.8.4/guide](backup/2025.8.4/guide/ "backup/2025.8.4/guide")
