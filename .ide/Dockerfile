@@ -20,7 +20,7 @@ RUN curl -fsSL https://code-server.dev/install.sh | sh -s -- --version 4.100.3 \
   && code-server --install-extension waderyan.gitblame \
   && code-server --install-extension donjayamanne.githistory \
   && code-server --install-extension yandeu.five-server \
-  && code-server --install-extension ms-ceintl.vscode-language-pack-zh-hans \
+  && code-server --install-extension ms-ceintl.vscode-language-pack-zh-hans@1.100.0 \
   && wget https://cnb.cool/SDCOM/moren/html/-/git/raw/main/.ide/argv.json -O /root/.local/share/code-server/User/argv.json \
   && wget https://cnb.cool/SDCOM/moren/html/-/git/raw/main/.ide/languagepacks.json -O /root/.local/share/code-server/languagepacks.json \
   && echo done
