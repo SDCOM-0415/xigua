@@ -78,3 +78,6 @@ celerybeat.pid
 
 # Poetry
 poetry.lock
+
+.codebuddy/
+.vscode/

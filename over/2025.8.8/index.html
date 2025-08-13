@@ -1,89 +1,237 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 
 <head>
-	<meta charset="UTF-8">
-	<title>动物世界</title>
-	<script defer src="https://umami.sdcom.top/script.js" data-website-id="616f60de-8962-40c4-ae69-d46067433da8"></script>	<style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>奇妙动物世界</title>
+    <script defer src="https://umami.sdcom.top/script.js" data-website-id="616f60de-8962-40c4-ae69-d46067433da8"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-		body {
-			background: url("../../public/pic/背景.jpg");
-			background-attachment: fixed;
-			
-		}
+        body {
+            background: url("../../public/pic/背景.jpg") no-repeat center center fixed;
+            background-size: cover;
+            font-family: 'Noto Sans SC', sans-serif;
+            color: #fff;
+            min-height: 100vh;
+            padding: 20px;
+        }
 
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
 
-		img {
-			width: 400px;
-			height: 300px;
-			border: skyblue 5px outset;
-			transition: all 0.5s;
-		}
+        header {
+            text-align: center;
+            padding: 30px 0;
+            margin-bottom: 20px;
+            background-color: rgba(0, 0, 0, 0.6);
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
 
+        h1.main-title {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
 
-		img:hover {
-			transform: scale(1.2);
-		}
+        .subtitle {
+            font-size: 1.2rem;
+            color: #ccc;
+        }
 
-		div {
-			float: left;
-			width: 400px;
-			height: 400px;
-			margin-left: 5%;
-			margin-top: 5%;
-			color: white;
-			text-align: center;
-		}
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+        }
 
-	</style>
+        .animal-card {
+            width: 400px;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
 
+        .animal-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .image-container {
+            position: relative;
+            overflow: hidden;
+            height: 300px;
+        }
+
+        .animal-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border: none;
+            transition: all 0.5s ease;
+        }
+
+        .animal-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .animal-info {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .animal-info h2 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: #fff;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        }
+
+        .animal-tag {
+            display: inline-block;
+            background-color: rgba(135, 206, 235, 0.7);
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-top: 5px;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.6);
+            border-radius: 15px;
+        }
+
+        @media (max-width: 768px) {
+            .animal-card {
+                width: 100%;
+            }
+            
+            h1.main-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
 </head>
 
 <body>
-	<div>
-		<img src="../../public/pic/北极兔.png">
-		<h1>北极兔</h1>
-	</div>
+    <div class="container">
+        <header>
+            <h1 class="main-title">奇妙动物世界</h1>
+            <p class="subtitle">探索地球上最独特的生物</p>
+        </header>
 
-	<div>
-		<img src="../../public/pic/白外叶蝙蝠.png">
-		<h1>白外叶蝙蝠</h1>
-	</div>
+        <div class="gallery">
+            <div class="animal-card">
+                <div class="image-container">
+                    <img src="../../public/pic/北极兔.png" alt="北极兔">
+                </div>
+                <div class="animal-info">
+                    <h2>北极兔</h2>
+                    <span class="animal-tag">极地生物</span>
+                </div>
+            </div>
 
-	<div>
-		<img src="../../public/pic/小鼷鹿.png">
-		<h1>小鼷鹿</h1>
-	</div>
+            <div class="animal-card">
+                <div class="image-container">
+                    <img src="../../public/pic/白外叶蝙蝠.png" alt="白外叶蝙蝠">
+                </div>
+                <div class="animal-info">
+                    <h2>白外叶蝙蝠</h2>
+                    <span class="animal-tag">夜行动物</span>
+                </div>
+            </div>
 
-	<div>
-		<img src="../../public/pic/短尾矮袋鼠.png">
-		<h1>短尾矮袋鼠</h1>
-	</div>
+            <div class="animal-card">
+                <div class="image-container">
+                    <img src="../../public/pic/小鼷鹿.png" alt="小鼷鹿">
+                </div>
+                <div class="animal-info">
+                    <h2>小鼷鹿</h2>
+                    <span class="animal-tag">珍稀物种</span>
+                </div>
+            </div>
 
-	<div>
-		<img src="../../public/pic/更格卢鼠.png">
-		<h1>更格卢鼠</h1>
-	</div>
+            <div class="animal-card">
+                <div class="image-container">
+                    <img src="../../public/pic/短尾矮袋鼠.png" alt="短尾矮袋鼠">
+                </div>
+                <div class="animal-info">
+                    <h2>短尾矮袋鼠</h2>
+                    <span class="animal-tag">有袋动物</span>
+                </div>
+            </div>
 
-	<div>
-		<img src="../../public/pic/毯子章鱼.png">
-		<h1>毯子章鱼</h1>
-	</div>
+            <div class="animal-card">
+                <div class="image-container">
+                    <img src="../../public/pic/更格卢鼠.png" alt="更格卢鼠">
+                </div>
+                <div class="animal-info">
+                    <h2>更格卢鼠</h2>
+                    <span class="animal-tag">啮齿动物</span>
+                </div>
+            </div>
 
-	<div>
-		<img src="../../public/pic/鸮鹦鹉.png">
-		<h1>鸮鹦鹉</h1>
-	</div>
+            <div class="animal-card">
+                <div class="image-container">
+                    <img src="../../public/pic/毯子章鱼.png" alt="毯子章鱼">
+                </div>
+                <div class="animal-info">
+                    <h2>毯子章鱼</h2>
+                    <span class="animal-tag">海洋生物</span>
+                </div>
+            </div>
 
-	<div>
-		<img src="../../public/pic/沙漠雨蛙.png">
-		<h1>沙漠雨蛙</h1>
-	</div>
+            <div class="animal-card">
+                <div class="image-container">
+                    <img src="../../public/pic/鸮鹦鹉.png" alt="鸮鹦鹉">
+                </div>
+                <div class="animal-info">
+                    <h2>鸮鹦鹉</h2>
+                    <span class="animal-tag">鸟类</span>
+                </div>
+            </div>
 
-	<div>
-		<img src="../../public/pic/雀尾螳螂虾.png">
-		<h1>雀尾螳螂虾</h1>
-	</div>
+            <div class="animal-card">
+                <div class="image-container">
+                    <img src="../../public/pic/沙漠雨蛙.png" alt="沙漠雨蛙">
+                </div>
+                <div class="animal-info">
+                    <h2>沙漠雨蛙</h2>
+                    <span class="animal-tag">两栖动物</span>
+                </div>
+            </div>
 
+            <div class="animal-card">
+                <div class="image-container">
+                    <img src="../../public/pic/雀尾螳螂虾.png" alt="雀尾螳螂虾">
+                </div>
+                <div class="animal-info">
+                    <h2>雀尾螳螂虾</h2>
+                    <span class="animal-tag">甲壳类</span>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>© 2025 奇妙动物世界 | 探索自然的奥秘</p>
+        </footer>
+    </div>
 </body>
 </html>
