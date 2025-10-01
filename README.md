@@ -25,12 +25,6 @@
 4. 保存文件，刷新页面即可看到更新
 
 ## 内容
-## 2025.10.1
-Guide
-[backup/2025.10.1/guide](backup/2025.10.1/guide/ "backup/2025.10.1/guide")
-
-
-
 ## 2025.8.8
 Guide
 [backup/2025.8.8/guide](backup/2025.8.8/guide/ "backup/2025.8.8/guide")
